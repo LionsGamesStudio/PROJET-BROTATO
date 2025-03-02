@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Brotato_test.sln"
+    "dotnet.defaultSolution": "PROJET-BROTATO.sln"
 }

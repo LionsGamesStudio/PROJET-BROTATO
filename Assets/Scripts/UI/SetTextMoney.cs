@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using JetBrains.Annotations;
+using UnityEditor.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
+public class SetTextMoney : MonoBehaviour
+
+{
+    public TextMeshProUGUI moneyText; // Texte UI à assigner dans l'inspecteur
+    private ClassPerso personnage;
+    // Start is called before the first frame update
+    private void Start()
+    {
+        GameObject cible = GameObject.Find("-- XR Origin");
+
+        personnage = cible.GetComponent<ClassPerso>();
+
+        moneyText.text = ": " + personnage.money.ToString() + " $";
+
+        Debug.Log("Le texte affiché est " + moneyText.text); // Test à enlever après
+    }
+
+    private void Update()
+    {
+        moneyText.text = ": " + personnage.money.ToString() + " $";
+    }
+
+}

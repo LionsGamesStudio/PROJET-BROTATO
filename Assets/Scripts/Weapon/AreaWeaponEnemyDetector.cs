@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,9 +9,9 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
     public GameObject bulletPrefab;
     private Class_Weapon weapon;
 
-    private List<Class_Monster> enemiesInRange = new List<Class_Monster>(); 
+    public List<Class_Monster> enemiesInRange = new List<Class_Monster>(); 
     // Pour viser le monstre le plus proche si il meurt on va devoir faire la liste des monstres puis choisir le premier qui a été append :)
-    private Class_Monster monster_locked;
+    public Class_Monster monster_locked;
 
     private bool shootBullet = false; // Booléen utile plus tard
 
@@ -29,7 +30,7 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
     {   
         if (other.CompareTag("Enemy")) // Si l'ennemie touché est dans la zone
             {
-                Debug.Log("Un enemy est entré dans la zone");
+                //Debug.Log("Un enemy est entré dans la zone");
 
                 Class_Monster enemy = other.GetComponent<Class_Monster>(); // On récupère le monstre
 
@@ -44,7 +45,7 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
     {
         if (other.CompareTag("Enemy")) // Si l'ennemie touché est dans la zone
         {   
-            Debug.Log("Un ennemie quitte la zone ou meurt !");
+            //Debug.Log("Un ennemie quitte la zone ou meurt !");
             
             Class_Monster enemy = other.GetComponent<Class_Monster>(); // On regarde quel enemy est sortie de la zone
 
@@ -55,11 +56,8 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
                 UpdateFocus(); // On met à jour notre arme
             }
             
-    
         }
-        
     }
-
     void UpdateFocus() // Gère si on prend un nouvel ennemie ou pas 
     {
 
@@ -75,8 +73,6 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
         float minDistance = float.MaxValue; // Take the maxValue possible for a distance
 
         List<Class_Monster> toRemove = new List<Class_Monster>(); 
-
-
 
         foreach (Class_Monster enemy in enemiesInRange) // For each monster in the list
         {   
@@ -106,33 +102,26 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
     }
 
 
-    void Update()
+void Update()
+{
+    if (monster_locked == null || !monster_locked.gameObject.activeInHierarchy)
     {
-        // Gerer quand le monstre est actif / inactif / visé
-
-        if (monster_locked != null) // Si on a un monstre visé alors on se tourne vers lui
-        {
-            if (!monster_locked.gameObject.activeInHierarchy) // Vérifie si l'ennemi meurt
-            {
-                UpdateFocus();
-            }
-            else
-            {
-                transform.LookAt(monster_locked.transform);
-
-                if (shootBullet == false) 
-                {
-                    StartCoroutine(CreateBullet(weapon.shoot_Rate));
-                }
-                
-            }
-            
-
-            // Start shooting 
-        }
-        
+        // Si l’ennemi est null ou inactif, on cherche un nouveau focus.
+        UpdateFocus();
     }
-    IEnumerator CreateBullet(float cooldown) // VA FALLOIR FAIRE UN IEnumrator pour stopper le tire comme on le souhaite --> coroutine de l'attaque
+    else
+    {
+        
+        transform.LookAt(monster_locked.transform);
+
+        if (!shootBullet)
+        {
+            StartCoroutine(CreateBullet(weapon.shoot_Rate));
+        }
+    }
+}
+
+    IEnumerator CreateBullet(float shoot_Rate) // VA FALLOIR FAIRE UN IEnumrator pour stopper le tire comme on le souhaite --> coroutine de l'attaque
     {
         {
             shootBullet = true;
@@ -140,7 +129,7 @@ public class AreaWeaponEnemyDetector : MonoBehaviour
             ClassBullet bullet = Instantiate(bulletPrefab,weapon.transform.position,weapon.transform.rotation).GetComponent<ClassBullet>(); // New bullet 
             bullet.damage = weapon.damage; // Hérite des dégats de l'arme
             
-            yield return new WaitForSeconds(1/cooldown);
+            yield return new WaitForSeconds(1/shoot_Rate);
 
             shootBullet = false;
         }

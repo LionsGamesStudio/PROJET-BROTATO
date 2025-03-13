@@ -25,10 +25,15 @@ public class Class_Monster : MonoBehaviour
 
     private Transform target; // Player target
 
+    private GameObject player;
+
+    private List<Class_Monster> enemiesinRange ;
+
+
     void Start()
     {   
-    
-        target = GameObject.Find("-- XR Origin").transform;
+        player = GameObject.Find("-- XR Origin");
+        target = player.transform;
     }
 
 
@@ -91,9 +96,10 @@ public class Class_Monster : MonoBehaviour
         if (pv <= 0)
         {
             Destroy(gameObject); 
-            ClassPerso player = GameObject.Find("-- XR Origin").GetComponent<ClassPerso>(); // TROUVER LE MOYEN D'OPTI CA C'EST PAS TERRIBLE
-            player.money += moneyValue;
-            
+
+            ClassPerso character = player.GetComponent<ClassPerso>(); 
+            character.money += moneyValue;
+
         }
     }
 }

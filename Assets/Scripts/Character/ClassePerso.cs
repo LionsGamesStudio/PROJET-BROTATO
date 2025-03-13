@@ -80,6 +80,11 @@ public class ClassPerso : MonoBehaviour
         
     }
 
+    public void NextVague() 
+    {
+        vague += 1;
+    }
+
 }
 
 

@@ -1,0 +1,54 @@
+------------------- ## What have be done before :
+
+--> A (not optimised) system of waves (i just select the mobs that i what for the wave 1, 2, 3...)
+--> A start of a system of inventory for weapon ( i will maybe remake it )
+--> System of weapon witch are shooting automaticly, with different rarity that boost damage, shootRate... (only in hand not automatised)
+--> Joystick movement
+--> Potion grab 
+--> Enemy damage 
+--> Death of player when HP < 0 (just a restart of the scene)
+--> 3D model scene ( with some assets )
+
+------------------- ## What should we do next to "have a game" 
+
+Priority :
+1) Drop base on luck + random that enemy spawn : more money / heal
+2) A random system base on a "Luck" stat that we can pull for every round ending 
+
+--> A "bank" / inventory for the uprgades that we can buy 
+--> Animations / sounds everywhere
+--> GUI for waves, shop 
+--> Starting screen / place | Ending scene / place 
+
+Secondary : 
+--> Health bar for enemy at a certain range of the player to appear
+--> Fusion weapon to upgrade them 
+--> Sell weapon if you want 
+
+( bonus ) 
+--> Add multiples weapons 
+--> Add multiples ennemies
+
+
+------------------- ## Question : 
+Should I make 2 seperated inventory for upgrades and weapons ? (because weapon are unique, for the moment motionless and the upgrades can be multiples )
+Should i make a real system of improving stat of enemy wave bu wave ? 
+
+
+
+-------------------------------
+
+Pour faire le système de luck 
+
+On va faire une banque avec des upgrades de différentes rareté 
+2 moyens de faire :
+
+Sois on fait cette upgrade à 1% celle ci 1,5% ect.... ou alors on fait les upgrades legendairy on 1% d'apparaitre ect...
+
+{
+{common = 41}
+(uncommun = 31
+{rare = 21}
+{epic = 6}
+{legendary = 1}
+}

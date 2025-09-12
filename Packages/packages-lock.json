@@ -1,5 +1,17 @@
 {
   "dependencies": {
+    "com.fluxframework.core": {
+      "version": "https://github.com/LionsGamesStudio/Flux.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.textmeshpro": "3.0.6",
+        "com.unity.xr.management": "4.2.0"
+      },
+      "hash": "59692487159d3c8e144ca63e613ab3908f9659d4"
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
@@ -69,6 +81,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

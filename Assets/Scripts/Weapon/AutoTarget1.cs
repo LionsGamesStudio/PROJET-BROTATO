@@ -1,15 +1,14 @@
 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoTarget : MonoBehaviour
-{  
+public class AutoTarget1 : MonoBehaviour
+{
     public GameObject bulletPrefab;
     private Class_Weapon weapon;
 
-    public List<IEnemy> enemiesInRange = new List<IEnemy>(); 
+    public List<IEnemy> enemiesInRange = new List<IEnemy>();
     public IEnemy monsterLocked;
 
     private bool shootBullet = false;
@@ -23,9 +22,9 @@ public class AutoTarget : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        MonoBehaviour enemyComponent = other.GetComponent<MonoBehaviour>();
+        IEnemy enemy = other.GetComponent<IEnemy>();
 
-        if (enemyComponent is IEnemy enemy)
+        if (enemy != null)
         {
             enemiesInRange.Add(enemy);
             UpdateFocus();
@@ -34,9 +33,9 @@ public class AutoTarget : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        MonoBehaviour enemyComponent = other.GetComponent<MonoBehaviour>();
+        IEnemy enemy = other.GetComponent<IEnemy>();
 
-        if (enemyComponent is IEnemy enemy)
+        if (enemy != null)
         {
             enemiesInRange.Remove(enemy);
 
@@ -52,20 +51,28 @@ public class AutoTarget : MonoBehaviour
         monsterLocked = FindClosestEnemy();
     }
 
+    // ✅ Méthode helper utilisant IsDestroyed
+    private bool IsEnemyValid(IEnemy enemy)
+    {
+        return enemy != null &&
+               !enemy.IsDestroyed &&
+               enemy.GameObject != null &&
+               enemy.GameObject.activeInHierarchy;
+    }
+
     IEnemy FindClosestEnemy()
     {
         IEnemy closestEnemy = null;
         float minDistance = float.MaxValue;
 
-        List<IEnemy> toRemove = new List<IEnemy>();
+        // ✅ Nettoyer la liste avec IsDestroyed
+        enemiesInRange.RemoveAll(enemy => enemy == null || enemy.IsDestroyed);
 
         foreach (IEnemy enemy in enemiesInRange)
-        {   
-            // Vérification si l'ennemi existe toujours
-            if (enemy != null && (enemy as MonoBehaviour) != null && (enemy as MonoBehaviour).gameObject.activeInHierarchy)
+        {
+            if (IsEnemyValid(enemy))
             {
-                Transform enemyTransform = (enemy as MonoBehaviour).transform;
-                float distance = Vector3.Distance(enemyTransform.position, weapon.transform.position);
+                float distance = Vector3.Distance(enemy.Transform.position, weapon.transform.position);
 
                 if (distance < minDistance)
                 {
@@ -73,15 +80,6 @@ public class AutoTarget : MonoBehaviour
                     closestEnemy = enemy;
                 }
             }
-            else
-            {   
-                toRemove.Add(enemy);
-            }
-        }
-
-        foreach (var enemy in toRemove)
-        {
-            enemiesInRange.Remove(enemy);
         }
 
         return closestEnemy;
@@ -89,21 +87,19 @@ public class AutoTarget : MonoBehaviour
 
     void Update()
     {
-        // Vérification si l'ennemi verrouillé existe toujours
-        MonoBehaviour enemyMono = monsterLocked as MonoBehaviour; // Ca je vais voir
-
-        if (monsterLocked == null || enemyMono == null || !enemyMono.gameObject.activeInHierarchy)
+        // ✅ Vérification avec IsDestroyed
+        if (!IsEnemyValid(monsterLocked))
         {
             UpdateFocus();
+            return;
         }
-        else
-        {
-            transform.LookAt(enemyMono.transform);
 
-            if (!shootBullet)
-            {
-                StartCoroutine(CreateBullet(weapon.shoot_Rate));
-            }
+        // Si on arrive ici, l'ennemi est valide
+        transform.LookAt(monsterLocked.Transform);
+
+        if (!shootBullet)
+        {
+            StartCoroutine(CreateBullet(weapon.shoot_Rate));
         }
     }
 

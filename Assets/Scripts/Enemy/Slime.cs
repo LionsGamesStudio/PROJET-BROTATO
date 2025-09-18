@@ -1,45 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-
 
 public class Slime : MonoBehaviour, IEntity, IDamageable, IDie, IAttack, IEnemy
 {
-
     public float pv;
     public int damage;
     public int moneyValue;
     public float attackSpeed;
-    public float movementSpeed; // float meter per second
+    public float movementSpeed;
     public int shield;
     public string typeMonster;
 
     // Test du IEnemy
-
     public float radiusRange;
     public bool attackEnable = false;
 
-
-    public bool isTargeted = false; // Pour que les 6 armes focus différents enemies --> J'ai des problèmes donc nique sa mère
+    // ✅ Propriétés IEnemy sécurisées
+    public Transform Transform => this ? transform : null; // Je suis obligé d'avoir cela pour AutoTarget1
+    public GameObject GameObject => this ? gameObject : null;
+    public bool IsDestroyed => this == null; 
 
     private bool isAttacking = false;
 
-
-
-    private Transform target; // Player target
-
     [SerializeField]
-    private GameObject player; // The player himself
-    private Class_Perso character; // Stat of the player
-
-    //private List<Class_Monster> enemiesinRange;
-
+    private GameObject player;
+    private Transform target;
+    private Class_Perso character;
 
     void Start()
     {
-        if (!player) // Test 
+        if (!player)
         {
             Debug.Log("Le joueur n'est pas bien initialisé");
         }
@@ -57,40 +47,33 @@ public class Slime : MonoBehaviour, IEntity, IDamageable, IDie, IAttack, IEnemy
         character = player.GetComponent<Class_Perso>();
     }
 
-
     void GoPlayer()
     {
-
-        Vector3 direction = target.position - transform.position; // Calcul de la direction
-        direction.y = 0; // Ignore l'axe Y pour éviter une inclinaison
+        Vector3 direction = target.position - transform.position;
+        direction.y = 0;
 
         transform.rotation = Quaternion.LookRotation(direction);
-
-        // Pour avancer vers la cible sans changer de hauteur
-        transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+        transform.Translate(movementSpeed * Time.deltaTime * Vector3.forward);
     }
 
-    void Update() // S'oriente vers le joueur + avance --> à traduire
+    void Update()
     {
-        if (!isAttacking || (isAttacking && !attackEnable)) // Il avance quand il n'attaque pas ou il avance quand il peut attaquer mais est en cooldown 
+        if (!isAttacking || (isAttacking && !attackEnable))
         {
             GoPlayer();
         }
 
-
         if (attackEnable && !isAttacking)
         {
-            StartCoroutine(Attack(character)); // Lancement de la coroutine de l'attaque !
+            StartCoroutine(Attack(character));
         }
-
-
     }
 
-    public void Die() // Sera lancé en tant que test quand l'ennemi se fera toucher.
+    public void Die()
     {
-        Destroy(gameObject);
         character.money += moneyValue;
         character.enemyKilled += 1;
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int damage)

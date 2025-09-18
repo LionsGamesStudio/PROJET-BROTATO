@@ -5,130 +5,152 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.ProjectWindowCallback;
+using System.Linq;
+using System.Data;
 public class AddMonsterToPlane : MonoBehaviour
 {
     public GameObject objectMonster; // Prefab to make
-
     public List<GameObject> prefabMonster = new List<GameObject>();  // All the prefab of the slimes
-
     private float x,z;
     private const float y = 0.125f; 
-    public int nbrEnemy = 0;
-
     private float spawnRange = 15f; // Radius of the map
-
-    private float range = 2f; 
     private float playerRange = 2f; // For the range --> à revoir
-
-    private ClassPerso player;
-    /// <summary>
-    /// Clélie le meilleure et la plus belle du monde hiHIHIHIHI SKIN CL2LIE, Io sono ziziman
-    /// </summary>
-
-    private bool nextVague = false;
-
+    
+    [SerializeField]
+    private GameObject player;
+    private Class_Perso classPerso; // A changer
     public int vague;
+
+    public InventorySyncronisationWeapon inventorySyncronisationWeapon; // C'est pour faire comme si on achete une arme chaque round
+    // private List<Class_Weapon> actualWeapon;
 
     // Radius of the player to dont add to plane for security of gameplay 
     // --> don't work just work for the start because we don't take the position of the player
 
     public void Start()
     {
-        player = GameObject.Find("-- XR Origin").GetComponent<ClassPerso>(); // Faire une fonction pour avoir le player :)
-        vague = player.vague;
+        classPerso = player.GetComponent<Class_Perso>();
+        vague = classPerso.vague;
 
         Vague1(); // TEST
         
     }
 
+    public void ResetAllEnemy()
+    {
+        Slime[] monsters = FindObjectsOfType<Slime>(); // Elle va pas s'aggrandir quand on la prend cette liste
+        
+        foreach (var monster in monsters)
+        {
+            Destroy(monster.gameObject);
+        }
+        
+    }
+
+
     private void NextWave() // Ce code est complétement à revoir, il est uniquement à but de faire un truc potable...
     {
-        player.NextVague();
-        vague = player.vague;
-        if (vague == 1) 
+        classPerso.NextVague();
+        vague = classPerso.vague;
+
+        if (vague == 1)
         {
-            Debug.Log("Lancement de la vague 1");
+            Debug.Log($"Lancement de la vague {vague}");
             Vague1();
         }
 
-        if (vague == 2) 
+        if (vague == 2)
         {
             Vague2();
-            Debug.Log("Lancement de la vague 2");
-            var set2 = GameObject.Find("Set (2)");
+            Debug.Log($"Lancement de la vague {vague}");
+            var set2 = GameObject.Find("Set (2)"); // Faire un truc du style ${nbr_set}
             var weapon2 = set2.transform.Find("Pistol - Common");
             weapon2.gameObject.SetActive(true);
-            
+
+            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            inventorySyncronisationWeapon.Syncronisation();
+
         }
 
-        if (vague == 3) 
+        if (vague == 3)
         {
             Vague3();
-            Debug.Log("Lancement de la vague 3");
-            var set3 = GameObject.Find("Set (2)");
+            Debug.Log($"Lancement de la vague {vague}");
+            var set3 = GameObject.Find("Set (3)");
             var weapon3 = set3.transform.Find("Pistol - Common");
             weapon3.gameObject.SetActive(true);
+            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            inventorySyncronisationWeapon.Syncronisation();
         }
 
-        if (vague == 4) 
+        if (vague == 4)
         {
             Vague4();
-            Debug.Log("Lancement de la vague 4");
-            var set4 = GameObject.Find("Set (2)");
+            Debug.Log($"Lancement de la vague {vague}");
+            var set4 = GameObject.Find("Set (4)");
             var weapon4 = set4.transform.Find("Pistol - Common");
             weapon4.gameObject.SetActive(true);
+            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            inventorySyncronisationWeapon.Syncronisation();
         }
 
-        if (vague == 5) 
+        if (vague == 5)
         {
             Vague5();
-            Debug.Log("Lancement de la vague 5");
-            var set5 = GameObject.Find("Set (2)");
+            Debug.Log($"Lancement de la vague {vague}");
+            var set5 = GameObject.Find("Set (5)");
             var weapon5 = set5.transform.Find("Pistol - Common");
             weapon5.gameObject.SetActive(true);
+            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            inventorySyncronisationWeapon.Syncronisation();
         }
 
-        if (vague == 6) 
+        if (vague == 6)
         {
             Vague6();
-            Debug.Log("Lancement de la vague 6");
-            var set6 = GameObject.Find("Set (2)");
+            Debug.Log($"Lancement de la vague {vague}");
+            var set6 = GameObject.Find("Set (6)");
             var weapon6 = set6.transform.Find("Pistol - Common");
             weapon6.gameObject.SetActive(true);
+            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            inventorySyncronisationWeapon.Syncronisation();
+
         }
 
-        if (vague == 7) 
+        if (vague == 7)
         {
             Vague7();
-            Debug.Log("Lancement de la vague 7");
+            Debug.Log($"Lancement de la vague {vague}");
         }
 
-        if (vague == 8) 
+        if (vague == 8)
         {
             Vague8();
-            Debug.Log("Lancement de la vague 8");
+            Debug.Log($"Lancement de la vague {vague}");
         }
 
-        if (vague == 9) 
+        if (vague == 9)
         {
             Vague9();
-            Debug.Log("Lancement de la vague 9");
+            Debug.Log($"Lancement de la vague {vague}");
         }
 
-        if (vague == 10) 
+        if (vague == 10)
         {
             Vague10();
-            Debug.Log("Lancement de la vague 10");
+            Debug.Log($"Lancement de la vague {vague}");
         }
 
-        if (vague >= 10) 
+        if (vague >= 10)
         {
             // Mettre une vague qui deviens de plus en plus compliqué 
             Vague10();
-            Debug.Log("Lancement de la vague "+vague);
+            Debug.Log($"Lancement de la vague {vague}");
         }
+        
 
     }
+
 
     IEnumerator AjouterEnemy(int nombre, GameObject objectMonster, float temp) // We add an enemy to the plane
     {
@@ -138,10 +160,9 @@ public class AddMonsterToPlane : MonoBehaviour
             AddEnemy(objectMonster);
             yield return new WaitForSeconds(temp);
         }
-        
-        
 
-        Debug.Log("Lancement de l'attente de 10 sec");
+        Debug.Log("Lancement de l'attente de 10 sec + reset de tous les ennemies");
+        ResetAllEnemy();
         yield return new WaitForSeconds(10f); // TEST
         Debug.Log("Fin des 10 secondes d'attentes");
 
@@ -152,21 +173,14 @@ public class AddMonsterToPlane : MonoBehaviour
 
     }
 
-    void AjouterEnemyList(List<int> nombre,List<GameObject> prefabMOnster) // One of this for each vague later
-    {   
-        for (int i = 0; i < prefabMOnster.Count - 1 ; i++)
-        {   
-            AjouterEnemy(nombre[i],prefabMOnster[i],0.5f);
-        }
-        
-    }
-
-
     public void AddEnemy(GameObject objectMonster)
     {
-        nbrEnemy+=1;
 
-        Debug.Log("Il y a un total de" + nbrEnemy + " sur la map !");
+        // Gestion de la position du joueur
+        Vector3 positionPlayer = classPerso.transform.position; // On l'utisera probablement pas mais je n'ai pas envie qu'il spawn sur le joueur
+
+        //int spawnRangex = spawnRange - positionPlayer;
+        //int spawnRangez2 = spawnRange - positionPlayer
 
         x = Random.Range(-spawnRange,spawnRange);
         while (x < playerRange && x > -playerRange) // Compris entre 2 et -2 mais pas mis à jour par rapport à la position du joueur
@@ -182,8 +196,10 @@ public class AddMonsterToPlane : MonoBehaviour
         }
 
         
-        GameObject newObject = Instantiate(objectMonster, new Vector3(x,y,z), Quaternion.identity);
-        newObject.SetActive(true); // We set true the apparition to the monster !
+        GameObject newMonster = Instantiate(objectMonster, new Vector3(x,y,z), Quaternion.identity);
+        newMonster.SetActive(true); // We set true the apparition to the monster !
+        Slime scriptMonster = newMonster.GetComponent<Slime>();
+        scriptMonster.SetPlayer(player);
 
         Debug.Log($"Ajout d'un ennemie sur la map avec la position ({x}) ({y}) ({z})");
     }
@@ -261,33 +277,5 @@ public class AddMonsterToPlane : MonoBehaviour
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 
-    void Vague11()
-    {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
-        StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
-    }
 
-    void Vague12()
-    {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
-        StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
-    }
-
-    void Vague13()
-    {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
-        StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
-    }
-
-    void Vague14()
-    {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
-        StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
-    }
-
-    void Vague15()
-    {
-        StartCoroutine(AjouterEnemy(120, objectMonster,0.4f));
-        StartCoroutine(AjouterEnemy(30, prefabMonster[1],2.5f));
-    }
 }

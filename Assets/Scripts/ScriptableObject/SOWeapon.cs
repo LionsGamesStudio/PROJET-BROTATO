@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
-
-public class Class_Weapon : MonoBehaviour
 
 
+[CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObject/Weapon")]
+public class SOWeapon : ScriptableObject
 {
-    [SerializeField]
-    private SOWeapon dataWeapon; 
     public string name_Weapon; // Type d'arme 
     public int damage; // Dégats de l'arme
     public float shoot_Rate; // Vitesse d'attaque par seconde

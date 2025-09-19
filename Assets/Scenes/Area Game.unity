@@ -5385,7 +5385,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 329940681}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99963754
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16365,8 +16365,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 147675234}
   m_HandleRect: {fileID: 147675233}
   m_Direction: 2
-  m_Value: 0.0000004932797
-  m_Size: 0.22480416
+  m_Value: -0.0000030912195
+  m_Size: 0.22666304
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17190,6 +17190,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4495727523862308757, guid: 3e6464b8596b390449eb21cb441e979f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4712334024528786154, guid: 3e6464b8596b390449eb21cb441e979f,
         type: 3}
       propertyPath: m_Layer
@@ -17234,6 +17239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230512601353694398, guid: 3e6464b8596b390449eb21cb441e979f,
+        type: 3}
+      propertyPath: canShoot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6558219960428929437, guid: 3e6464b8596b390449eb21cb441e979f,
         type: 3}
@@ -17629,7 +17639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000043011128, y: 232.00003}
+  m_AnchoredPosition: {x: 0.00028589077, y: 232.00084}
   m_SizeDelta: {x: -2.9999695, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &1322328108 stripped
@@ -22814,7 +22824,7 @@ GameObject:
   - component: {fileID: 1747041364}
   - component: {fileID: 1747041365}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Spawner + Wave Mangement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22847,8 +22857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8801d8bc599934447adfedf8c94c23cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMonster: {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d,
-    type: 3}
   prefabMonster:
   - {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d, type: 3}
   - {fileID: 8186581329683622854, guid: 9c3f73f687ed23649974ae85897b64a1, type: 3}

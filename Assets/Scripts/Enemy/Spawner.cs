@@ -9,7 +9,6 @@ using System.Linq;
 using System.Data;
 public class AddMonsterToPlane : MonoBehaviour
 {
-    public GameObject objectMonster; // Prefab to make
     public List<GameObject> prefabMonster = new List<GameObject>();  // All the prefab of the slimes
     private float x,z;
     private const float y = 0.125f; 
@@ -36,15 +35,18 @@ public class AddMonsterToPlane : MonoBehaviour
         
     }
 
-    public void ResetAllEnemy()
+    public void ResetAllEnemy() // A modifier
     {
-        Slime[] monsters = FindObjectsOfType<Slime>(); // Elle va pas s'aggrandir quand on la prend cette liste
-        
-        foreach (var monster in monsters)
+        // On récupère tous les MonoBehaviour actifs dans la scène
+        MonoBehaviour[] behaviours = FindObjectsOfType<MonoBehaviour>();
+
+        foreach (var b in behaviours)
         {
-            Destroy(monster.gameObject);
+            if (b is IEnemy enemy)
+            {
+                Destroy((enemy as MonoBehaviour).gameObject); // si ton interface expose un GameObject
+            }
         }
-        
     }
 
 
@@ -198,7 +200,7 @@ public class AddMonsterToPlane : MonoBehaviour
         
         GameObject newMonster = Instantiate(objectMonster, new Vector3(x,y,z), Quaternion.identity);
         newMonster.SetActive(true); // We set true the apparition to the monster !
-        Slime scriptMonster = newMonster.GetComponent<Slime>();
+        IEnemy scriptMonster = newMonster.GetComponent<IEnemy>();
         scriptMonster.SetPlayer(player);
 
         Debug.Log($"Ajout d'un ennemie sur la map avec la position ({x}) ({y}) ({z})");
@@ -208,8 +210,10 @@ public class AddMonsterToPlane : MonoBehaviour
 
 
     void Vague1()
-    {   
-        StartCoroutine(AjouterEnemy(25, objectMonster,1f));
+    {
+        StartCoroutine(AjouterEnemy(26, prefabMonster[0], 1f));
+        StartCoroutine(AjouterEnemy(26, prefabMonster[1], 1f));
+        StartCoroutine(AjouterEnemy(26, prefabMonster[2], 1f));
 
 
         // On reset toutes les entités qui ont le tag enemy 
@@ -218,62 +222,62 @@ public class AddMonsterToPlane : MonoBehaviour
 
         // Puis quand c'est fini on lance la vague d'après 
 
-        
+
     }
 
     void Vague2() // Ajout d'une arme commune
     {
-        StartCoroutine(AjouterEnemy(50, objectMonster,0.5f));
+        StartCoroutine(AjouterEnemy(50, prefabMonster[0],0.5f));
     }
         
     
     void Vague3()
     {
-        StartCoroutine(AjouterEnemy(60, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(60, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(5, prefabMonster[1],5f));
 
     }
 
     void Vague4()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(10, prefabMonster[1],3f));
     }
 
     void Vague5()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(15, prefabMonster[1],2.5f));
         StartCoroutine(AjouterEnemy(5, prefabMonster[2],5f));
     }
 
     void Vague6() // Changement de l'arme commune avec l'arme uncommun 
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 
     void Vague7()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 
     void Vague8()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 
     void Vague9()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 
     void Vague10()
     {
-        StartCoroutine(AjouterEnemy(80, objectMonster,0.4f));
+        StartCoroutine(AjouterEnemy(80, prefabMonster[0],0.4f));
         StartCoroutine(AjouterEnemy(20, prefabMonster[1],2.5f));
     }
 

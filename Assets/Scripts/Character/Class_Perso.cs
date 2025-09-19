@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FluxFramework.Core;
 using FluxFramework.Attributes;
-public class Class_Perso : FluxMonoBehaviour, IDamageable, IDie, IPlayer
+public class Class_Perso : FluxMonoBehaviour, IPlayer
 {
     [ReactiveProperty("Player.health")]
     [FluxRange(0,30)] 

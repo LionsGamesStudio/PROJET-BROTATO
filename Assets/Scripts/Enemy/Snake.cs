@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Slime : MonoBehaviour, IEnemy
+public class Snake : MonoBehaviour, IEnemy
 {
     public int damage;
     public int moneyValue;

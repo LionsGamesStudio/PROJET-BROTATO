@@ -10,16 +10,16 @@ using UnityEngine;
 public class AttackAreaDetection : MonoBehaviour
 {
 
-    private Slime monster;
+    private IEnemy monster;
     
     void Start()
     {
         // Setup the range to don't have problem
         SphereCollider sphereCollider = GetComponent<SphereCollider>();
-        monster = GetComponent<Slime>() ;
+        monster = GetComponent<IEnemy>() ;
 
-        Debug.Log("Le monstre est initialisé en tant que : " + monster.name + " avec le type " + monster.GetType());
-        sphereCollider.radius = monster.radiusRange ; 
+        //Debug.Log("Le monstre est initialisé en tant que : " + monster.name + " avec le type " + monster.GetType());
+        sphereCollider.radius = monster.RadiusRange ; 
         
     }   
 
@@ -50,13 +50,13 @@ public class AttackAreaDetection : MonoBehaviour
     {
         if (player != null) 
         {
-            monster.attackEnable = true;
+            monster.AttackEnable = true;
             Debug.Log("Maj de la possibilité d'attaquer --> true");
         }
 
         else 
         {
-            monster.attackEnable = false;
+            monster.AttackEnable = false;
             Debug.Log("Maj de la possibilité d'attaquer --> false");
         }
     }

@@ -4,5 +4,11 @@ using UnityEngine;
 
 public interface IWeapon
 {
-    SOWeapon dataWeapon { get; set; }
+    bool CanShoot { get; set; }
+
+    float Radius_Range { get; set; }
+
+    int Damage { get; set; }
+    
+    float Shoot_Rate { get; set; }
 }

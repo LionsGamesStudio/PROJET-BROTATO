@@ -22,13 +22,13 @@ public class Projectile : MonoBehaviour // ON BULLET
 
     void OnTriggerEnter(Collider other)
     {
-        Slime enemy = other.GetComponent<Slime>();
+        IEnemy enemy = other.GetComponent<IEnemy>();
 
         if (enemy != null)
         {
             StartCoroutine(Attack(enemy));
             
-            if (enemy.pv <= 0)
+            if (enemy.Pv <= 0)
             {
                 enemy.Die();
             }

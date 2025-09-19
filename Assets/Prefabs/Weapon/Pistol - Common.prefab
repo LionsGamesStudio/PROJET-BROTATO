@@ -4906,6 +4906,7 @@ MonoBehaviour:
   position: 1
   munition_type: Medium
   rarity: Common
+  canShoot: 0
 --- !u!114 &4495727523862308757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4920,8 +4921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 446947355799046925, guid: ec2e0773f8cce644dbee41e055d7bdc8,
     type: 3}
-  enemiesInRange: []
-  monster_locked: {fileID: 0}
 --- !u!1001 &2740665259891110449
 PrefabInstance:
   m_ObjectHideFlags: 0

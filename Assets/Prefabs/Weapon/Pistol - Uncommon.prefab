@@ -76,6 +76,7 @@ MonoBehaviour:
   position: 1
   munition_type: Medium
   rarity: Common
+  canShoot: 0
 --- !u!114 &4495727523862308757
 MonoBehaviour:
   m_ObjectHideFlags: 0

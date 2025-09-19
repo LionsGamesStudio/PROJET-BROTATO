@@ -8,9 +8,13 @@
         "com.unity.nuget.newtonsoft-json": "3.2.1",
         "com.unity.ugui": "1.0.0",
         "com.unity.textmeshpro": "3.0.6",
-        "com.unity.xr.management": "4.2.0"
+        "com.unity.xr.management": "4.2.0",
+        "com.unity.visualscripting": "1.9.7",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.ui": "1.0.0",
+        "com.unity.ui.builder": "1.0.0"
       },
-      "hash": "59692487159d3c8e144ca63e613ab3908f9659d4"
+      "hash": "20c99b465753c71cc48fbc2dbf7c0381fa315a3a"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
@@ -46,7 +50,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.34",
+      "version": "3.0.36",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -181,9 +185,21 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "com.unity.ui": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.ui.builder": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.visualscripting": {
-      "version": "1.9.4",
-      "depth": 0,
+      "version": "1.9.7",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
@@ -239,7 +255,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.14.1",
+      "version": "1.14.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {

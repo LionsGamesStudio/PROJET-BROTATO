@@ -5,13 +5,19 @@ public class SetTextVague: MonoBehaviour
 
 {
     public TextMeshProUGUI vagueText; // Texte UI à assigner dans l'inspecteur
-    private ClassPerso personnage;
+    
+    [SerializeField]
+    private GameObject cible;
+    private Class_Perso personnage;
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject cible = GameObject.Find("-- XR Origin");
+        if (!cible)
+        {
+            Debug.Log("Le joueur est mal assignée à la main");
+        }
 
-        personnage = cible.GetComponent<ClassPerso>();
+        personnage = cible.GetComponent<Class_Perso>();
 
         vagueText.text = ": " + personnage.vague.ToString();
 

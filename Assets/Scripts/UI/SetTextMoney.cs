@@ -10,13 +10,21 @@ public class SetTextMoney : MonoBehaviour
 
 {
     public TextMeshProUGUI moneyText; // Texte UI à assigner dans l'inspecteur
-    private ClassPerso personnage;
+
+    [SerializeField]
+    private GameObject cible;
+    private Class_Perso personnage; // A changer 
+
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject cible = GameObject.Find("-- XR Origin");
-
-        personnage = cible.GetComponent<ClassPerso>();
+        if (!cible)
+        {
+            Debug.LogError("Le joueur n'est pas bien initialisé !");
+            return; // on sort si player manquant
+        }
+        
+        personnage = cible.GetComponent<Class_Perso>();
 
         moneyText.text = ": " + personnage.money.ToString() + " $";
 

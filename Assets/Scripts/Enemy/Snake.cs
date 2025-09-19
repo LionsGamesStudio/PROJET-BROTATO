@@ -1,4 +1,5 @@
 using System.Collections;
+using Events;
 using UnityEngine;
 
 public class Snake : MonoBehaviour, IEnemy
@@ -103,6 +104,12 @@ public class Snake : MonoBehaviour, IEnemy
     public IEnumerator Attack(IDamageable character)
     {
         isAttacking = true;
+
+        MonoBehaviour mb = character as MonoBehaviour;
+        if (mb != null)
+        {
+            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, transform.position));
+        }
 
         character.TakeDamage(damage);
         Debug.Log("L'ennemi attaque !");

@@ -6,12 +6,17 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FluxFramework.Core;
 using FluxFramework.Attributes;
+using Flux;
 public class Class_Perso : FluxMonoBehaviour, IPlayer
 {
+    [SerializeField]
+    [ReactiveProperty("Player.maxHealth")]
+    private float pvMax = 30f;
+
+    [SerializeField]
     [ReactiveProperty("Player.health")]
-    [FluxRange(0,30)] 
-    public float pv = 30f; 
-    private int pvMax;
+    [FluxRange(0, 30)] 
+    private float pv = 30f;
     public int money = 30;
     public int armure = 0;
     public int vague = 1; // Voir pour le bouger

@@ -17,7 +17,9 @@ public class PlayerHealthUI : FluxUIComponent
     [Header("Damage Streaks Particles")]
     [Tooltip("Drag the Damage Streaks Particle System here.")]
     [SerializeField] private ParticleSystem damageStreaksSystem;
+    [SerializeField] private float particleSpeed = 50f;
     private ParticleSystem.EmissionModule streaksEmission;
+    private ParticleSystem.VelocityOverLifetimeModule streaksVelocity;
 
     [Header("Advanced Effects")]
     [SerializeField] private Color healColor = Color.green;
@@ -48,6 +50,7 @@ public class PlayerHealthUI : FluxUIComponent
         if (damageStreaksSystem != null)
         {
             streaksEmission = damageStreaksSystem.emission;
+            streaksVelocity = damageStreaksSystem.velocityOverLifetime;
             streaksEmission.rateOverTime = 0;
         }
         
@@ -74,19 +77,44 @@ public class PlayerHealthUI : FluxUIComponent
 
     public void TriggerDamageIndicator(Vector3 damageSourceWorldPosition)
     {
-        if (vignetteMaterial == null) return;
+        if (vignetteMaterial == null || mainCamera == null) return;
 
+        // 1. Calculate the true 3D direction to the damage source
+        Vector3 directionToDamage = (damageSourceWorldPosition - mainCamera.transform.position);
+
+        // 2. Verify if the damage source is in front or behind the player
+        // Vector3.Dot > 0  => Target in front
+        // Vector3.Dot < 0  => Target behind
+        float dotProduct = Vector3.Dot(mainCamera.transform.forward, directionToDamage.normalized);
+
+        Vector2 screenDirection;
         Vector3 screenPos = mainCamera.WorldToScreenPoint(damageSourceWorldPosition);
-        Vector2 screenDirection = new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
-        screenDirection = (screenDirection - new Vector2(0.5f, 0.5f)).normalized;
+
+        if (dotProduct > 0) // --- NORMAL CASE : ENEMY IS IN FRONT ---
+        {
+            screenDirection = new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
+            screenDirection = (screenDirection - new Vector2(0.5f, 0.5f)).normalized;
+        }
+        else // --- SPECIAL CASE : ENEMY IS BEHIND ---
+        {
+            // We invert the projected position to get the true off-screen direction
+            screenDirection = new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
+            screenDirection = (screenDirection - new Vector2(0.5f, 0.5f));
+            screenDirection *= -1; // Crucial inversion step
+            screenDirection.Normalize();
+        }
 
         vignetteMaterial.SetVector("_Damage_Direction", screenDirection);
         StartCoroutine(FadeEffect("_Damage_Intensity", 2.0f, 0.5f));
 
         if (damageStreaksSystem != null)
         {
-            Vector3 directionToDamage = (damageSourceWorldPosition - mainCamera.transform.position).normalized;
-            damageStreaksSystem.transform.rotation = Quaternion.LookRotation(directionToDamage);
+            Vector3 directionFromDamage = (mainCamera.transform.position - damageSourceWorldPosition).normalized;
+
+            streaksVelocity.x = new ParticleSystem.MinMaxCurve(particleSpeed * directionFromDamage.x);
+            streaksVelocity.y = new ParticleSystem.MinMaxCurve(particleSpeed * directionFromDamage.y);
+            streaksVelocity.z = new ParticleSystem.MinMaxCurve(particleSpeed * directionFromDamage.z);
+            
             damageStreaksSystem.Emit(Random.Range(20, 31));
         }
     }

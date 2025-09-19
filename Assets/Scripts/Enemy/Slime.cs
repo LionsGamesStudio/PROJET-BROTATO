@@ -108,8 +108,7 @@ public class Slime : MonoBehaviour, IEnemy
         MonoBehaviour mb = character as MonoBehaviour;
         if (mb != null)
         {
-            Vector3 directionToEnemy = (mb.transform.position - transform.position).normalized;
-            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, directionToEnemy));
+            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, transform.position));
         }
 
         character.TakeDamage(damage);

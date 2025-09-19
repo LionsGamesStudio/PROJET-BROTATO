@@ -8,9 +8,13 @@
         "com.unity.nuget.newtonsoft-json": "3.2.1",
         "com.unity.ugui": "1.0.0",
         "com.unity.textmeshpro": "3.0.6",
-        "com.unity.xr.management": "4.2.0"
+        "com.unity.xr.management": "4.2.0",
+        "com.unity.visualscripting": "1.9.7",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.ui": "1.0.0",
+        "com.unity.ui.builder": "1.0.0"
       },
-      "hash": "59692487159d3c8e144ca63e613ab3908f9659d4"
+      "hash": "e805f59191a0be167045c0d6fe07e2e72e981239"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
@@ -181,9 +185,21 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "com.unity.ui": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.ui.builder": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.visualscripting": {
-      "version": "1.9.4",
-      "depth": 0,
+      "version": "1.9.7",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0",

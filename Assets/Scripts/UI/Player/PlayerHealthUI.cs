@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using FluxFramework.UI;
+using FluxFramework.Core;
+using Events;
 
 public class PlayerHealthUI : FluxUIComponent
 {
@@ -25,22 +27,22 @@ public class PlayerHealthUI : FluxUIComponent
     private Material vignetteMaterial;
     private Camera mainCamera;
 
-    [Header("Player Health")]
-    [Range(0, 100)]
-    public float currentHealth = 100f;
-    public float maxHealth = 100f;
+
+    private float currentHealth;
+    private float maxHealth;
 
     protected override void OnFluxStart()
     {
+        base.OnFluxStart();
         if (quadRenderer != null)
         {
             vignetteMaterial = quadRenderer.material;
         }
         else
         {
-            Debug.LogError("Le Quad Renderer n'est pas assigné dans PlayerHealthUI !");
+            Debug.LogError("Quad Renderer not assigned in PlayerHealthUI.");
         }
-        
+
         mainCamera = Camera.main;
 
         if (damageStreaksSystem != null)
@@ -48,16 +50,26 @@ public class PlayerHealthUI : FluxUIComponent
             streaksEmission = damageStreaksSystem.emission;
             streaksEmission.rateOverTime = 0;
         }
+        
+        FluxFramework.Core.Flux.Manager.EventBus.Subscribe<GetDamageEvent>(OnGetDamage);
     }
 
     void Update()
     {
+        currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("Player.health");
+        maxHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("Player.maxHealth");
+
         float healthPercent = currentHealth / maxHealth;
         float effectIntensity = 1.0f - healthPercent;
 
         UpdateVignette(effectIntensity);
         UpdateDamageStreaks(effectIntensity);
         UpdateGlitchEffect();
+    }
+    
+    private void OnGetDamage(GetDamageEvent evt)
+    {
+        TriggerDamageIndicator(evt.fromDirection);
     }
 
     public void TriggerDamageIndicator(Vector3 damageSourceWorldPosition)
@@ -75,7 +87,7 @@ public class PlayerHealthUI : FluxUIComponent
         {
             Vector3 directionToDamage = (damageSourceWorldPosition - mainCamera.transform.position).normalized;
             damageStreaksSystem.transform.rotation = Quaternion.LookRotation(directionToDamage);
-            damageStreaksSystem.Emit(Random.Range(20, 31)); 
+            damageStreaksSystem.Emit(Random.Range(20, 31));
         }
     }
 

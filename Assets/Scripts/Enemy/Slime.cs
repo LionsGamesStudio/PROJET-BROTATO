@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Events;
 
 public class Slime : MonoBehaviour, IEnemy
 {
@@ -103,6 +104,13 @@ public class Slime : MonoBehaviour, IEnemy
     public IEnumerator Attack(IDamageable character)
     {
         isAttacking = true;
+
+        MonoBehaviour mb = character as MonoBehaviour;
+        if (mb != null)
+        {
+            Vector3 directionToEnemy = (mb.transform.position - transform.position).normalized;
+            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, directionToEnemy));
+        }
 
         character.TakeDamage(damage);
         Debug.Log("L'ennemi attaque !");

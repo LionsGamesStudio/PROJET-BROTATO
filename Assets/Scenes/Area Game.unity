@@ -11017,6 +11017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5332b7cf661334a9c2697cf148d869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvMax: 30
   pv: 30
   money: 30
   armure: 0
@@ -16371,8 +16372,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 147675234}
   m_HandleRect: {fileID: 147675233}
   m_Direction: 2
-  m_Value: -0.0000030912195
-  m_Size: 0.22666304
+  m_Value: -0.000004110664
+  m_Size: 0.22666265
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17645,7 +17646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00028589077, y: 232.00084}
+  m_AnchoredPosition: {x: 0.00055854226, y: 232.0011}
   m_SizeDelta: {x: -2.9999695, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &1322328108 stripped

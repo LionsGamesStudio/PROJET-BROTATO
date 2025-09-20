@@ -16372,8 +16372,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 147675234}
   m_HandleRect: {fileID: 147675233}
   m_Direction: 2
-  m_Value: -0.000004110664
-  m_Size: 0.22666265
+  m_Value: 0
+  m_Size: 0.22665945
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17202,6 +17202,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4495727523862308757, guid: 3e6464b8596b390449eb21cb441e979f,
+        type: 3}
+      propertyPath: currentTargetingMode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4712334024528786154, guid: 3e6464b8596b390449eb21cb441e979f,
         type: 3}
       propertyPath: m_Layer
@@ -17646,7 +17651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00055854226, y: 232.0011}
+  m_AnchoredPosition: {x: 0.00053160987, y: 232.0001}
   m_SizeDelta: {x: -2.9999695, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &1322328108 stripped

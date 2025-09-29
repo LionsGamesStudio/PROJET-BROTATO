@@ -8,5 +8,7 @@ public interface IEnemy : IDie, IDamageable, IEntity, IAttack
 
     public float Pv { get; set; }
 
+    public bool IsAttacking { get; set;}
+
     public void SetPlayer(GameObject newValue);
 }

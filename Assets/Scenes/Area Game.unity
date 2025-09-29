@@ -16373,7 +16373,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 147675233}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.22665945
+  m_Size: 0.22666265
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17205,7 +17205,7 @@ PrefabInstance:
     - target: {fileID: 4495727523862308757, guid: 3e6464b8596b390449eb21cb441e979f,
         type: 3}
       propertyPath: currentTargetingMode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4712334024528786154, guid: 3e6464b8596b390449eb21cb441e979f,
         type: 3}
@@ -17651,7 +17651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00053160987, y: 232.0001}
+  m_AnchoredPosition: {x: 0.00063747034, y: 232.00012}
   m_SizeDelta: {x: -2.9999695, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &1322328108 stripped
@@ -22867,16 +22867,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747041363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8801d8bc599934447adfedf8c94c23cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e719d31340593348b90d67525b12b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabMonster:
-  - {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d, type: 3}
-  - {fileID: 8186581329683622854, guid: 9c3f73f687ed23649974ae85897b64a1, type: 3}
-  - {fileID: 7905956905831235736, guid: cdae3c2ac792541489d2408243531b31, type: 3}
+  sOWaveManagement: {fileID: 11400000, guid: 269eff4e499db354e989d520946a5b7c, type: 2}
   player: {fileID: 776157105}
-  vague: 0
-  inventorySyncronisationWeapon: {fileID: 83543123}
+  aliveEnemies: 0
+  countWaves: 0
 --- !u!1 &1747069751
 GameObject:
   m_ObjectHideFlags: 0

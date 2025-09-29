@@ -11,7 +11,7 @@ public class ClosestEnemyStrategy : ITargetingStrategy
         weapon = newWeapon;
     }
 
-    public IEnemy SelectTarget(List<IEnemy> enemiesInRange)
+    public IEnemy SelectTarget(List<IEnemy> enemiesInRange )
     {
         if (enemiesInRange == null || enemiesInRange.Count == 0) 
             return null;

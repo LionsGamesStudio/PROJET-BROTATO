@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 public class AutoTarget : MonoBehaviour
-{  
+{
 
     [Header("Targeting System")]
     [SerializeField] private TargetingMode currentTargetingMode = TargetingMode.Closest;
@@ -30,7 +30,7 @@ public class AutoTarget : MonoBehaviour
     private ITargetingStrategy currentStrategy;
 
 
-    public List<IEnemy> enemiesInRange = new List<IEnemy>(); 
+    public List<IEnemy> enemiesInRange = new List<IEnemy>();
     public IEnemy monsterLocked; // Marche pour n'importe quel monstre
 
     private Coroutine shootingCoroutine;
@@ -72,20 +72,18 @@ public class AutoTarget : MonoBehaviour
         }
     }
 
-
-    // A voir avec Eraflo si j'utilise son FluxButton ?
     [ContextMenu("Set Closest")]
     public void SetClosest() { SetTargetingMode(TargetingMode.Closest); }
-    
+
     [ContextMenu("Set Farthest")]
     public void SetFarthest() { SetTargetingMode(TargetingMode.Farthest); }
-    
+
     [ContextMenu("Set Highest HP")]
     public void SetHighestHP() { SetTargetingMode(TargetingMode.HighestHP); }
-    
+
     [ContextMenu("Set Lowest HP")]
     public void SetLowestHP() { SetTargetingMode(TargetingMode.LowestHP); }
-    
+
     [ContextMenu("Set Random")]
     public void SetRandom() { SetTargetingMode(TargetingMode.Random); }
 
@@ -125,8 +123,8 @@ public class AutoTarget : MonoBehaviour
     {
 
         CleanEnemyList();
-        
-        
+
+
         if (monsterLocked == null || !IsValidEnemy(monsterLocked)) // Pour éviter des reTarget à chaque fois qu'un monstre rentre dans la zone.
         {
             monsterLocked = currentStrategy.SelectTarget(enemiesInRange);
@@ -137,23 +135,23 @@ public class AutoTarget : MonoBehaviour
 
     private void HandleShooting()
     {
-        MonoBehaviour enemyMono = monsterLocked as MonoBehaviour; 
+        MonoBehaviour enemyMono = monsterLocked as MonoBehaviour;
 
         if (monsterLocked != null && enemyMono != null && enemyMono.gameObject.activeInHierarchy)
+        {
+            transform.LookAt(enemyMono.transform);
+
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.LookRotation(enemyMono.transform.position - transform.position),180 * Time.deltaTime ); ChatGPT
+
+            if (weapon.CanShoot && shootingCoroutine == null)
             {
-                transform.LookAt(enemyMono.transform);
-
-                //transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.LookRotation(enemyMono.transform.position - transform.position),180 * Time.deltaTime ); ChatGPT
-                
-                if (weapon.CanShoot && shootingCoroutine == null)
-                {
-                    shootingCoroutine = StartCoroutine(CreateBullet(weapon.Shoot_Rate));
-                }
+                shootingCoroutine = StartCoroutine(Shoot(weapon.Shoot_Rate));
             }
+        }
     }
-    
 
-    IEnumerator CreateBullet(float shoot_Rate)
+
+    IEnumerator Shoot(float shoot_Rate)
     {
         weapon.CanShoot = false;
 
@@ -169,4 +167,6 @@ public class AutoTarget : MonoBehaviour
 
         yield break;
     }
+    
+
 }

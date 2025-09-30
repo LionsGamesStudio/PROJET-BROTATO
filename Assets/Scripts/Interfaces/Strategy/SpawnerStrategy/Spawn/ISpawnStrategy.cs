@@ -12,7 +12,7 @@ public interface ISpawnStrategy
     /// <param name="numberOfEnemies">Number of monsters in the current SpawningPattern</param>
     /// <returns>The actual number of monsters spawned</returns>
 
-    int SpawnXMonster(GameObject objectMonster, List<Vector3> validPosition); 
+    List<GameObject> SpawnXMonster(GameObject objectMonster, List<Vector3> validPosition); 
 
     /// <summary>
     /// Prepare the fonction of SpawnXMonster with geting valid position in function of the strategy

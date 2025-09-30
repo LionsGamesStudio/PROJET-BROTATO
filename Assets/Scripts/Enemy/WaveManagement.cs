@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Events;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 [DisallowMultipleComponent] // Evite d'avoir plusieurs waves management
@@ -13,13 +15,14 @@ public class WaveManagement : MonoBehaviour
     private GameObject player;
 
     [SerializeField]
-
-    private int aliveEnemies = 0;
-    private int activeSpawningSequences = 0;
-
-    [SerializeField]
     private int countWaves = 0;
 
+    [SerializeField]
+
+    private List<GameObject> enemyInWave = new List<GameObject>();
+
+    // --------------------------------------------
+    
     private int numberOfWaves;
 
     private bool inWave = false;
@@ -28,6 +31,7 @@ public class WaveManagement : MonoBehaviour
     {
         InitializeComponent();
         NextWave();
+        FluxFramework.Core.Flux.Manager.EventBus.Subscribe<EnemyDieEvent>(OnEnemyDie);
     }
 
     private void InitializeComponent()
@@ -80,7 +84,6 @@ public class WaveManagement : MonoBehaviour
         inWave = true;
         foreach (MonsterEntry entry in waves.Monsters)
         {
-            activeSpawningSequences++;
             StartCoroutine(SpawningSequence(entry.monster, entry.spawnDelay, entry.count, SetStrategy(entry)));
         }
     }
@@ -91,33 +94,51 @@ public class WaveManagement : MonoBehaviour
         {
             Debug.Log("La séquence de spawn est lancé !");
             List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy
-            count -= strategy.SpawnXMonster(monster, validPositions); // Spawn the monster and count how many it cost for the player
-            //aliveEnemies++; à gérer + tard
+
+            List<GameObject> temp = strategy.SpawnXMonster(monster, validPositions); // Spawn the monster and count how many it cost for the player
+
+            foreach (GameObject enemy in temp)
+            {
+                if (enemy != null) enemyInWave.Add(enemy);
+                else Debug.LogWarning("Un monstre n'a pas pu être instancié !");
+            }
+
+
+            count -= temp.Count;  //We are deleting the number of new monster
+
             yield return new WaitForSeconds(delay); // Wait
             
             // Au cas ou gérer la liste des position valide dans ce script et dans les strategy
         }
 
-        activeSpawningSequences--;
         CheckWaveEnd();
 
     }
 
-    public void NotifyEnemyDeath() // To take when an enemy DIE, maybe to change with an Event ?
+    private void OnEnemyDie(EnemyDieEvent evt)
     {
-        aliveEnemies--;
+        RemoveEnemy(evt.enemy);
         CheckWaveEnd();
     }
+
+    private void RemoveEnemy(GameObject enemy)
+    {
+        enemyInWave.RemoveAll(e => e == null || e == enemy); // Pour être sur 
+    }
+
+    
 
     private void CheckWaveEnd()
     {
-        if (activeSpawningSequences == 0 && aliveEnemies == 0 && inWave)
+        if (enemyInWave.Count == 0 && inWave)
         {
             Debug.Log("Vague terminée !");
             inWave = false;
             StartCoroutine(WaitBeforeNextWave());
         }
     }
+
+
 
     IEnumerator WaitBeforeNextWave()
     {

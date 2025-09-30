@@ -88,6 +88,8 @@ public class Snake : MonoBehaviour, IEnemy
 
     public void Die()
     {
+        FluxFramework.Core.Flux.Manager.EventBus.Publish(new EnemyDieEvent(gameObject));
+        
         character.money += MoneyValue;
         character.enemyKilled += 1;
 

@@ -8,6 +8,7 @@ public class LineSpawnStrategy : ISpawnStrategy
     // Start is called before the first frame update
     private Vector3 linePosition;
     private bool isHorizontalLine;
+    private int enemyInLine = 20;
 
     List<Vector3> sideSpawnPoint = new List<Vector3>
     {
@@ -43,8 +44,10 @@ public class LineSpawnStrategy : ISpawnStrategy
     }
 
 
-    public int SpawnXMonster(GameObject objectMonster, List<Vector3> positions)
+    public List<GameObject> SpawnXMonster(GameObject objectMonster, List<Vector3> positions)
     {
+
+        List<GameObject> spawned = new List<GameObject>();
         for (int i = 0; i < positions.Count; i++)
         {
             GameObject enemy = Object.Instantiate(objectMonster, positions[i], Quaternion.identity);
@@ -52,16 +55,17 @@ public class LineSpawnStrategy : ISpawnStrategy
             if (enemyComponent != null)
             {
                 enemyComponent.SetPlayer(player);
+                spawned.Add(enemy);
             }
         }
 
-        return positions.Count;
+        return spawned;
     }
 
 
     public List<Vector3> GetValidPosition(int enemyToUse) // Set all the position
     {
-        enemyToUse = Mathf.Min(enemyToUse, 20);  // Nombre max d'ennemie par ligne = 20
+        enemyToUse = Mathf.Min(enemyToUse, enemyInLine);  // Nombre max d'ennemie par ligne = 20 de base
 
         List<Vector3> enemyPositions = new List<Vector3>();
 
@@ -123,5 +127,5 @@ public class LineSpawnStrategy : ISpawnStrategy
 
         return currentSide;
     }
-    public string GetStrategyName() => "Random Spawn";
+    public string GetStrategyName() => "Line Spawn";
 }

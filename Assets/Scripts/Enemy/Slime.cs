@@ -90,7 +90,9 @@ public class Slime : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        // Faire un event qu'on est obligé de rajouter pour chaque enemy !
+        // Faire un event qu'on est obligé de rajouter pour chaque enemy !µ
+        Debug.Log("L'ennemi est mort");
+        FluxFramework.Core.Flux.Manager.EventBus.Publish(new EnemyDieEvent(gameObject));
 
         character.money += MoneyValue;
         character.enemyKilled += 1;

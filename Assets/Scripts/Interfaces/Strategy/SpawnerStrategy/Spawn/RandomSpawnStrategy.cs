@@ -9,8 +9,6 @@ public class RandomSpawnStrategy : ISpawnStrategy
 
     private float spawnRange = 15f; // Radius of the map
     private float playerRange = 3f; // Radius wanted
-    private int enemyUsed = 1;
-
 
     private GameObject player;
     Vector3 playerPos;
@@ -22,16 +20,25 @@ public class RandomSpawnStrategy : ISpawnStrategy
     }
 
 
-    public int SpawnXMonster(GameObject objectMonster, List<Vector3> positions)
+    public List<GameObject> SpawnXMonster(GameObject objectMonster, List<Vector3> positions)
     {
+
+        List<GameObject> spawned = new List<GameObject>();
+
         GameObject enemy = Object.Instantiate(objectMonster, positions[0], Quaternion.identity);
 
         IEnemy enemyComponent = enemy.GetComponent<IEnemy>();
         if (enemyComponent != null)
         {
+            spawned.Add(enemy);
             enemyComponent.SetPlayer(player);
         }
-        return enemyUsed;
+        else
+        {
+            Debug.Log("Spawn échoué : prefab sans IEnemy strategy pattern Random");
+
+        }
+        return spawned;
     }
 
 

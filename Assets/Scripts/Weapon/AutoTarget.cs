@@ -121,9 +121,7 @@ public class AutoTarget : MonoBehaviour
 
     void Update()
     {
-
-        CleanEnemyList();
-
+        CleanEnemyList(); // Modifier avec l'event EnemyDieEvent !
 
         if (monsterLocked == null || !IsValidEnemy(monsterLocked)) // Pour éviter des reTarget à chaque fois qu'un monstre rentre dans la zone.
         {

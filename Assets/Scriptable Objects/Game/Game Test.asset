@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Game Test
   m_EditorClassIdentifier: 
   sOWaves:
-  - {fileID: 11400000, guid: 56bab726bd4c8a440a42751060b4172e, type: 2}
+  - {fileID: 11400000, guid: 5428cabda87575d49992677a5ef5e62d, type: 2}
   - {fileID: 11400000, guid: 56bab726bd4c8a440a42751060b4172e, type: 2}

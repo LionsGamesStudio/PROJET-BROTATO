@@ -10,14 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ece5fead05b51a42b4fc7c0c6f38bbb, type: 3}
-  m_Name: WaveTest
+  m_Name: WaveLineTest
   m_EditorClassIdentifier: 
   monsters:
-  - monster: {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d,
-      type: 3}
-    count: 100
-    spawnDelay: 1
-    spawningMode: 0
   - monster: {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d,
       type: 3}
     count: 100

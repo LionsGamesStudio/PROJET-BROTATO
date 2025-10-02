@@ -123,6 +123,7 @@ public class WaveManagement : MonoBehaviour
 
     private void RemoveEnemy(GameObject enemy)
     {
+        // enemyInWave.Remove(enemy); Ca marche mais on sait jamais
         enemyInWave.RemoveAll(e => e == null || e == enemy); // Pour être sur 
     }
 

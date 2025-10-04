@@ -8,9 +8,7 @@ public class Slime : MonoBehaviour, IEnemy
     [SerializeField]
     private SOMonster sOMonster; // Le seul truc à mettre au final
 
-    //[SerializeField]
-    // private WaveManagement manager;
-    // Pour le IEnemy
+
 
     public float RadiusRange
     { get => sOMonster ? sOMonster.RadiusRange : 0f; set { } }
@@ -30,6 +28,8 @@ public class Slime : MonoBehaviour, IEnemy
     public float AttackSpeed => sOMonster ? sOMonster.AttackSpeed : 1f;
     public float MovementSpeed => sOMonster ? sOMonster.MovementSpeed : 1f;
     public int Shield => sOMonster ? sOMonster.Shield : 0;
+    public GameObject MonsterPrefab => sOMonster.MonsterPrefab;
+
 
 
     [SerializeField]

@@ -12,11 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc88d6c4b2917446abb8fabff2ca3b7, type: 3}
   m_Name: Game Test
   m_EditorClassIdentifier: 
-  sOWaves:
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
-  - {fileID: 11400000, guid: e2f4504e1af7e834f992ff3da5aae5b2, type: 2}
+  sOWaves: []

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding.BehaviorTree;
+using UnityEditor.XR.OpenXR.Features;
 using UnityEngine;
+using UnityEngine.AI;
 
 [CreateAssetMenu(fileName = "NewMonster", menuName = "ScriptableObject/Monster")]
 public class SOMonster : ScriptableObject
@@ -9,13 +12,13 @@ public class SOMonster : ScriptableObject
     [Header("Combat Stats")]
     [SerializeField]
     private int damage = 10;
-    
+
     [SerializeField]
     private float attackSpeed = 1f;
 
     [SerializeField]
     private float pv = 10f;
-    
+
     [SerializeField]
     private int shield = 0;
 
@@ -35,11 +38,10 @@ public class SOMonster : ScriptableObject
 
     [Space(10)]
     [Header("Initial State")]
-    [SerializeField]
-    private bool attackEnable = false;
+
 
     [SerializeField]
-    private bool isAttacking = false;
+    private GameObject monsterPrefab;
 
     public int Damage => damage;
     public int MoneyValue => moneyValue;
@@ -48,6 +50,5 @@ public class SOMonster : ScriptableObject
     public int Shield => shield;
     public float RadiusRange => radiusRange;
     public float Pv => pv;
-    public bool AttackEnable => attackEnable;
-    public bool IsAttacking => isAttacking;
+    public GameObject MonsterPrefab => monsterPrefab;
 }

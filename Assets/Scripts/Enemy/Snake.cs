@@ -1,5 +1,4 @@
 using System.Collections;
-using Events;
 using UnityEngine;
 
 public class Snake : MonoBehaviour, IEnemy
@@ -10,6 +9,11 @@ public class Snake : MonoBehaviour, IEnemy
     public float movementSpeed;
     public int shield;
     public string typeMonster;
+    public int ID
+    {
+        get { return 0; }
+        set { }
+    }
 
     // Pour le IEnemy
     public float radiusRange;
@@ -80,7 +84,7 @@ public class Snake : MonoBehaviour, IEnemy
 
         if (attackEnable && !isAttacking)
         {
-            StartCoroutine(Attack(character));
+            // StartCoroutine(Attack(character));
         }
     }
 
@@ -92,7 +96,7 @@ public class Snake : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         pv -= damage;
         if (pv <= 0)
@@ -101,22 +105,22 @@ public class Snake : MonoBehaviour, IEnemy
         }
     }
     
-    public IEnumerator Attack(IDamageable character)
-    {
-        isAttacking = true;
+    // public IEnumerator Attack(IDamageable character)
+    // {
+    //     isAttacking = true;
 
-        MonoBehaviour mb = character as MonoBehaviour;
-        if (mb != null)
-        {
-            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, transform.position));
-        }
+    //     MonoBehaviour mb = character as MonoBehaviour;
+    //     if (mb != null)
+    //     {
+    //         FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, transform.position));
+    //     }
 
-        character.TakeDamage(damage);
-        Debug.Log("L'ennemi attaque !");
+    //     character.TakeDamage(damage);
+    //     Debug.Log("L'ennemi attaque !");
 
-        yield return new WaitForSeconds(1f / attackSpeed);
+    //     yield return new WaitForSeconds(1f / attackSpeed);
 
-        Debug.Log("L'ennemi peut de nouveau attaquer !");
-        isAttacking = false;
-    }
+    //     Debug.Log("L'ennemi peut de nouveau attaquer !");
+    //     isAttacking = false;
+    // }
 }

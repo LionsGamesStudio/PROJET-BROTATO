@@ -20,7 +20,7 @@ public class AddMonsterToPlane : MonoBehaviour
     private Class_Perso classPerso; // A changer
     public int vague;
 
-    public InventorySyncronisationWeapon inventorySyncronisationWeapon; // C'est pour faire comme si on achete une arme chaque round
+    // public InventorySyncronisationWeapon inventorySyncronisationWeapon; // C'est pour faire comme si on achete une arme chaque round
     // private List<Class_Weapon> actualWeapon;
 
     // Radius of the player to dont add to plane for security of gameplay 
@@ -69,8 +69,8 @@ public class AddMonsterToPlane : MonoBehaviour
             var weapon2 = set2.transform.Find("Pistol - Common");
             weapon2.gameObject.SetActive(true);
 
-            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
-            inventorySyncronisationWeapon.Syncronisation();
+            // inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            // inventorySyncronisationWeapon.Syncronisation();
 
         }
 
@@ -81,8 +81,8 @@ public class AddMonsterToPlane : MonoBehaviour
             var set3 = GameObject.Find("Set (3)");
             var weapon3 = set3.transform.Find("Pistol - Common");
             weapon3.gameObject.SetActive(true);
-            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
-            inventorySyncronisationWeapon.Syncronisation();
+            // inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            // inventorySyncronisationWeapon.Syncronisation();
         }
 
         if (vague == 4)
@@ -92,8 +92,8 @@ public class AddMonsterToPlane : MonoBehaviour
             var set4 = GameObject.Find("Set (4)");
             var weapon4 = set4.transform.Find("Pistol - Common");
             weapon4.gameObject.SetActive(true);
-            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
-            inventorySyncronisationWeapon.Syncronisation();
+            // inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            // inventorySyncronisationWeapon.Syncronisation();
         }
 
         if (vague == 5)
@@ -103,8 +103,8 @@ public class AddMonsterToPlane : MonoBehaviour
             var set5 = GameObject.Find("Set (5)");
             var weapon5 = set5.transform.Find("Pistol - Common");
             weapon5.gameObject.SetActive(true);
-            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
-            inventorySyncronisationWeapon.Syncronisation();
+            // inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            // inventorySyncronisationWeapon.Syncronisation();
         }
 
         if (vague == 6)
@@ -114,8 +114,8 @@ public class AddMonsterToPlane : MonoBehaviour
             var set6 = GameObject.Find("Set (6)");
             var weapon6 = set6.transform.Find("Pistol - Common");
             weapon6.gameObject.SetActive(true);
-            inventorySyncronisationWeapon.GetWeaponAndSyncronise();
-            inventorySyncronisationWeapon.Syncronisation();
+            // inventorySyncronisationWeapon.GetWeaponAndSyncronise();
+            // inventorySyncronisationWeapon.Syncronisation();
 
         }
 

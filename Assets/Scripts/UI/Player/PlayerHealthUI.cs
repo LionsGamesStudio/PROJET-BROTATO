@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using FluxFramework.UI;
 using FluxFramework.Core;
-using Events;
 
 public class PlayerHealthUI : FluxUIComponent
 {
@@ -53,26 +52,25 @@ public class PlayerHealthUI : FluxUIComponent
             streaksVelocity = damageStreaksSystem.velocityOverLifetime;
             streaksEmission.rateOverTime = 0;
         }
-        
-        FluxFramework.Core.Flux.Manager.EventBus.Subscribe<GetDamageEvent>(OnGetDamage);
+
+        FluxFramework.Core.Flux.Manager.EventBus.Subscribe<EnemyAttackEvent>(OnEnemyAttackDamage);
     }
 
     void Update()
     {
-        currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("Player.health");
-        maxHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("Player.maxHealth");
+        currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("player.health");
+        maxHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("player.maxHealth");
 
         float healthPercent = currentHealth / maxHealth;
         float effectIntensity = 1.0f - healthPercent;
 
         UpdateVignette(effectIntensity);
-        UpdateDamageStreaks(effectIntensity);
         UpdateGlitchEffect();
     }
     
-    private void OnGetDamage(GetDamageEvent evt)
+    private void OnEnemyAttackDamage(EnemyAttackEvent evt)
     {
-        TriggerDamageIndicator(evt.fromDirection);
+        TriggerDamageIndicator(evt.FromWorldPosition);
     }
 
     public void TriggerDamageIndicator(Vector3 damageSourceWorldPosition)
@@ -176,12 +174,5 @@ public class PlayerHealthUI : FluxUIComponent
         {
             vignetteMaterial.SetFloat("_Glitch_Strength", 0f);
         }
-    }
-    
-    private void UpdateDamageStreaks(float intensity)
-    {
-        // if (damageStreaksSystem == null) return;
-
-        // streaksEmission.rateOverTime = intensity * 100f;
     }
 }

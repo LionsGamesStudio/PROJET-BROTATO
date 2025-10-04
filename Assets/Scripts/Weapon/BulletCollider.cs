@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour // ON BULLET
 {
-    public int damage; // A changer
+    public float damage; // A changer
 
     // Start is called before the first frame update
     void Start()
@@ -26,22 +26,22 @@ public class Projectile : MonoBehaviour // ON BULLET
 
         if (enemy != null)
         {
-            StartCoroutine(Attack(enemy));
+            // StartCoroutine(Attack(enemy));
             
             if (enemy.Pv <= 0)
             {
-                enemy.Die();
+                // enemy.Die();
             }
 
             Destroy(gameObject);
         }
     }
 
-    public IEnumerator Attack(IDamageable enemy)
-    {
-        enemy.TakeDamage(damage);
-        yield break;
-    }
+    // public IEnumerator Attack(IDamageable enemy)
+    // {
+    //     enemy.TakeDamage(damage);
+    //     yield break;
+    // }
 
 
 

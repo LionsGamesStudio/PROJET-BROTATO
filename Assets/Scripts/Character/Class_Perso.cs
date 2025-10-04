@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using FluxFramework.Core;
 using FluxFramework.Attributes;
 using Flux;
-public class Class_Perso : FluxMonoBehaviour, IPlayer
+public class Class_Perso : FluxMonoBehaviour
 {
     [SerializeField]
     [ReactiveProperty("Player.maxHealth")]
@@ -22,16 +22,24 @@ public class Class_Perso : FluxMonoBehaviour, IPlayer
     public int vague = 1; // Voir pour le bouger
 
     public int enemyKilled; // Voir pour le bouger
+    
+    public int ID
+    {
+        get
+        {
+            return 1; // A changer plus tard
+        }
+    }
 
     public void EnemyKilled() // A foutre ailleurs
     {
-        enemyKilled +=1;
+        enemyKilled += 1;
     }
 
     [FluxAction("TakeDamage")]
-    public void TakeDamage(int degats)
+    public void TakeDamage(float degats)
     {
-        int degats_subit = degats * (100 - armure) / 100; // round in the inferior digit here
+        float degats_subit = degats * (100 - armure) / 100; // round in the inferior digit here
 
         Debug.Log("Le personnage à subit : " + degats_subit.ToString() + " Degâts");
 

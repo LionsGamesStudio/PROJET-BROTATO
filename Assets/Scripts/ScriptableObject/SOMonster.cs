@@ -39,7 +39,6 @@ public class SOMonster : ScriptableObject
     [Space(10)]
     [Header("Initial State")]
 
-
     [SerializeField]
     private GameObject monsterPrefab;
 

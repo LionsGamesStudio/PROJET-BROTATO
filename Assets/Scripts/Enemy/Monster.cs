@@ -1,15 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Pathfinding.BehaviorTree;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Events;
 
-/// <summary>
-/// This function is to setup the monster
-/// </summary>
-public class Monster : MonoBehaviour
+
+public class Monster : MonoBehaviour ,IEnemy
 {
 
     [SerializeField]
@@ -19,55 +15,58 @@ public class Monster : MonoBehaviour
     private NavMeshAgent agent;
 
     [SerializeField]
-    private GameObject player; // Temporary just for a test, or maybe not...
+    private Class_Perso player; // Temporary just for a test, or maybe not...
 
     private GameObject visualInstance;
     private BehaviorTree behaviorTree;
 
-    // public float RadiusRange
-    // { get => sOMonster ? sOMonster.RadiusRange : 0f; set { } }
+    public float RadiusRange
+    { get => sOMonster ? sOMonster.RadiusRange : 0f; set { } }
 
-    // public bool currentAttackEnable = false; // Will change
-    // public bool AttackEnable { get => currentAttackEnable; set => currentAttackEnable = value; }
+    public bool currentAttackEnable = false; // Will change
+    public bool AttackEnable { get => currentAttackEnable; set => currentAttackEnable = value; }
 
-    // public float currentPv; // Pv will change
-    // public float Pv { get => currentPv; set { currentPv = value; } }
+    public float currentPv; // Pv will change
+    public float Pv { get => currentPv; set { currentPv = value; } }
 
-    // private bool currentIsAttacking = false; // Will change
-    // public bool IsAttacking { get => currentIsAttacking; set => currentIsAttacking = value; }
+    private bool currentIsAttacking = false; // Will change
+    public bool IsAttacking { get => currentIsAttacking; set => currentIsAttacking = value; }
 
-    // // Le restant des données du SOMonster
-    // public int Damage => sOMonster ? sOMonster.Damage : 0;
-    // public int MoneyValue => sOMonster ? sOMonster.MoneyValue : 0;
-    // public float AttackSpeed => sOMonster ? sOMonster.AttackSpeed : 1f;
-    // public float MovementSpeed => sOMonster ? sOMonster.MovementSpeed : 1f;
-    // public int Shield => sOMonster ? sOMonster.Shield : 0;
-    // public GameObject MonsterPrefab => sOMonster.MonsterPrefab;
+    // Le restant des données du SOMonster
+    public int Damage => sOMonster ? sOMonster.Damage : 0;
+    public int MoneyValue => sOMonster ? sOMonster.MoneyValue : 0;
+    public float AttackSpeed => sOMonster ? sOMonster.AttackSpeed : 1f;
+    public float MovementSpeed => sOMonster ? sOMonster.MovementSpeed : 1f;
+    public int Shield => sOMonster ? sOMonster.Shield : 0;
+    public GameObject MonsterPrefab => sOMonster.MonsterPrefab;
 
-    void Initialize(SOMonster so, BehaviorTree behaviorTree) // A utiliser dans mon spawner !
+
+    public void Initialize()
     {
-        InitializeGameObject(so);
-        InitializeBH(behaviorTree);
+        InitializeGameObject();
+        InitializeNMA();
+        InitializeBH();
+
+        // Debug
     }
 
-    private void InitializeGameObject(SOMonster so)
+    private void InitializeGameObject()
     {
-        sOMonster = so;
-
         if (sOMonster.MonsterPrefab != null)
         {
             visualInstance = Instantiate(sOMonster.MonsterPrefab, transform);
-            visualInstance.transform.localPosition = Vector3.zero; // centre dans le GameObject
+            visualInstance.transform.localPosition = Vector3.zero; // center in the GameObject
         }
 
-        else {
+        else
+        {
             Debug.Log("Le SO ne comporte pas de monstre !");
         }
     }
 
-    private void InitializeBH(BehaviorTree behaviorTree)
+    private void InitializeBH()
     {
-        this.behaviorTree = behaviorTree;
+        behaviorTree = GetComponent<BHSlime>().CreateTree(sOMonster, agent, player);
 
         if (sOMonster == null)
         {
@@ -76,9 +75,40 @@ public class Monster : MonoBehaviour
 
     }
 
+    private void InitializeNMA()
+    {
+        agent.speed = sOMonster.MovementSpeed;
+    }
+
     void Update() // BH Update
     {
-        behaviorTree.Process();
+        behaviorTree?.Process();
     }
+
+    public void Die()
+    {
+        Debug.Log("L'ennemi est mort");
+        FluxFramework.Core.Flux.Manager.EventBus.Publish(new EnemyDieEvent(gameObject));
+
+        player.money += MoneyValue; // Remake this later
+        player.enemyKilled++;
+
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Pv -= damage;
+        if (Pv <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void SetPlayer(GameObject newValue)
+    {
+        player = newValue.GetComponent<Class_Perso>();
+    }
+
 
 }

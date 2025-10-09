@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ece5fead05b51a42b4fc7c0c6f38bbb, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  monsters: []
+  monsters:
+  - monster: {fileID: 5276582747610907030, guid: 537af43e4b236334c892f624dea7c557,
+      type: 3}
+    count: 3
+    spawnDelay: 10
+    spawningMode: 0

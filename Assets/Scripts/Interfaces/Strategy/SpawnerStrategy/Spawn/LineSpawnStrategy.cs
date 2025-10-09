@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LineSpawnStrategy : ISpawnStrategy
 {
@@ -48,14 +49,31 @@ public class LineSpawnStrategy : ISpawnStrategy
     {
 
         List<GameObject> spawned = new List<GameObject>();
+
         for (int i = 0; i < positions.Count; i++)
         {
-            GameObject enemy = Object.Instantiate(objectMonster, positions[i], Quaternion.identity);
-            IEnemy enemyComponent = enemy.GetComponent<IEnemy>();
-            if (enemyComponent != null)
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(positions[i], out hit, 2.0f, NavMesh.AllAreas))
             {
-                enemyComponent.SetPlayer(player);
-                spawned.Add(enemy);
+                GameObject enemy = Object.Instantiate(objectMonster, positions[i], Quaternion.identity);
+
+                enemy.gameObject.SetActive(true);
+
+                Monster monster = enemy.GetComponent<Monster>(); // GameObject prefait dans la scène
+                monster.SetPlayer(player);
+                monster.Initialize();
+                if (monster != null)
+                {
+                    spawned.Add(enemy);
+                }
+            }
+
+            else
+            {
+                Debug.LogWarning($"Impossible de spawn : position {positions[i]} hors NavMesh");
+                // On continue au lieu de retourner une liste vide
+                continue;
             }
         }
 
@@ -86,7 +104,7 @@ public class LineSpawnStrategy : ISpawnStrategy
             {
                 enemyPosition = new Vector3(
                     linePosition.x + offset,
-                    linePosition.y + 0.125f,
+                    linePosition.y,
                     linePosition.z
                 );
             }
@@ -94,7 +112,7 @@ public class LineSpawnStrategy : ISpawnStrategy
             {
                 enemyPosition = new Vector3(
                     linePosition.x,
-                    linePosition.y + 0.125f,
+                    linePosition.y,
                     linePosition.z + offset
                 );
             }

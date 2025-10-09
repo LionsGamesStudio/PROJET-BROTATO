@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8186581329683622854
+--- !u!1 &7905956905831235736
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1841249828633915331}
-  - component: {fileID: 3409878581456052663}
-  - component: {fileID: 1472282645115878202}
-  - component: {fileID: 7610518224960768866}
-  - component: {fileID: 6548571455676340985}
+  - component: {fileID: 4225353215338003223}
+  - component: {fileID: -6828713838187105911}
+  - component: {fileID: -6503045374395019452}
+  - component: {fileID: -6161875615142496597}
   m_Layer: 0
-  m_Name: Toxic Slime - Enemy
+  m_Name: Obsidian Slime - Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1841249828633915331
+--- !u!4 &4225353215338003223
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186581329683622854}
+  m_GameObject: {fileID: 7905956905831235736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 333243539108385766}
+  - {fileID: 5674760290254552966}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &3409878581456052663
+--- !u!54 &-6828713838187105911
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186581329683622854}
+  m_GameObject: {fileID: 7905956905831235736}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -63,13 +62,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1472282645115878202
+--- !u!135 &-6503045374395019452
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186581329683622854}
+  m_GameObject: {fileID: 7905956905831235736}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -84,41 +83,25 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7610518224960768866
+--- !u!114 &-6161875615142496597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186581329683622854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afdd1fd8bd45f1047bdbe3120c215d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sOMonster: {fileID: 11400000, guid: 8c4180668368d3444aec74015c6faae0, type: 2}
-  currentAttackEnable: 0
-  currentPv: 0
-  player: {fileID: 0}
---- !u!114 &6548571455676340985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186581329683622854}
+  m_GameObject: {fileID: 7905956905831235736}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc6c83eab9570ad4ba3be270c9e6380a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &222174220623459341
+--- !u!1001 &5281162256982218861
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1841249828633915331}
+    m_TransformParent: {fileID: 4225353215338003223}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
@@ -158,17 +141,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
@@ -185,15 +168,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8068059144949454106, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bc8a13df55c7e6242bdc38d67f229b4e, type: 2}
+      objectReference: {fileID: 2100000, guid: f1d833a96bb6b214cb58b7149f1a8fc5, type: 2}
     - target: {fileID: -7624844003837130931, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.108
+      objectReference: {fileID: 0}
+    - target: {fileID: -7624844003837130931, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7624844003837130931, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7624844003837130931, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7624844003837130931, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -196203704936563799, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
@@ -203,21 +211,21 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_Name
-      value: Toxic Slime - Model
+      value: fire
       objectReference: {fileID: 0}
     - target: {fileID: 4870801407698984332, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 243149f1344ee95439c2ca26c2f7f8d0, type: 2}
+      objectReference: {fileID: 2100000, guid: 4e0224ced4e576b4c92349cd511cbd5e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1, type: 3}
---- !u!4 &333243539108385766 stripped
+--- !u!4 &5674760290254552966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85ffc3306cca6d64d8fe0dad8e6e8da1,
     type: 3}
-  m_PrefabInstance: {fileID: 222174220623459341}
+  m_PrefabInstance: {fileID: 5281162256982218861}
   m_PrefabAsset: {fileID: 0}

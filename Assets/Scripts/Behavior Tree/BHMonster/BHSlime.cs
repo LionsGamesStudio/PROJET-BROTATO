@@ -1,46 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using Pathfinding.BehaviorTree;
 using UnityEngine;
 using UnityEngine.AI;
+using Events;
 
 public class BHSlime : MonoBehaviour
 {
     BehaviorTree tree;
-    private float lastAttackTime = -999f; // A voir si je peux gérer d'une autre manière
+    private float lastAttackTime = -999f; 
 
-    public BehaviorTree CreateTree(SOMonster so, NavMeshAgent agent, GameObject player)
+    public BehaviorTree CreateTree(SOMonster so, NavMeshAgent agent, Class_Perso player)
     {
-        tree = new BehaviorTree("Slime");
+        
+    tree = new BehaviorTree("Slime");
 
+    Selector root = new Selector("Root");
+    tree.AddChild(root);
 
+    // Attaque si possible
+    Sequence attackSeq = new Sequence("Attack");
+    attackSeq.AddChild(new Leaf("In Range", new Condition(() => 
+        Vector3.Distance(transform.position, player.transform.position) < 0.5f)));
+    attackSeq.AddChild(new Leaf("Not On Cooldown", new Condition(() => 
+        Time.time >= lastAttackTime + 1 / so.AttackSpeed)));
+    attackSeq.AddChild(new Leaf("Do Attack", new ActionStrategy(() => 
+    {
+        player.TakeDamage(so.Damage);
+        lastAttackTime = Time.time;
+    })));
 
-        Selector startingSelector = new Selector("Start");
+    // Sinon, poursuit le joueur
+    Leaf chase = new Leaf("Chase", new ActionStrategy(() => 
+    {
+        agent.SetDestination(player.transform.position);
+    }));
 
-        tree.AddChild(startingSelector);
+    root.AddChild(attackSeq);
+    root.AddChild(chase);
 
-        Leaf moveToPlayer = new Leaf("Move to player", new ActionStrategy(() => agent.SetDestination(player.transform.position)));
-        Sequence attackSequence = new Sequence("Attack");
-
-        startingSelector.AddChild(moveToPlayer);
-        startingSelector.AddChild(attackSequence);
-
-
-        Leaf playerInRange = new Leaf("Player in range ?", new Condition(() => Vector3.Distance(gameObject.transform.position, player.transform.position) < 0.5f)); 
-
-        Leaf notOnCooldown = new Leaf("Not on Cooldown ?", new Condition(() => Time.time >= lastAttackTime + 1/so.AttackSpeed));
-
-        Leaf attack = new Leaf("Attack", new ActionStrategy(() =>
-        {
-            // Logique d'attaque à implémenter
-            lastAttackTime = Time.time;
-
-        }));
-
-        attackSequence.AddChild(playerInRange);
-        attackSequence.AddChild(notOnCooldown);
-        attackSequence.AddChild(attack);
-
-        return tree;
-    }
+    return tree;
+}
 }

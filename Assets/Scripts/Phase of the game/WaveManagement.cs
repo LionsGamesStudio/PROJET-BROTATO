@@ -93,7 +93,8 @@ public class WaveManagement : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Debug.Log("La séquence de spawn est lancé !");
-            List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy
+
+            List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy without taken in consideration monsters
 
             List<GameObject> temp = strategy.SpawnXMonster(monster, validPositions); // Spawn the monster and count how many it cost for the player
 
@@ -104,11 +105,10 @@ public class WaveManagement : MonoBehaviour
             }
 
 
-            count -= temp.Count;  //We are deleting the number of new monster
+            count -= temp.Count;  // We are deleting the number of new monster
 
             yield return new WaitForSeconds(delay); // Wait
-            
-            // Au cas ou gérer la liste des position valide dans ce script et dans les strategy
+        
         }
 
         CheckWaveEnd();
@@ -123,8 +123,8 @@ public class WaveManagement : MonoBehaviour
 
     private void RemoveEnemy(GameObject enemy)
     {
-        // enemyInWave.Remove(enemy); Ca marche mais on sait jamais
-        enemyInWave.RemoveAll(e => e == null || e == enemy); // Pour être sur 
+        // enemyInWave.Remove(enemy); Work
+        enemyInWave.RemoveAll(e => e == null || e == enemy); // Just in case
     }
 
     

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IEnemy : IDie, IDamageable, IEntity, IAttack
+public interface IEnemy : IDie, IDamageable, IEntity//, IAttack // Revoir ça de plus près pour faire un truc carré !
 {
     public float RadiusRange { get; set; }
 

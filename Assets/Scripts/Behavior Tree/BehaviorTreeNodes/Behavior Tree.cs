@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Pathfinding.BehaviorTree
 {
     public class BehaviorTree : Node
@@ -6,6 +8,9 @@ namespace Pathfinding.BehaviorTree
 
         public override Status Process()
         {
+            currentChild = 0; // Si ça marche je me tire une balle dans les couilles
+
+            Debug.Log("Le behavior tree se lance !");
             while (currentChild < children.Count)
             {
                 var status = children[currentChild].Process();

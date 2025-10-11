@@ -2,156 +2,110 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class AutoTarget : MonoBehaviour
-{  
+{
+
+    [Header("Targeting System")]
+    [SerializeField] private TargetingMode currentTargetingMode = TargetingMode.Closest;
+    public enum TargetingMode
+    {
+        Closest,
+        Farthest,
+        HighestHP,
+        LowestHP,
+        Random
+    }
+
+    [Space(10)]
+    [Header("To Instantiate in Hand")]
     public GameObject bulletPrefab;
+
+    // Interfaces 
     private IWeapon weapon; // Marche pour n'importe qu'elle arme
 
+    private ITargetingStrategy currentStrategy;
 
-    public List<IEnemy> enemiesInRange = new List<IEnemy>(); 
+
+    public List<IEnemy> enemiesInRange = new List<IEnemy>();
     public IEnemy monsterLocked; // Marche pour n'importe quel monstre
 
     private Coroutine shootingCoroutine;
 
+
+
     void Start()
+    {
+        InitializeComponent();
+        CreateStrategy();
+    }
+
+    void InitializeComponent()
     {
         SphereCollider sphereCollider = GetComponent<SphereCollider>();
         weapon = GetComponent<IWeapon>();
         sphereCollider.radius = weapon.Radius_Range;
     }
 
+    private void CreateStrategy()
+    {
+        currentStrategy = currentTargetingMode switch
+        {
+            TargetingMode.Closest => new ClosestEnemyStrategy(weapon),
+            TargetingMode.Farthest => new FarthestEnemyStrategy(weapon),
+            TargetingMode.HighestHP => new HighestHPEnemyStrategy(),
+            TargetingMode.LowestHP => new LowestHPEnemyStrategy(),
+            TargetingMode.Random => new RandomEnemyStrategy(),
+            _ => new ClosestEnemyStrategy(weapon),
+        };
+    }
+
+    public void SetTargetingMode(TargetingMode newMode)
+    {
+        if (currentTargetingMode != newMode)
+        {
+            currentTargetingMode = newMode;
+            CreateStrategy();
+        }
+    }
+
+    [ContextMenu("Set Closest")]
+    public void SetClosest() { SetTargetingMode(TargetingMode.Closest); }
+
+    [ContextMenu("Set Farthest")]
+    public void SetFarthest() { SetTargetingMode(TargetingMode.Farthest); }
+
+    [ContextMenu("Set Highest HP")]
+    public void SetHighestHP() { SetTargetingMode(TargetingMode.HighestHP); }
+
+    [ContextMenu("Set Lowest HP")]
+    public void SetLowestHP() { SetTargetingMode(TargetingMode.LowestHP); }
+
+    [ContextMenu("Set Random")]
+    public void SetRandom() { SetTargetingMode(TargetingMode.Random); }
+
     void OnTriggerEnter(Collider other)
     {
-        MonoBehaviour enemyComponent = other.GetComponent<MonoBehaviour>();
+        IEnemy enemy = other.GetComponent<IEnemy>();
 
-        if (enemyComponent is IEnemy enemy)
+        if (enemy != null)
         {
             enemiesInRange.Add(enemy);
-            UpdateFocus();
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        MonoBehaviour enemyComponent = other.GetComponent<MonoBehaviour>();
+        IEnemy enemy = other.GetComponent<IEnemy>();
 
-        if (enemyComponent is IEnemy enemy)
+        if (enemy != null)
         {
             enemiesInRange.Remove(enemy);
-
-            if (enemy == monsterLocked)
-            {
-                UpdateFocus();
-            }
         }
     }
-
-    void UpdateFocus()
-    {
-        monsterLocked = FindClosestEnemy();
-    }
-
-    IEnemy FindClosestEnemy()
-    {
-        IEnemy closestEnemy = null;
-        float minDistance = float.MinValue;
-
-        CleanEnemyList();
-
-        foreach (IEnemy enemy in enemiesInRange)
-        {
-            Transform enemyTransform = (enemy as MonoBehaviour).transform;
-            float distance = Vector3.Distance(enemyTransform.position, (weapon as MonoBehaviour).transform.position);
-
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closestEnemy = enemy;
-            }
-
-        }
-
-        return closestEnemy;
-    }
-
-    IEnemy FindFarthestEnemy()
-    {
-        IEnemy farthestEnemy = null;
-        float maxDistance = float.MaxValue;
-
-        CleanEnemyList();
-
-        foreach (IEnemy enemy in enemiesInRange)
-        {
-            Transform enemyTransform = (enemy as MonoBehaviour).transform;
-            float distance = Vector3.Distance(enemyTransform.position, (weapon as MonoBehaviour).transform.position);
-
-            if (distance < maxDistance)
-            {
-                maxDistance = distance;
-                farthestEnemy = enemy;
-            }
-
-        }
-
-        return farthestEnemy;
-    }
-
-    IEnemy FindLeastHPEnemy()
-    {
-        IEnemy leastHpEnemy = null;
-        float minHealth = float.MinValue;
-
-        CleanEnemyList();
-
-        foreach (IEnemy enemy in enemiesInRange)
-        {
-
-            if (enemy.Pv < minHealth)
-            {
-                minHealth = enemy.Pv;
-                leastHpEnemy = enemy;
-            }
-
-        }
-
-        return leastHpEnemy;
-    }
-    IEnemy FindHighestHPEnemy()
-    {
-        IEnemy highestHpEnemy = null;
-        float maxHealth = float.MinValue;
-
-        CleanEnemyList();
-
-        foreach (IEnemy enemy in enemiesInRange)
-        {
-
-            if (enemy.Pv > maxHealth)
-            {
-                maxHealth = enemy.Pv;
-                highestHpEnemy = enemy;
-            }
-
-        }
-
-        return highestHpEnemy;
-    }
-
-    IEnemy FindRandomEnemy()
-    {
-
-        CleanEnemyList();
-        if (enemiesInRange.Count == 0) // ✓ Vérifier si la liste n'est pas vide
-        return null;
-
-        int randomIndex = Random.Range(0, enemiesInRange.Count);
-        return enemiesInRange[randomIndex];
-    }
-
-
 
     private void CleanEnemyList()
     {
@@ -167,34 +121,43 @@ public class AutoTarget : MonoBehaviour
 
     void Update()
     {
-        // Vérification si l'ennemi verrouillé existe toujours
-        MonoBehaviour enemyMono = monsterLocked as MonoBehaviour; // Ca je vais voir
 
-        if (monsterLocked == null || enemyMono == null || !enemyMono.gameObject.activeInHierarchy)
+        CleanEnemyList();
+
+
+        if (monsterLocked == null || !IsValidEnemy(monsterLocked)) // Pour éviter des reTarget à chaque fois qu'un monstre rentre dans la zone.
         {
-            UpdateFocus();
+            monsterLocked = currentStrategy.SelectTarget(enemiesInRange);
         }
 
+        HandleShooting();
+    }
 
-        else
+    private void HandleShooting()
+    {
+        MonoBehaviour enemyMono = monsterLocked as MonoBehaviour;
+
+        if (monsterLocked != null && enemyMono != null && enemyMono.gameObject.activeInHierarchy)
         {
             transform.LookAt(enemyMono.transform);
 
             //transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.LookRotation(enemyMono.transform.position - transform.position),180 * Time.deltaTime ); ChatGPT
 
-
             if (weapon.CanShoot && shootingCoroutine == null)
             {
-                shootingCoroutine = StartCoroutine(CreateBullet(weapon.Shoot_Rate));
+                shootingCoroutine = StartCoroutine(Shoot(weapon.Shoot_Rate));
             }
         }
     }
 
-    IEnumerator CreateBullet(float shoot_Rate)
+
+    IEnumerator Shoot(float shoot_Rate)
     {
         weapon.CanShoot = false;
 
-        Projectile bullet = Instantiate(bulletPrefab, (weapon as MonoBehaviour).transform.position, (weapon as MonoBehaviour).transform.rotation).GetComponent<Projectile>();
+        Transform weaponTransform = (weapon as MonoBehaviour).transform;
+
+        Projectile bullet = Instantiate(bulletPrefab, weaponTransform.position, weaponTransform.rotation).GetComponent<Projectile>();
         bullet.damage = weapon.Damage;
 
         yield return new WaitForSeconds(1 / shoot_Rate);
@@ -204,4 +167,6 @@ public class AutoTarget : MonoBehaviour
 
         yield break;
     }
+    
+
 }

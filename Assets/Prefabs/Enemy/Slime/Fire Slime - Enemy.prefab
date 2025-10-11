@@ -96,16 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdd1fd8bd45f1047bdbe3120c215d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: 5
-  damage: 1
-  moneyValue: 1
-  attackSpeed: 1
-  movementSpeed: 1.75
-  shield: 0
-  typeMonster: Slime
-  radiusRange: 0.3
-  AttackEnable: 0
-  isTargeted: 0
+  sOMonster: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
+  currentAttackEnable: 0
+  currentPv: 0
+  player: {fileID: 0}
 --- !u!114 &292661676924857173
 MonoBehaviour:
   m_ObjectHideFlags: 0

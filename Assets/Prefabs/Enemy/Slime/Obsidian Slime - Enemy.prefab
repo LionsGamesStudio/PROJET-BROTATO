@@ -96,15 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d87f40feabc87042be6c6a3cd7818d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
-  moneyValue: 2
-  attackSpeed: 0.75
-  movementSpeed: 0.5
-  shield: 0
-  typeMonster: Snake
-  radiusRange: 0.2
-  attackEnable: 0
-  pv: 20
+  sOMonster: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
+  currentAttackEnable: 0
+  currentPv: 0
   player: {fileID: 0}
 --- !u!114 &-6161875615142496597
 MonoBehaviour:

@@ -1,46 +1,39 @@
 using System.Collections;
-using Events;
 using UnityEngine;
+using Events;
 
 public class Snake : MonoBehaviour, IEnemy
 {
-    public int damage;
-    public int moneyValue;
-    public float attackSpeed;
-    public float movementSpeed;
-    public int shield;
-    public string typeMonster;
+    [Header("Data to give")]
+    [SerializeField]
+    private SOMonster sOMonster; // Le seul truc à mettre au final
 
     // Pour le IEnemy
-    public float radiusRange;
 
     public float RadiusRange
-    {
-        get { return radiusRange; }
-        set { radiusRange = value; }
-    }
+    { get => sOMonster ? sOMonster.RadiusRange : 0f; set {} }
 
-    public bool attackEnable = false; 
+    public bool currentAttackEnable = false; // Will change
+    public bool AttackEnable { get => currentAttackEnable; set => currentAttackEnable = value;  }
+    
+    public float currentPv; // Pv will change
+    public float Pv { get => currentPv; set { currentPv = value; } }
 
-    public bool AttackEnable
-    {
-        get { return attackEnable; }
-        set { attackEnable = value; }
-    }
+    private bool currentIsAttacking = false; // Will change
+    public bool IsAttacking { get => currentIsAttacking; set => currentIsAttacking = value; }
 
-    public float pv;
+    // Le restant des données du SOMonster
+    public int Damage => sOMonster ? sOMonster.Damage : 0;
+    public int MoneyValue => sOMonster ? sOMonster.MoneyValue : 0;
+    public float AttackSpeed => sOMonster ? sOMonster.AttackSpeed : 1f;
+    public float MovementSpeed => sOMonster ? sOMonster.MovementSpeed : 1f;
+    public int Shield => sOMonster ? sOMonster.Shield : 0;
 
-    public float Pv
-    {
-        get { return pv; }
-        set { pv = value; }
-    }
-    private bool isAttacking = false;
 
     [SerializeField]
     private GameObject player;
     private Transform target;
-    private Class_Perso character;
+    private Class_Perso character; // A modifier avec mon IEnemy
 
     void Start()
     {
@@ -54,6 +47,15 @@ public class Snake : MonoBehaviour, IEnemy
         }
 
         target = player.transform;
+
+        if (sOMonster != null)
+        {
+            currentPv = sOMonster.Pv;
+        }
+        else
+        {
+            Debug.Log("Error from SOMonster for enemy of type Slime");
+        }
     }
 
     public void SetPlayer(GameObject newValue)
@@ -68,17 +70,17 @@ public class Snake : MonoBehaviour, IEnemy
         direction.y = 0;
 
         transform.rotation = Quaternion.LookRotation(direction);
-        transform.Translate(movementSpeed * Time.deltaTime * Vector3.forward);
+        transform.Translate(MovementSpeed * Time.deltaTime * Vector3.forward);
     }
 
     void Update()
     {
-        if (!isAttacking || (isAttacking && !attackEnable))
+        if (!IsAttacking || (IsAttacking && !AttackEnable))
         {
             GoPlayer();
         }
 
-        if (attackEnable && !isAttacking)
+        if (AttackEnable && !IsAttacking)
         {
             StartCoroutine(Attack(character));
         }
@@ -86,7 +88,9 @@ public class Snake : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        character.money += moneyValue;
+        FluxFramework.Core.Flux.Manager.EventBus.Publish(new EnemyDieEvent(gameObject));
+        
+        character.money += MoneyValue;
         character.enemyKilled += 1;
 
         Destroy(gameObject);
@@ -94,8 +98,8 @@ public class Snake : MonoBehaviour, IEnemy
 
     public void TakeDamage(int damage)
     {
-        pv -= damage;
-        if (pv <= 0)
+        Pv -= damage;
+        if (Pv <= 0)
         {
             Die();
         }
@@ -103,20 +107,20 @@ public class Snake : MonoBehaviour, IEnemy
     
     public IEnumerator Attack(IDamageable character)
     {
-        isAttacking = true;
+        IsAttacking = true;
 
         MonoBehaviour mb = character as MonoBehaviour;
         if (mb != null)
         {
-            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(damage, transform.position));
+            FluxFramework.Core.Flux.Manager.EventBus.Publish(new GetDamageEvent(Damage, transform.position));
         }
 
-        character.TakeDamage(damage);
+        character.TakeDamage(Damage);
         Debug.Log("L'ennemi attaque !");
 
-        yield return new WaitForSeconds(1f / attackSpeed);
+        yield return new WaitForSeconds(1f / AttackSpeed);
 
         Debug.Log("L'ennemi peut de nouveau attaquer !");
-        isAttacking = false;
+        IsAttacking = false;
     }
 }

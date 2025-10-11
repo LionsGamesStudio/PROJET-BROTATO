@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObject/Weapon")]
+[CreateAssetMenu(fileName = "NewWeapon", menuName = "ScriptableObject/Weapon")]
 public class SOWeapon : ScriptableObject
 {
     public string name_Weapon; // Type d'arme 

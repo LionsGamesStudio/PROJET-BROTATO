@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FluxFramework.Attributes;
 using FluxFramework.Core;
+using FluxFramework.Extensions;
 using UnityEngine;
 
 public class PlayerController : FluxMonoBehaviour, IPlayer
@@ -10,19 +11,11 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
     [SerializeField]
     [ReactiveProperty("player.health")]
     [FluxRange(0f, 100f)]
-    private float health = 100f;
+    private float health = 100f; // This will likely become a read-only visual representation once HealthComponent manages it.
 
     [SerializeField]
     [ReactiveProperty("player.maxHealth")]
-    private float maxHealth = 100f;
-
-    [SerializeField]
-    [ReactiveProperty("player.damage")]
-    private float damage = 10f;
-
-    [SerializeField]
-    [ReactiveProperty("player.attackSpeed")]
-    private float attackSpeed = 1f;
+    private float maxHealth = 100f; // Managed by HealthComponent
 
     [SerializeField]
     [ReactiveProperty("player.movementSpeed")]
@@ -34,13 +27,13 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
 
     private HealthComponent _healthComponent;
     private BuffManager _buffManager;
+    private PlayerWeaponAttackerComponent _playerAttackerComponent; // Reference to the new attacker component
 
     public string HealthPropertyKey => "player.health";
-    public float MaxHealth => maxHealth;
-    public AttackerType DamagerEntities => AttackerType.Monster;
+    public float MaxHealth => maxHealth; // Still provides max health for IHealthTarget
+    public AttackerType DamagerEntities => AttackerType.Monster; // Player is damaged by monsters
     
     private int _id;
-    
     public int ID
     {
         get
@@ -57,19 +50,25 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
     {
         _healthComponent = GetComponent<HealthComponent>();
         _buffManager = GetComponent<BuffManager>();
+        _playerAttackerComponent = GetComponent<PlayerWeaponAttackerComponent>(); // Get the new attacker component
+
+        if (_playerAttackerComponent == null)
+        {
+            Debug.LogError("PlayerController: PlayerWeaponAttackerComponent not found on this GameObject!");
+        }
     }
 
     public void OnHealthChanged(float oldValue, float newValue)
     {
         if (newValue < oldValue)
         {
-            PublishEvent(new PlayerDamagedEvent(oldValue - newValue));
+            this.PublishEvent(new PlayerDamagedEvent(oldValue - newValue));
         }
     }
 
     public void OnDeath()
     {
-        PublishEvent(new PlayerDeathEvent());
+        this.PublishEvent(new PlayerDeathEvent());
     }
 
     public void TakeDamage(float damage)
@@ -79,15 +78,20 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
 
     public string GetStatPropertyKey(StatType statType)
     {
-        return statType switch
+        switch (statType)
         {
-            StatType.Health => "player.health",
-            StatType.MaxHealth => "player.maxHealth",
-            StatType.Damage => "player.damage",
-            StatType.AttackSpeed => "player.attackSpeed",
-            StatType.MovementSpeed => "player.movementSpeed",
-            StatType.Defense => "player.armor",
-            _ => throw new ArgumentOutOfRangeException(nameof(statType), statType, null)
-        };
+            case StatType.Health: return "player.health";
+            case StatType.MaxHealth: return "player.maxHealth";
+            case StatType.MovementSpeed: return "player.movementSpeed";
+            case StatType.Defense: return "player.armor";
+            
+            // These stats are now handled by PlayerWeaponAttackerComponent.
+            // Return string.Empty to signal that this component does not handle them.
+            case StatType.Damage:
+            case StatType.AttackSpeed:
+            case StatType.Range:
+            default:
+                return string.Empty;
+        }
     }
 }

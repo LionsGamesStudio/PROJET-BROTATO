@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class ItemData : ScriptableObject, IItem
@@ -10,7 +11,7 @@ public class ItemData : ScriptableObject, IItem
     [SerializeField] private ItemType type;
     [SerializeField] private GameObject prefab;
 
-    [SerializeField]
+    [SerializeField, HideInInspector]
     private int id;
 
     public int ID
@@ -20,6 +21,7 @@ public class ItemData : ScriptableObject, IItem
             if (id == 0)
             {
                 id = Guid.NewGuid().GetHashCode();
+                EditorUtility.SetDirty(this);
             }
             return id;
         }

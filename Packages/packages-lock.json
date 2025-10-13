@@ -9,12 +9,15 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.textmeshpro": "3.0.6",
         "com.unity.xr.management": "4.2.0",
+        "com.unity.xr.interaction.toolkit": "2.5.2",
+        "com.unity.xr.openxr": "1.9.1",
         "com.unity.visualscripting": "1.9.7",
         "com.unity.mathematics": "1.2.6",
         "com.unity.ui": "1.0.0",
-        "com.unity.ui.builder": "1.0.0"
+        "com.unity.ui.builder": "1.0.0",
+        "com.unity.inputsystem": "1.7.0"
       },
-      "hash": "0f3728a770ec492e555ec39845d51dc9461d6538"
+      "hash": "81a2b31a83bbd118c2132af3b2636191281da6d9"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",

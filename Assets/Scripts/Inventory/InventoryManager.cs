@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FluxFramework.Attributes;
 using FluxFramework.Core;
+using FluxFramework.Extensions;
 using UnityEngine;
 
 public class InventoryManager : FluxMonoBehaviour
@@ -21,25 +22,23 @@ public class InventoryManager : FluxMonoBehaviour
         }
     }
 
-    [FluxAction]
+    [FluxAction("Add Item to Inventory", ButtonText = "Add Item")]
     public bool AddItem(ItemData item, int quantity = 1)
     {
         if (item == null || quantity <= 0) return false;
 
-        // Look for an existing slot with the same item
         for (int i = 0; i < inventoryData.slots.Count; i++)
         {
             var slot = inventoryData.slots[i];
             if (slot.itemData?.ID == item.ID)
             {
                 slot.quantity += quantity;
-                UpdateInventoryProperty();
-                PublishEvent(new ItemAddedEvent(item, quantity));
+                this.PublishEvent(new ItemAddedEvent(item, quantity));
                 return true;
             }
         }
 
-        // Look for an empty slot
+        // If not stackable or item not found, look for an empty slot.
         for (int i = 0; i < inventoryData.slots.Count; i++)
         {
             var slot = inventoryData.slots[i];
@@ -47,15 +46,16 @@ public class InventoryManager : FluxMonoBehaviour
             {
                 slot.itemData = item;
                 slot.quantity = quantity;
-                UpdateInventoryProperty();
-                PublishEvent(new ItemAddedEvent(item, quantity));
+                this.PublishEvent(new ItemAddedEvent(item, quantity));
                 return true;
             }
         }
 
-        return false; // Inventory full
+        Debug.Log("Inventory is full. Cannot add item.");
+        return false; // Inventory is full.
     }
 
+    [FluxAction("Remove Item from Inventory", ButtonText = "Remove Item")]
     public bool RemoveItem(int itemId, int quantity = 1)
     {
         for (int i = 0; i < inventoryData.slots.Count; i++)
@@ -68,11 +68,11 @@ public class InventoryManager : FluxMonoBehaviour
                     slot.quantity -= quantity;
                     if (slot.quantity <= 0)
                     {
+                        // Clear the slot if quantity drops to zero or below.
                         slot.itemData = null;
                         slot.quantity = 0;
                     }
-                    UpdateInventoryProperty();
-                    PublishEvent(new ItemRemovedEvent(itemId, quantity));
+                    this.PublishEvent(new ItemRemovedEvent(itemId, quantity));
                     return true;
                 }
                 break;
@@ -81,7 +81,7 @@ public class InventoryManager : FluxMonoBehaviour
         return false;
     }
 
-    [FluxAction]
+    [FluxAction("Use Item", ButtonText = "Use Item")]
     public void UseItem(int slotIndex)
     {
         if (slotIndex < 0 || slotIndex >= inventoryData.slots.Count) return;
@@ -101,18 +101,51 @@ public class InventoryManager : FluxMonoBehaviour
                 break;
         }
     }
+    
+    /// <summary>
+    /// Checks if an item can be added to the inventory without actually adding it.
+    /// </summary>
+    /// <param name="item">The item to check.</param>
+    /// <param name="quantity">The quantity of the item.</param>
+    /// <returns>True if there is space, false otherwise.</returns>
+    public bool CanAddItem(ItemData item, int quantity = 1)
+    {
+        if (item == null || quantity <= 0) return false;
 
+        // First, check if the item can be stacked on an existing slot.
+        // This doesn't require a new slot, so it's always possible.
+        for (int i = 0; i < inventoryData.slots.Count; i++)
+        {
+            var slot = inventoryData.slots[i];
+            if (slot.itemData?.ID == item.ID)
+            {
+                return true; // Stacking is possible.
+            }
+        }
+
+        // If stacking is not possible, check for at least one empty slot.
+        for (int i = 0; i < inventoryData.slots.Count; i++)
+        {
+            var slot = inventoryData.slots[i];
+            if (slot.IsEmpty)
+            {
+                return true; // An empty slot is available.
+            }
+        }
+
+        // If no stacking is possible and no empty slots are found, the item cannot be added.
+        return false;
+    }
+    
     private void UseConsumable(ConsumableData consumable)
     {
         if (consumable == null) return;
 
-        // Restore health
         if (consumable.HealthRestore > 0f && ownerHealth != null)
         {
             ownerHealth.Heal(consumable.HealthRestore);
         }
 
-        // Apply buffs
         if (consumable.BuffsToApply != null && buffManager != null)
         {
             foreach (var buff in consumable.BuffsToApply)
@@ -121,56 +154,49 @@ public class InventoryManager : FluxMonoBehaviour
             }
         }
 
-        PublishEvent(new ConsumableUsedEvent(consumable));
+        this.PublishEvent(new ConsumableUsedEvent(consumable));
     }
 
     private void EquipWeapon(WeaponData weapon)
     {
         if (weapon == null) return;
 
-        // Look for an empty weapon slot or replace the first one
+        // Case 1: Look for an empty weapon slot. This is always allowed.
         for (int i = 0; i < inventoryData.equippedWeapons.Count; i++)
         {
             if (inventoryData.equippedWeapons[i] == null)
             {
                 inventoryData.equippedWeapons[i] = weapon;
-                UpdateWeaponsProperty();
-                PublishEvent(new WeaponEquippedEvent(weapon, i));
+                this.PublishEvent(new WeaponEquippedEvent(weapon, i));
                 return;
             }
         }
 
-        // Replace the first weapon if all slots are full
+        // Case 2: All slots are full, so we attempt to replace the first weapon.
         if (inventoryData.equippedWeapons.Count > 0)
         {
             var oldWeapon = inventoryData.equippedWeapons[0];
-            inventoryData.equippedWeapons[0] = weapon;
-            UpdateWeaponsProperty();
             
-            // Return the old weapon to inventory
+            // --- CRITICAL CHECK ---
+            // Before replacing the weapon, check if the old weapon can be returned to the inventory.
+            if (oldWeapon != null && !CanAddItem(oldWeapon))
+            {
+                Debug.Log($"Cannot equip {weapon.Name}: Inventory is full and cannot accommodate the currently equipped weapon ({oldWeapon.Name}).");
+                // Optional: Publish an event to notify the UI to show a "Inventory Full" message.
+                // this.PublishEvent(new InventoryFullEvent());
+                return; // Abort the equip operation.
+            }
+
+            // If the check passes, proceed with the replacement.
+            inventoryData.equippedWeapons[0] = weapon;
+            
             if (oldWeapon != null)
             {
+                // This will now succeed because we checked it beforehand.
                 AddItem(oldWeapon);
             }
             
-            PublishEvent(new WeaponEquippedEvent(weapon, 0));
-        }
-    }
-
-    private void UpdateInventoryProperty()
-    {
-        // Force update the reactive property
-        foreach (var slot in inventoryData.slots)
-        {
-            AddToReactiveCollection<InventorySlot>("inventory.slots", slot);
-        }
-    }
-
-    private void UpdateWeaponsProperty()
-    {
-        foreach (var weapon in inventoryData.equippedWeapons)
-        {
-            AddToReactiveCollection<WeaponData>("inventory.equippedWeapons", weapon);
+            this.PublishEvent(new WeaponEquippedEvent(weapon, 0));
         }
     }
 }

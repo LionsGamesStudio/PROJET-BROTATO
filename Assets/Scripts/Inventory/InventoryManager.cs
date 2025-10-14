@@ -27,32 +27,41 @@ public class InventoryManager : FluxMonoBehaviour
     {
         if (item == null || quantity <= 0) return false;
 
+        // Try to stack on an existing item.
         for (int i = 0; i < inventoryData.slots.Count; i++)
         {
             var slot = inventoryData.slots[i];
             if (slot.itemData?.ID == item.ID)
             {
-                slot.quantity += quantity;
+                // To trigger a reactive update, we create a new, updated slot instance.
+                var updatedSlot = new InventorySlot(slot.itemData, slot.quantity + quantity, i);
+                
+                // Then, we replace the old slot with the new one using the collection's indexer.
+                // The ReactiveCollection's 'set' accessor is responsible for firing the notification.
+                inventoryData.slots[i] = updatedSlot;
+
                 this.PublishEvent(new ItemAddedEvent(item, quantity));
                 return true;
             }
         }
 
-        // If not stackable or item not found, look for an empty slot.
+        // Find an empty slot to place the new item.
         for (int i = 0; i < inventoryData.slots.Count; i++)
         {
-            var slot = inventoryData.slots[i];
-            if (slot.IsEmpty)
+            if (inventoryData.slots[i].IsEmpty)
             {
-                slot.itemData = item;
-                slot.quantity = quantity;
+                var newSlot = new InventorySlot(item, quantity, i);
+                
+                // Replace the empty slot with our new, filled slot.
+                inventoryData.slots[i] = newSlot;
+
                 this.PublishEvent(new ItemAddedEvent(item, quantity));
                 return true;
             }
         }
 
         Debug.Log("Inventory is full. Cannot add item.");
-        return false; // Inventory is full.
+        return false;
     }
 
     [FluxAction("Remove Item from Inventory", ButtonText = "Remove Item")]
@@ -61,21 +70,27 @@ public class InventoryManager : FluxMonoBehaviour
         for (int i = 0; i < inventoryData.slots.Count; i++)
         {
             var slot = inventoryData.slots[i];
-            if (slot.itemData?.ID == itemId)
+            if (slot.itemData?.ID == itemId && slot.quantity >= quantity)
             {
-                if (slot.quantity >= quantity)
+                int newQuantity = slot.quantity - quantity;
+                InventorySlot updatedSlot;
+
+                if (newQuantity > 0)
                 {
-                    slot.quantity -= quantity;
-                    if (slot.quantity <= 0)
-                    {
-                        // Clear the slot if quantity drops to zero or below.
-                        slot.itemData = null;
-                        slot.quantity = 0;
-                    }
-                    this.PublishEvent(new ItemRemovedEvent(itemId, quantity));
-                    return true;
+                    // Create an updated slot with the reduced quantity.
+                    updatedSlot = new InventorySlot(slot.itemData, newQuantity, i);
                 }
-                break;
+                else
+                {
+                    // Create a completely empty slot to replace the old one.
+                    updatedSlot = new InventorySlot(null, 0, i);
+                }
+
+                // Replace the old slot with the updated one to trigger the notification.
+                inventoryData.slots[i] = updatedSlot;
+
+                this.PublishEvent(new ItemRemovedEvent(itemId, quantity));
+                return true;
             }
         }
         return false;
@@ -161,6 +176,12 @@ public class InventoryManager : FluxMonoBehaviour
     {
         if (weapon == null) return;
 
+        // If more equipped weapon than quantity of this weapon in inventory, abort.
+        if (inventoryData.HaveNotEquippedAllWeapon(weapon))
+        {
+            return;
+        }
+
         // Case 1: Look for an empty weapon slot. This is always allowed.
         for (int i = 0; i < inventoryData.equippedWeapons.Count; i++)
         {
@@ -176,7 +197,7 @@ public class InventoryManager : FluxMonoBehaviour
         if (inventoryData.equippedWeapons.Count > 0)
         {
             var oldWeapon = inventoryData.equippedWeapons[0];
-            
+
             // --- CRITICAL CHECK ---
             // Before replacing the weapon, check if the old weapon can be returned to the inventory.
             if (oldWeapon != null && !CanAddItem(oldWeapon))
@@ -189,14 +210,20 @@ public class InventoryManager : FluxMonoBehaviour
 
             // If the check passes, proceed with the replacement.
             inventoryData.equippedWeapons[0] = weapon;
-            
+
             if (oldWeapon != null)
             {
                 // This will now succeed because we checked it beforehand.
                 AddItem(oldWeapon);
             }
-            
+
             this.PublishEvent(new WeaponEquippedEvent(weapon, 0));
         }
+    }
+    
+    [FluxEventHandler]
+    private void OnSlotInteracted(SlotInteractedEvent evt)
+    {
+        UseItem(evt.SlotIndex);
     }
 }

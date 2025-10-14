@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   type: 0
   prefab: {fileID: 5327874311068230002, guid: 18c15635f8804ad40a1d6394ad74f211, type: 3}
-  id: 0
+  id: 606819182
   damage: 15
   attackSpeed: 3
   range: 18

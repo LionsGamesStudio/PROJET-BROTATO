@@ -1,3 +1,4 @@
+using FluxFramework.Attributes;
 using FluxFramework.Core;
 using FluxFramework.Extensions;
 using FluxFramework.UI;
@@ -11,30 +12,25 @@ public class VRInventoryUI : FluxUIComponent
     [SerializeField] private InventoryManager inventoryManager;
 
     [Header("VR Inventory UI")]
+    [Tooltip("This should be the 'Content' object of your ScrollView.")]
     [SerializeField] private Transform slotParent;
     [SerializeField] private VRInventorySlot slotPrefab;
     
-    private VRInventorySlot[] slotUIs;
+    private List<VRInventorySlot> _activeSlotUIs = new List<VRInventorySlot>();
     private InventoryData inventoryData;
 
     protected override void OnFluxStart()
     {
         base.OnFluxStart();
         
-        // --- Dependency Validation ---
         if (inventoryManager == null)
         {
-            // Try to find it as a last resort, but log a warning.
             inventoryManager = FindObjectOfType<InventoryManager>();
             if (inventoryManager == null)
             {
-                Debug.LogError($"VRInventoryUI on '{gameObject.name}' is missing its dependency: 'inventoryManager'. Please assign it in the inspector. Disabling UI.", this);
-                gameObject.SetActive(false); // Disable the whole UI object.
+                Debug.LogError($"VRInventoryUI on '{gameObject.name}' is missing its 'inventoryManager' dependency. Disabling UI.", this);
+                gameObject.SetActive(false);
                 return;
-            }
-            else
-            {
-                Debug.LogWarning($"VRInventoryUI on '{gameObject.name}' found its 'inventoryManager' dependency at runtime. For better performance and reliability, please assign it manually in the inspector.", this);
             }
         }
         
@@ -43,48 +39,66 @@ public class VRInventoryUI : FluxUIComponent
         {
             Debug.LogError("VRInventoryUI could not find InventoryData via the assigned InventoryManager!", this);
             gameObject.SetActive(false);
-
             return;
         }
         
-        CreateSlotUIs();
+        // Build the initial state of the UI on startup.
+        RebuildUI();
     }
 
-    protected override void RegisterCustomBindings()
+    /// <summary>
+    /// Listens for the ItemAddedEvent and triggers a full UI rebuild.
+    /// </summary>
+    [FluxEventHandler]
+    private void OnItemAdded(ItemAddedEvent evt)
     {
-        this.SubscribeToProperty<ReactiveCollection<InventorySlot>>("inventory.slots", OnInventoryChanged, fireOnSubscribe: true);
+        RebuildUI();
     }
 
-    private void CreateSlotUIs()
+    /// <summary>
+    /// Listens for the ItemRemovedEvent and triggers a full UI rebuild.
+    /// </summary>
+    [FluxEventHandler]
+    private void OnItemRemoved(ItemRemovedEvent evt)
     {
-        if (inventoryData != null && inventoryData.slots != null)
+        RebuildUI();
+    }
+
+    /// <summary>
+    /// Rebuilds the entire inventory UI from scratch based on the current state
+    /// of the inventoryData.
+    /// </summary>
+    private void RebuildUI()
+    {
+        // Ensure data is available before proceeding.
+        if (inventoryData == null) return;
+
+        // 1. Destroy all previously instantiated UI slots.
+        foreach (VRInventorySlot slotUI in _activeSlotUIs)
         {
-            slotUIs = new VRInventorySlot[inventoryData.slots.Count];
+            Destroy(slotUI.gameObject);
+        }
+        _activeSlotUIs.Clear();
+
+        // 2. Iterate through the authoritative data source (inventoryData.slots).
+        for(int i = 0; i < inventoryData.slots.Count; i++)
+        {
+            InventorySlot slotData = inventoryData.slots[i];
             
-            for (int i = 0; i < inventoryData.slots.Count; i++)
+            // Only create a visual slot for items that actually exist.
+            if (!slotData.IsEmpty)
             {
-                var slotUI = Instantiate(slotPrefab, slotParent);
-                slotUI.Initialize(i, this);
-                slotUIs[i] = slotUI;
+                // 3. Instantiate a new UI slot prefab for each valid item.
+                VRInventorySlot newSlotUI = Instantiate(slotPrefab, slotParent);
+                
+                // Initialize the slot with its ORIGINAL index from the data source.
+                newSlotUI.Initialize(slotData.slotIndex);
+                
+                // Update the slot's visuals.
+                newSlotUI.UpdateSlot(slotData);
+                
+                _activeSlotUIs.Add(newSlotUI);
             }
         }
-    }
-
-    private void OnInventoryChanged(ReactiveCollection<InventorySlot> newSlots)
-    {
-        if (slotUIs == null || newSlots == null) return;
-        
-        for (int i = 0; i < Mathf.Min(slotUIs.Length, newSlots.Count); i++)
-        {
-            slotUIs[i].UpdateSlot(newSlots[i]);
-        }
-    }
-
-
-
-    public void OnSlotInteracted(int slotIndex)
-    {
-        // Use the cached reference, which is more reliable and performant.
-        inventoryManager?.UseItem(slotIndex);
     }
 }

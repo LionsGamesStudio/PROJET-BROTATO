@@ -8,10 +8,5 @@ using UnityEngine;
 /// </summary>
 public abstract class WeaponBehavior : AttackBehavior
 {
-    /// <summary>
-    /// Executes the specific logic of this attack behavior.
-    /// </summary>
-    /// <param name="healthTarget">The target that will be affected by this attack.</param>
-    /// <param name="attacker">The IAttacker entity performing the attack, providing stats like damage.</param>
-    public abstract override void Execute(IHealthTarget healthTarget, IAttacker attacker);
+    
 }

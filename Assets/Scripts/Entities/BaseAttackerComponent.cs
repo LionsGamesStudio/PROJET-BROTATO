@@ -9,6 +9,7 @@ using UnityEngine;
 /// Concrete attacker types (e.g., Monster, Player) will inherit from this class.
 /// </summary>
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Entity))]
 public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
 {
     [Header("Attacker Configuration (Base)")]
@@ -18,6 +19,9 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
 
     [Header("Targeting Settings")]
     [SerializeField] protected LayerMask targetLayers;
+
+    // Reference to the Entity component on this GameObject.
+    protected Entity entity;
 
     // This SphereCollider will be used to detect potential targets within range.
     protected SphereCollider rangeTrigger; 
@@ -40,14 +44,18 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     public AttackerType AttackerType => attackerType;
     public AttackBehavior AttackBehavior => attackBehavior;
 
-    // ID
-    public int ID => GetInstanceID();
-
     protected override void OnFluxAwake()
     {
+        entity = GetComponent<Entity>();
+        if (entity == null)
+        {
+            Debug.LogError($"BaseAttackerComponent requires an Entity component on {gameObject.name}");
+            return;
+        }
+
+
         // Get or add the SphereCollider for range detection.
         rangeTrigger = GetComponent<SphereCollider>();
-        rangeTrigger.isTrigger = true; // Ensure it's a trigger for detection.
         // Set the collider's radius.
         rangeTrigger.radius = Range; 
 
@@ -101,7 +109,7 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     {
         // Execute the weapon/attacker's specific attack behavior.
         // The AttackBehavior will handle the actual damage application etc.
-        AttackBehavior.Execute(healthTarget, this); 
+        AttackBehavior.Execute(healthTarget, this, this.entity.ID); 
         
         // Yield for a short period. This allows the Unity main thread to continue.
         yield return null; 
@@ -128,18 +136,22 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     /// <param name="other">The collider that entered the trigger.</param>
     void OnTriggerEnter(Collider other)
     {
-        IHealthTarget newTarget = other.GetComponent<IHealthTarget>();
+        // Get the Entity component from the object we collided with.
+        var targetEntity = other.GetComponent<Entity>();
+        if (targetEntity == null) return; // Not a valid entity.
 
-        // Check if it's a valid health target and not the attacker itself.
-        if (newTarget != null && newTarget.ID != this.ID)
+        // Compare our ID with the target's ID.
+        if (targetEntity.ID == this.entity.ID) return;
+
+        IHealthTarget newTarget = other.GetComponent<IHealthTarget>();
+        if (newTarget != null)
         {
-            // Check if the attacker is meant to damage this type of entity.
             bool canDamage = (AttackerType & newTarget.DamagerEntities) != 0;
 
             if (canDamage && !detectedTargets.Contains(newTarget))
             {
                 detectedTargets.Add(newTarget);
-                // Debug.Log($"BaseAttackerComponent: Detected potential target: {other.name} for {gameObject.name}");
+                Debug.Log($"BaseAttackerComponent: Detected potential target: {other.name}");
             }
         }
     }

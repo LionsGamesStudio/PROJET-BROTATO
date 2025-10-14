@@ -1,4 +1,4 @@
-public interface IBuffTarget : IEntity
+public interface IBuffTarget
 {
     string GetStatPropertyKey(StatType statType);
 }

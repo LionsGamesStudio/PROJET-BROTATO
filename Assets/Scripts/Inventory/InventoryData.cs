@@ -18,6 +18,23 @@ public class InventoryData : FluxDataContainer
     [ReactiveProperty("inventory.equippedWeapons")]
     public ReactiveCollection<WeaponData> equippedWeapons;
 
+    public bool HaveNotEquippedAllWeapon(WeaponData weapon)
+    {
+        int count = 0;
+        for (int i = 0; i < equippedWeapons.Count; i++)
+        {
+            if (equippedWeapons[i] == weapon) count++;
+        }
+
+        int quantityInInventory = 0;
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].itemData == weapon) quantityInInventory += slots[i].quantity;
+        }
+
+        return quantityInInventory <= count;
+    }
+
     [FluxButton("Reset Inventory")]
     protected override void OnDataContainerInitialized()
     {

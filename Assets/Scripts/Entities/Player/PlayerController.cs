@@ -5,6 +5,7 @@ using FluxFramework.Core;
 using FluxFramework.Extensions;
 using UnityEngine;
 
+[RequireComponent(typeof(Entity))]
 public class PlayerController : FluxMonoBehaviour, IPlayer
 {
     [Header("Player Stats")]
@@ -32,19 +33,6 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
     public string HealthPropertyKey => "player.health";
     public float MaxHealth => maxHealth; // Still provides max health for IHealthTarget
     public AttackerType DamagerEntities => AttackerType.Monster; // Player is damaged by monsters
-    
-    private int _id;
-    public int ID
-    {
-        get
-        {
-            if (_id == 0)
-            {
-                _id = Guid.NewGuid().GetHashCode();
-            }
-            return _id;
-        }
-    }
 
     protected override void OnFluxAwake()
     {
@@ -84,7 +72,7 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
             case StatType.MaxHealth: return "player.maxHealth";
             case StatType.MovementSpeed: return "player.movementSpeed";
             case StatType.Defense: return "player.armor";
-            
+
             // These stats are now handled by PlayerWeaponAttackerComponent.
             // Return string.Empty to signal that this component does not handle them.
             case StatType.Damage:

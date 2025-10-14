@@ -3,6 +3,7 @@ using FluxFramework.Core;
 using FluxFramework.Extensions;
 using UnityEngine;
 
+[RequireComponent(typeof(Entity))]
 public class BuffManager : FluxMonoBehaviour
 {
     [Header("Buff Settings")]
@@ -10,61 +11,61 @@ public class BuffManager : FluxMonoBehaviour
     
     private Dictionary<int, ActiveBuff> activeBuffs = new Dictionary<int, ActiveBuff>();
     private IBuffTarget[] _targets;
+    private Entity _entity;
 
     protected override void OnFluxAwake()
     {
+        // Get the central Entity component for the ID.
+        _entity = GetComponent<Entity>();
+        if (_entity == null)
+        {
+            Debug.LogError($"BuffManager on '{gameObject.name}' requires an Entity component for its ID, but none was found. Disabling component.", this);
+            this.enabled = false;
+            return;
+        }
+
         _targets = GetComponents<IBuffTarget>();
         if (_targets == null || _targets.Length == 0)
         {
-            Debug.LogError($"BuffManager on {gameObject.name} could not find any component implementing IBuffTarget.");
+            Debug.LogError($"BuffManager on {gameObject.name} could not find any component implementing IBuffTarget.", this);
             return;
         }
         
+        // If entityId is not manually set, use the ID from the central Entity component.
         if (string.IsNullOrEmpty(entityId))
         {
-            entityId = _targets[0].ID.ToString();
+            entityId = _entity.ID.ToString();
         }
     }
-
+    
     public void ApplyBuff(BuffData buffData)
     {
         if (buffData == null || _targets == null) return;
 
-        // Check if the buff is already active.
         if (activeBuffs.TryGetValue(buffData.ID, out var existingBuff))
         {
-            // If the buff is stackable, try to add a stack.
             if (buffData.Stackable)
             {
-                // First, remove the effects of the old stack count.
                 ApplyBuffEffects(existingBuff.Data, false, existingBuff.CurrentStacks);
-
-                // Try to add a new stack.
                 bool stackAdded = existingBuff.AddStack();
-
-                // Re-apply the effects with the new stack count.
                 ApplyBuffEffects(existingBuff.Data, true, existingBuff.CurrentStacks);
-                
-                // Always refresh the duration on re-application.
                 existingBuff.RefreshDuration();
                 
                 if (stackAdded)
                 {
-                    this.PublishEvent(new BuffAppliedEvent(buffData, entityId)); // Or a specific BuffStackedEvent
+                    this.PublishEvent(new BuffAppliedEvent(buffData, entityId));
                 }
             }
-            else // If not stackable, just refresh its duration.
+            else
             {
                 existingBuff.RefreshDuration();
             }
         }
-        else // If the buff is not active, create a new instance.
+        else
         {
             var activeBuff = new ActiveBuff(buffData, this);
             activeBuffs[buffData.ID] = activeBuff;
-        
             this.PublishEvent(new BuffAppliedEvent(buffData, entityId));
-            // Apply effects for the first time with 1 stack.
             ApplyBuffEffects(buffData, true, 1);
         }
     }
@@ -73,24 +74,14 @@ public class BuffManager : FluxMonoBehaviour
     {
         if (!activeBuffs.TryGetValue(buffId, out var buff) || _targets == null) return;
 
-        // When removing, undo the effects based on the final stack count.
         ApplyBuffEffects(buff.Data, false, buff.CurrentStacks);
         activeBuffs.Remove(buffId);
-        
         this.PublishEvent(new BuffRemovedEvent(buff.Data, entityId));
     }
-
-    /// <summary>
-    /// Applies or removes the effects of a buff's stat modifiers.
-    /// </summary>
-    /// <param name="buffData">The data of the buff to apply/remove.</param>
-    /// <param name="apply">True to apply the effects, false to remove them.</param>
-    /// <param name="stacks">The number of stacks to calculate the effect's magnitude.</param>
+    
     private void ApplyBuffEffects(BuffData buffData, bool apply, int stacks)
     {
-        // Ensure stacks are at least 1 for the calculation.
         if (stacks <= 0) stacks = 1;
-
         float multiplier = apply ? 1f : -1f;
         
         foreach (var modifier in buffData.StatModifiers)
@@ -101,9 +92,7 @@ public class BuffManager : FluxMonoBehaviour
                 
                 if (!string.IsNullOrEmpty(propertyKey))
                 {
-                    // Calculate the total value based on the number of stacks.
                     float totalModifierValue = modifier.value * stacks;
-
                     switch (modifier.modifierType)
                     {
                         case ModifierType.Additive:
@@ -112,11 +101,6 @@ public class BuffManager : FluxMonoBehaviour
                             break;
                             
                         case ModifierType.Multiplicative:
-                            // Stacking multiplicative buffs by multiplying them can be tricky.
-                            // A common approach is to convert them to additive percentages.
-                            // For simplicity here, we will apply the modifier 'stacks' times.
-                            // WARNING: This can lead to very large numbers. A better system
-                            // would recalculate from a base value. But for now, this works.
                             if (apply)
                             {
                                 for (int i = 0; i < stacks; i++)

@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic; // Added for IReadOnlyList (potential future use for detected targets)
-using UnityEngine; // Added for Vector3
+using System.Collections.Generic;
+using UnityEngine;
 
-public interface IAttacker : IEntity
+public interface IAttacker
 {
     /// <summary>
     /// Gets or sets whether this attacker is currently enabled to attack.

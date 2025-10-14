@@ -11,17 +11,15 @@ public class SimpleFireBehavior : WeaponBehavior
     /// </summary>
     /// <param name="healthTarget">The target to damage.</param>
     /// <param name="attacker">The attacker providing the damage amount.</param>
-    public override void Execute(IHealthTarget healthTarget, IAttacker attacker)
+    /// <param name="attackerId">The unique ID of the attacker entity.</param>
+    public override void Execute(IHealthTarget healthTarget, IAttacker attacker, int attackerId)
     {
-        // Ensure both the target and attacker are valid before proceeding.
         if (healthTarget == null || attacker == null)
         {
             Debug.LogWarning("SimpleFireBehavior: Execute called with a null target or attacker.");
             return;
         }
 
-        // The IHealthTarget is an interface, so it must be on a Component.
-        // We cast it to a Component to access its GameObject and other components.
         var targetComponent = healthTarget as Component;
         if (targetComponent == null)
         {
@@ -29,16 +27,14 @@ public class SimpleFireBehavior : WeaponBehavior
             return;
         }
 
-        // Try to get the HealthComponent from the target.
         var targetHealthComponent = targetComponent.GetComponent<HealthComponent>();
         if (targetHealthComponent != null)
         {
-            // Apply damage to the target using the attacker's final damage value.
             float damageToDeal = attacker.Damage;
             targetHealthComponent.TakeDamage(damageToDeal);
 
-            // Debug log to confirm the attack happened. This is very useful for testing.
-            Debug.Log($"{attacker.ID} attacked {targetHealthComponent.name} for {damageToDeal} damage.");
+            // The log now uses the attackerId passed as a parameter.
+            Debug.Log($"Attacker ID:{attackerId} attacked {targetComponent.name} for {damageToDeal} damage.");
         }
         else
         {

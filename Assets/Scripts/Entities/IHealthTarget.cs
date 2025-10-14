@@ -1,4 +1,4 @@
-public interface IHealthTarget : IEntity
+public interface IHealthTarget
 {
     string HealthPropertyKey { get; }
     float MaxHealth { get; }

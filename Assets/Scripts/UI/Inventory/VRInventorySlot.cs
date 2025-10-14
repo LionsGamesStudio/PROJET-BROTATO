@@ -1,20 +1,21 @@
 using UnityEngine;
+using FluxFramework.Core;
+using FluxFramework.Extensions;
 
-public class VRInventorySlot : MonoBehaviour
+
+public class VRInventorySlot : FluxMonoBehaviour
 {
     [Header("Slot UI")]
     [SerializeField] private UnityEngine.UI.Image iconImage;
     [SerializeField] private TMPro.TextMeshProUGUI quantityText;
-    
+
     private int slotIndex;
-    private VRInventoryUI parentUI;
-    
-    public void Initialize(int index, VRInventoryUI parent)
+
+    public void Initialize(int index)
     {
         slotIndex = index;
-        parentUI = parent;
     }
-    
+
     public void UpdateSlot(InventorySlot slot)
     {
         if (slot.IsEmpty)
@@ -25,14 +26,18 @@ public class VRInventorySlot : MonoBehaviour
         }
         else
         {
+            string text = slot.itemData.Name + " : " + (slot.quantity > 0 ? slot.quantity.ToString() : "0");
             iconImage.sprite = slot.itemData.Icon;
             iconImage.color = Color.white;
-            quantityText.text = slot.quantity > 1 ? slot.quantity.ToString() : "";
+            quantityText.text = text;
         }
     }
-    
+
+    /// <summary>
+    /// Called when the player interacts with this slot in VR.
+    /// </summary>
     public void OnVRInteract()
     {
-        parentUI?.OnSlotInteracted(slotIndex);
+        this.PublishEvent(new SlotInteractedEvent(slotIndex));
     }
 }

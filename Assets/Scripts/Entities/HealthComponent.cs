@@ -11,22 +11,9 @@ public class HealthComponent : FluxMonoBehaviour
     
     private IHealthTarget _target;
     private IDisposable _healthSubscription;
-    private int _id;
 
     public float MaxHealth => maxHealth;
     public string HealthPropertyKey => healthPropertyKey;
-    
-    public int ID
-    {
-        get
-        {
-            if (_id == 0)
-            {
-                _id = Guid.NewGuid().GetHashCode();
-            }
-            return _id;
-        }
-    }
 
     protected override void OnFluxAwake()
     {
@@ -56,6 +43,8 @@ public class HealthComponent : FluxMonoBehaviour
     /// <param name="newValue"></param>
     private void OnHealthChanged(float oldValue, float newValue)
     {
+        if (oldValue == newValue) return;
+        
         _target?.OnHealthChanged(oldValue, newValue);
 
         if (newValue <= 0f && oldValue > 0f)

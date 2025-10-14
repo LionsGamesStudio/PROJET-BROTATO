@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 9583183}
   - component: {fileID: 9583185}
   - component: {fileID: 9583184}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fond UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 9614180}
   - component: {fileID: 9614182}
   - component: {fileID: 9614181}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_A1_6.5m_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -409,7 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14482817}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: '-- XR UI '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,10 +446,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -496,6 +511,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -513,7 +558,7 @@ GameObject:
   - component: {fileID: 45076854}
   - component: {fileID: 45076853}
   - component: {fileID: 45076852}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Gestion des Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,39 +774,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &59060930 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4221443357746542395, guid: 61a979e2bd89d6749b71e7db6e899ed8,
-    type: 3}
-  m_PrefabInstance: {fileID: 416824627}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &59060932
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59060930}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &73837967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,10 +782,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -824,6 +846,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1005,7 +1057,7 @@ GameObject:
   - component: {fileID: 97385549}
   - component: {fileID: 97385551}
   - component: {fileID: 97385550}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,10 +1129,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -1131,6 +1193,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1191,6 +1283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
@@ -1413,7 +1510,7 @@ GameObject:
   - component: {fileID: 143159169}
   - component: {fileID: 143159168}
   - component: {fileID: 143159167}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1617,7 @@ GameObject:
   - component: {fileID: 156197932}
   - component: {fileID: 156197934}
   - component: {fileID: 156197933}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Ennemies Restant - Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1655,109 +1752,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 252029130}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &190643891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 190643892}
-  - component: {fileID: 190643895}
-  - component: {fileID: 190643894}
-  - component: {fileID: 190643893}
-  m_Layer: 7
-  m_Name: BarreDeVie
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &190643892
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190643891}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 437509188}
-  - {fileID: 490341644}
-  m_Father: {fileID: 236496576}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 0.125}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &190643893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190643891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &190643894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190643891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
---- !u!223 &190643895
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190643891}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &207415765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207415766}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,6 +1800,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
@@ -1868,81 +1867,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 211535675}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &215320868
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 215320869}
-  - component: {fileID: 215320871}
-  - component: {fileID: 215320870}
-  m_Layer: 7
-  m_Name: Fill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &215320869
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215320868}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 499371908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.8999939, y: 0}
-  m_SizeDelta: {x: 9.200003, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &215320870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215320868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.281844, g: 0.735849, b: 0.35415047, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &215320871
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215320868}
-  m_CullTransparentMesh: 1
 --- !u!1 &216986518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1879,7 @@ GameObject:
   - component: {fileID: 216986522}
   - component: {fileID: 216986521}
   - component: {fileID: 216986520}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Angle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2061,6 +1985,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2161,10 +2090,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -2215,6 +2154,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2355,38 +2324,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236031041}
   m_CullTransparentMesh: 1
---- !u!1 &236496575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 236496576}
-  m_Layer: 7
-  m_Name: 'Tracement de la barre de vie '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &236496576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236496575}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: -0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 190643892}
-  m_Father: {fileID: 839709177}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &245739001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2395,10 +2332,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -2449,6 +2396,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2549,6 +2526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2635,7 +2617,7 @@ GameObject:
   - component: {fileID: 262725749}
   - component: {fileID: 262725751}
   - component: {fileID: 262725750}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3068,7 +3050,7 @@ GameObject:
   - component: {fileID: 281085042}
   - component: {fileID: 281085044}
   - component: {fileID: 281085043}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3201,7 +3183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282033242}
   - component: {fileID: 282033243}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3611,10 +3593,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -3666,6 +3658,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3683,7 +3705,7 @@ GameObject:
   - component: {fileID: 399907116}
   - component: {fileID: 399907115}
   - component: {fileID: 399907114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Angle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3839,123 +3861,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyTarget
       objectReference: {fileID: 0}
+    - target: {fileID: 8789959749931939765, guid: 61a979e2bd89d6749b71e7db6e899ed8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4221443357746542395, guid: 61a979e2bd89d6749b71e7db6e899ed8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59060932}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61a979e2bd89d6749b71e7db6e899ed8, type: 3}
---- !u!1 &437509187
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 437509188}
-  - component: {fileID: 437509190}
-  - component: {fileID: 437509189}
-  m_Layer: 7
-  m_Name: Slider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &437509188
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437509187}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 985974250}
-  - {fileID: 499371908}
-  - {fileID: 1501507868}
-  m_Father: {fileID: 190643892}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &437509189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437509187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 1487925757}
-  m_FillRect: {fileID: 215320869}
-  m_HandleRect: {fileID: 1487925756}
-  m_Direction: 0
-  m_MinValue: 1
-  m_MaxValue: 30
-  m_WholeNumbers: 1
-  m_Value: 30
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &437509190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437509187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c38561d7b6d0ad409a2a1af21b6aeb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isFrameworkInitialized: 0
-  _applyThemeOnStart: 1
-  _isBound: 0
-  healthBarSlider: {fileID: 437509189}
-  healthText: {fileID: 0}
 --- !u!4 &450940799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
@@ -3974,7 +3889,7 @@ GameObject:
   - component: {fileID: 453880091}
   - component: {fileID: 453880090}
   - component: {fileID: 453880089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Parois 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4081,10 +3996,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -4135,6 +4060,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4188,7 +4143,7 @@ GameObject:
   - component: {fileID: 468186650}
   - component: {fileID: 468186652}
   - component: {fileID: 468186651}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Ennemies Restant - Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4319,10 +4274,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -4373,6 +4338,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4513,78 +4508,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489818341}
   m_CullTransparentMesh: 1
---- !u!1 &490341643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 490341644}
-  m_Layer: 7
-  m_Name: PV
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &490341644
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490341643}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1617602326}
-  m_Father: {fileID: 190643892}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.068, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &499371907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 499371908}
-  m_Layer: 7
-  m_Name: Fill Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &499371908
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499371907}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.075, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 215320869}
-  m_Father: {fileID: 437509188}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0.5999985, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &511594010
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,6 +4808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_A1_6.5m_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5082,10 +5010,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -5137,6 +5075,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5150,10 +5118,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -5205,6 +5183,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5218,10 +5226,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -5273,6 +5291,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5302,7 +5350,7 @@ GameObject:
   - component: {fileID: 587303554}
   - component: {fileID: 587303553}
   - component: {fileID: 587303552}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mur Sud
   m_TagString: Exit
   m_Icon: {fileID: 0}
@@ -5444,7 +5492,7 @@ GameObject:
   - component: {fileID: 591888208}
   - component: {fileID: 591888207}
   - component: {fileID: 591888206}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mur Ouest
   m_TagString: Exit
   m_Icon: {fileID: 0}
@@ -5624,7 +5672,7 @@ GameObject:
   - component: {fileID: 613473292}
   - component: {fileID: 613473291}
   - component: {fileID: 613473290}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5727,7 +5775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &615987111
 Transform:
   m_ObjectHideFlags: 0
@@ -6150,7 +6198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617461589}
   - component: {fileID: 617461590}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6856,7 +6904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 651620754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6902,7 +6950,7 @@ GameObject:
   - component: {fileID: 651996303}
   - component: {fileID: 651996305}
   - component: {fileID: 651996304}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Vague Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7588,10 +7636,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -7642,6 +7700,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7731,10 +7819,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -7785,6 +7883,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8201,15 +8329,16 @@ GameObject:
   - component: {fileID: 776157107}
   - component: {fileID: 776157108}
   - component: {fileID: 776157111}
+  - component: {fileID: 776157118}
   - component: {fileID: 776157106}
   - component: {fileID: 776157109}
+  - component: {fileID: 776157119}
   - component: {fileID: 776157115}
+  - component: {fileID: 776157112}
   - component: {fileID: 776157114}
   - component: {fileID: 776157113}
-  - component: {fileID: 776157112}
   - component: {fileID: 776157116}
   - component: {fileID: 776157117}
-  - component: {fileID: 776157118}
   m_Layer: 7
   m_Name: -- XR Origin
   m_TagString: Player
@@ -8307,7 +8436,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8436,6 +8565,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &776157119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776157105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cbf3aefef987d4d96e81ef3427c61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &781427754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8444,10 +8585,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -8499,6 +8650,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8515,7 +8696,7 @@ GameObject:
   - component: {fileID: 783096189}
   - component: {fileID: 783096191}
   - component: {fileID: 783096190}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Name of the Weapon/Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8646,10 +8827,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -8701,6 +8892,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8718,6 +8939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
@@ -8793,6 +9019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_A1_6.5m_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8860,7 +9091,7 @@ GameObject:
   - component: {fileID: 807153911}
   - component: {fileID: 807153910}
   - component: {fileID: 807153909}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mur Nord
   m_TagString: Exit
   m_Icon: {fileID: 0}
@@ -8964,7 +9195,7 @@ GameObject:
   - component: {fileID: 829585474}
   - component: {fileID: 829585476}
   - component: {fileID: 829585475}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9040,7 +9271,7 @@ GameObject:
   - component: {fileID: 833830987}
   - component: {fileID: 833830986}
   - component: {fileID: 833830985}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9160,7 +9391,7 @@ GameObject:
   - component: {fileID: 838001075}
   - component: {fileID: 838001077}
   - component: {fileID: 838001076}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9317,7 +9548,6 @@ Transform:
   - {fileID: 1963550452}
   - {fileID: 615987111}
   - {fileID: 1766416108}
-  - {fileID: 236496576}
   m_Father: {fileID: 1916480375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &839709178
@@ -9602,7 +9832,7 @@ GameObject:
   - component: {fileID: 848554753}
   - component: {fileID: 848554752}
   - component: {fileID: 848554751}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9749,6 +9979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
@@ -9925,7 +10160,7 @@ GameObject:
   - component: {fileID: 874800513}
   - component: {fileID: 874800512}
   - component: {fileID: 874800511}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10090,7 +10325,7 @@ GameObject:
   - component: {fileID: 914388310}
   - component: {fileID: 914388309}
   - component: {fileID: 914388308}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10191,7 +10426,7 @@ GameObject:
   - component: {fileID: 931747302}
   - component: {fileID: 931747304}
   - component: {fileID: 931747303}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Die - Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10328,7 +10563,7 @@ GameObject:
   - component: {fileID: 938302574}
   - component: {fileID: 938302573}
   - component: {fileID: 938302572}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Prise d'attaque par l'ennemie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10426,10 +10661,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -10480,6 +10725,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10655,81 +10930,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &985974249
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 985974250}
-  - component: {fileID: 985974252}
-  - component: {fileID: 985974251}
-  m_Layer: 7
-  m_Name: Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &985974250
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985974249}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 437509188}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &985974251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985974249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7283019, g: 0.25147024, b: 0.25147024, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &985974252
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985974249}
-  m_CullTransparentMesh: 1
 --- !u!1 &992226381
 GameObject:
   m_ObjectHideFlags: 0
@@ -10739,7 +10939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 992226382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Murs invisibles
   m_TagString: Exit
   m_Icon: {fileID: 0}
@@ -10779,10 +10979,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -10834,6 +11044,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10851,6 +11091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
@@ -11057,10 +11302,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -11112,6 +11367,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11129,7 +11414,7 @@ GameObject:
   - component: {fileID: 1016521136}
   - component: {fileID: 1016521135}
   - component: {fileID: 1016521134}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Angle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11234,7 +11519,7 @@ GameObject:
   - component: {fileID: 1018558708}
   - component: {fileID: 1018558707}
   - component: {fileID: 1018558706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Parois 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11440,10 +11725,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -11495,6 +11790,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11520,10 +11845,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -11574,6 +11909,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11832,10 +12197,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -11886,6 +12261,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12182,7 +12587,7 @@ GameObject:
   - component: {fileID: 1096515451}
   - component: {fileID: 1096515453}
   - component: {fileID: 1096515452}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Shop - Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12314,7 +12719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1103156368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12486,10 +12891,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -12540,6 +12955,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12659,10 +13104,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -12713,6 +13168,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12777,6 +13262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_A1_6.5m_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
         type: 3}
@@ -12845,7 +13335,7 @@ GameObject:
   - component: {fileID: 1176399168}
   - component: {fileID: 1176399167}
   - component: {fileID: 1176399166}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12962,10 +13452,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -13016,6 +13516,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13136,10 +13666,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -13191,6 +13731,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13202,107 +13772,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 233331395}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1230468524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1230468528}
-  - component: {fileID: 1230468527}
-  - component: {fileID: 1230468526}
-  - component: {fileID: 1230468525}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1230468525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230468524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1230468526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230468524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1230468527
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230468524}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1230468528
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230468524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1230492720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13311,10 +13780,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -13366,6 +13845,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13383,6 +13892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
@@ -13499,7 +14013,7 @@ GameObject:
   - component: {fileID: 1309147166}
   - component: {fileID: 1309147168}
   - component: {fileID: 1309147167}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13586,7 +14100,7 @@ GameObject:
   - component: {fileID: 1337257271}
   - component: {fileID: 1337257273}
   - component: {fileID: 1337257272}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13663,6 +14177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13733,7 +14252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1342956868}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13772,7 +14291,7 @@ GameObject:
   - component: {fileID: 1344446716}
   - component: {fileID: 1344446715}
   - component: {fileID: 1344446714}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14024,7 +14543,7 @@ GameObject:
   - component: {fileID: 1369059510}
   - component: {fileID: 1369059513}
   - component: {fileID: 1369059512}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14146,7 +14665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1382743614}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Achats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14187,6 +14706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
@@ -14319,6 +14843,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -14405,7 +14934,7 @@ GameObject:
   - component: {fileID: 1421927426}
   - component: {fileID: 1421927428}
   - component: {fileID: 1421927427}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Vague Text - Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14537,7 +15066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1434701240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Herbe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14614,7 +15143,7 @@ GameObject:
   - component: {fileID: 1437545333}
   - component: {fileID: 1437545335}
   - component: {fileID: 1437545334}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14690,7 +15219,7 @@ GameObject:
   - component: {fileID: 1469451518}
   - component: {fileID: 1469451517}
   - component: {fileID: 1469451516}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Paroie 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14791,10 +15320,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -14846,122 +15385,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f8dec062cbfee4db3d8c84ebb2c73b, type: 3}
---- !u!1 &1487925755
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1487925756}
-  - component: {fileID: 1487925758}
-  - component: {fileID: 1487925757}
-  m_Layer: 7
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1487925756
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487925755}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1501507868}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1487925757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487925755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1487925758
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487925755}
-  m_CullTransparentMesh: 1
---- !u!1 &1501507867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1501507868}
-  m_Layer: 7
-  m_Name: Handle Slide Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1501507868
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501507867}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1487925756}
-  m_Father: {fileID: 437509188}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1504538816
 GameObject:
   m_ObjectHideFlags: 0
@@ -14974,7 +15432,7 @@ GameObject:
   - component: {fileID: 1504538820}
   - component: {fileID: 1504538819}
   - component: {fileID: 1504538818}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Gestion des Ennemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15080,7 +15538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514921639}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15118,7 +15576,7 @@ GameObject:
   - component: {fileID: 1518462107}
   - component: {fileID: 1518462109}
   - component: {fileID: 1518462108}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15308,7 +15766,7 @@ GameObject:
   - component: {fileID: 1555268357}
   - component: {fileID: 1555268356}
   - component: {fileID: 1555268355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mur Est
   m_TagString: Exit
   m_Icon: {fileID: 0}
@@ -15409,10 +15867,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -15464,6 +15932,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15477,10 +15975,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -15531,6 +16039,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15662,10 +16200,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -15716,6 +16264,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16167,6 +16745,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -16366,140 +16949,6 @@ Transform:
   - {fileID: 1525775299}
   m_Father: {fileID: 1838354201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1617602325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1617602326}
-  - component: {fileID: 1617602328}
-  - component: {fileID: 1617602327}
-  m_Layer: 7
-  m_Name: Nombre Pv
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1617602326
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617602325}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 490341644}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.164, y: 0.096}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1617602327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617602325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'PV : ?'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 84.14314, y: 0, z: 11.298908, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1617602328
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617602325}
-  m_CullTransparentMesh: 1
 --- !u!1 &1619303331
 GameObject:
   m_ObjectHideFlags: 0
@@ -16512,7 +16961,7 @@ GameObject:
   - component: {fileID: 1619303335}
   - component: {fileID: 1619303334}
   - component: {fileID: 1619303333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Paroie 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16617,7 +17066,7 @@ GameObject:
   - component: {fileID: 1636578791}
   - component: {fileID: 1636578790}
   - component: {fileID: 1636578789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Angle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16718,10 +17167,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -16773,6 +17232,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16789,7 +17278,7 @@ GameObject:
   - component: {fileID: 1639881372}
   - component: {fileID: 1639881374}
   - component: {fileID: 1639881373}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16861,10 +17350,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -16916,6 +17415,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16936,7 +17465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654237858}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16981,7 +17510,7 @@ GameObject:
   - component: {fileID: 1674504066}
   - component: {fileID: 1674504068}
   - component: {fileID: 1674504067}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17057,7 +17586,7 @@ GameObject:
   - component: {fileID: 1680454140}
   - component: {fileID: 1680454139}
   - component: {fileID: 1680454138}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: "Achat Propos\xE9 1 - Button"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17180,7 +17709,7 @@ GameObject:
   - component: {fileID: 1717362111}
   - component: {fileID: 1717362110}
   - component: {fileID: 1717362109}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17678,7 +18207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1813998194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rocher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17722,7 +18251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826367372}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: -- UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17822,7 +18351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842190863}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17860,7 +18389,7 @@ GameObject:
   - component: {fileID: 1850824943}
   - component: {fileID: 1850824945}
   - component: {fileID: 1850824944}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18007,10 +18536,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -18062,6 +18601,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18078,7 +18647,7 @@ GameObject:
   - component: {fileID: 1854504061}
   - component: {fileID: 1854504063}
   - component: {fileID: 1854504062}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18212,7 +18781,7 @@ GameObject:
   - component: {fileID: 1855217632}
   - component: {fileID: 1855217634}
   - component: {fileID: 1855217633}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Take Damage - Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18380,7 +18949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902138251}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18457,6 +19026,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Tree_B1_9m_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6759448882052246062, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6759448882052412942, guid: 9787e9e0fbeb87a45beb0d9d4e03edca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18520,10 +19094,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -18574,6 +19158,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18802,10 +19416,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -18856,6 +19480,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18979,7 +19633,7 @@ GameObject:
   - component: {fileID: 1949527676}
   - component: {fileID: 1949527675}
   - component: {fileID: 1949527674}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19250,7 +19904,7 @@ GameObject:
   - component: {fileID: 1966602574}
   - component: {fileID: 1966602573}
   - component: {fileID: 1966602572}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19689,6 +20343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19777,6 +20436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LPW_Rock_Wall_A1_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3133429536943949068, guid: 25cb56d59f80f614b9da0e9a36c48a05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3133429536944118060, guid: 25cb56d59f80f614b9da0e9a36c48a05,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19863,7 +20527,7 @@ GameObject:
   - component: {fileID: 2014522282}
   - component: {fileID: 2014522284}
   - component: {fileID: 2014522283}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19997,7 +20661,7 @@ GameObject:
   - component: {fileID: 2041288790}
   - component: {fileID: 2041288792}
   - component: {fileID: 2041288791}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20070,7 +20734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2055446548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "D\xE9coration"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20104,10 +20768,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -20159,6 +20833,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20172,10 +20876,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -20227,6 +20941,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20244,6 +20988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LPW_Tree_A1_6.5m_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758888183437167707, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8758888183437201531, guid: 2caeb99d3229fee4aa4f3bc8c1c8fc07,
         type: 3}
@@ -20392,10 +21141,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434701240}
     m_Modifications:
+    - target: {fileID: 680655395904939308, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
       propertyPath: m_Name
       value: Groupe de Verdure 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017512853755276211, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2921144993567176371, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
         type: 3}
@@ -20446,6 +21205,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350536350332565747, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776975026142994094, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998074386683252301, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139795252404209072, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597592915570724431, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437209981733015587, guid: b1f8dec062cbfee4db3d8c84ebb2c73b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20587,7 +21376,7 @@ GameObject:
   - component: {fileID: 2122591163}
   - component: {fileID: 2122591162}
   - component: {fileID: 2122591161}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas - Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20714,6 +21503,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 772693491}
     m_Modifications:
+    - target: {fileID: 817259321765985985, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 829575156969705573, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
         type: 3}
       propertyPath: m_Layer
@@ -20776,8 +21570,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2985894331925270993, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
         type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985894331925270993, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985894331925270993, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985894331925270993, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985894331925270993, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 219.99997
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3115798779335588606, guid: 1aa4ef1db9f30e340b6b2a5a7cf2e704,
         type: 3}
@@ -20971,5 +21785,4 @@ SceneRoots:
   - {fileID: 902642979}
   - {fileID: 1967866940}
   - {fileID: 661773365}
-  - {fileID: 1230468528}
   - {fileID: 416824627}

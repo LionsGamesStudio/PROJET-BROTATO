@@ -8,6 +8,6 @@ public class SOWaveManager : ScriptableObject
 {
     [SerializeField]
     private List<SOWaves> sOWaves;
-    public List<SOWaves> SOWaves => sOWaves; // GET THE FUCKING WAVES
+    public List<SOWaves> SOWaves => sOWaves; 
 
 }

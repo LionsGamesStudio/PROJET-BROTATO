@@ -91,10 +91,21 @@ public class AutoTarget : MonoBehaviour
     {
         IEnemy enemy = other.GetComponent<IEnemy>();
 
+        Debug.Log($"=== Composants de {other.name} ===");
+    
+        Component[] components = other.GetComponents<Component>();
+    
+        foreach (Component component in components)
+        {
+            Debug.Log($"- {component.GetType().Name}");
+        }
+    
+        Debug.Log("======================");
+
         if (enemy != null)
         {
             enemiesInRange.Add(enemy);
-        }
+        }   
     }
 
     void OnTriggerExit(Collider other)
@@ -121,9 +132,7 @@ public class AutoTarget : MonoBehaviour
 
     void Update()
     {
-
-        CleanEnemyList();
-
+        CleanEnemyList(); // Modifier avec l'event EnemyDieEvent !
 
         if (monsterLocked == null || !IsValidEnemy(monsterLocked)) // Pour éviter des reTarget à chaque fois qu'un monstre rentre dans la zone.
         {

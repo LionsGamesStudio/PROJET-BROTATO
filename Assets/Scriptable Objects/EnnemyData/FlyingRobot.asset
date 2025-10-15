@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcb74b125ed87a48a53f65fd4372371, type: 3}
+  m_Name: FlyingRobot
+  m_EditorClassIdentifier: 
+  damage: 2
+  attackSpeed: 1.5
+  pv: 50
+  shield: 0
+  moneyValue: 3
+  movementSpeed: 0.5
+  radiusRange: 3
+  monsterPrefab: {fileID: 5123820929819219747, guid: aa2d4ac6511109c4d9884ad026781399,
+    type: 3}

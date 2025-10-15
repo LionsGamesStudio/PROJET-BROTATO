@@ -24,8 +24,7 @@ public class WaveManagement : MonoBehaviour
     // --------------------------------------------
     
     private int numberOfWaves;
-
-    private bool inWave = false;
+    private int actualSequence = 0;
 
     public void Start()
     {
@@ -81,7 +80,6 @@ public class WaveManagement : MonoBehaviour
 
     private void GetWave(SOWaves waves)
     {
-        inWave = true;
         foreach (MonsterEntry entry in waves.Monsters)
         {
             StartCoroutine(SpawningSequence(entry.monster, entry.spawnDelay, entry.count, SetStrategy(entry)));
@@ -90,10 +88,12 @@ public class WaveManagement : MonoBehaviour
 
     IEnumerator SpawningSequence(GameObject monster, int delay, int count, ISpawnStrategy strategy)
     {
+        actualSequence++;
         for (int i = 0; i < count; i++)
         {
             Debug.Log("La séquence de spawn est lancé !");
-            List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy
+
+            List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy without taken in consideration monsters
 
             List<GameObject> temp = strategy.SpawnXMonster(monster, validPositions); // Spawn the monster and count how many it cost for the player
 
@@ -101,18 +101,17 @@ public class WaveManagement : MonoBehaviour
             {
                 if (enemy != null) enemyInWave.Add(enemy);
                 else Debug.LogWarning("Un monstre n'a pas pu être instancié !");
+                enemy.transform.LookAt(player.transform); // Le monstre regarde le joueur lorsqu'il est instancié
             }
 
 
-            count -= temp.Count;  //We are deleting the number of new monster
+            count -= temp.Count;  // We are deleting the number of new monster
 
             yield return new WaitForSeconds(delay); // Wait
-            
-            // Au cas ou gérer la liste des position valide dans ce script et dans les strategy
+
         }
-
+        actualSequence--;
         CheckWaveEnd();
-
     }
 
     private void OnEnemyDie(EnemyDieEvent evt)
@@ -123,23 +122,18 @@ public class WaveManagement : MonoBehaviour
 
     private void RemoveEnemy(GameObject enemy)
     {
-        // enemyInWave.Remove(enemy); Ca marche mais on sait jamais
-        enemyInWave.RemoveAll(e => e == null || e == enemy); // Pour être sur 
+        // enemyInWave.Remove(enemy); Work
+        enemyInWave.RemoveAll(e => e == null || e == enemy); // Just in case
     }
-
-    
 
     private void CheckWaveEnd()
     {
-        if (enemyInWave.Count == 0 && inWave)
+        if (enemyInWave.Count == 0 && actualSequence == 0)
         {
             Debug.Log("Vague terminée !");
-            inWave = false;
             StartCoroutine(WaitBeforeNextWave());
         }
     }
-
-
 
     IEnumerator WaitBeforeNextWave()
     {

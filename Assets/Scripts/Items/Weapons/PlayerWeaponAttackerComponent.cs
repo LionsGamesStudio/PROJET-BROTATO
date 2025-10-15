@@ -1,122 +1,151 @@
-using FluxFramework.Attributes;
 using FluxFramework.Core;
 using FluxFramework.Extensions;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Attacker component for player characters, whose attack stats are determined by an equipped weapon.
-/// </summary>
 public class PlayerWeaponAttackerComponent : BaseAttackerComponent, IBuffTarget
 {
-    // --- Base stats from the currently equipped weapon ---
-    private float _baseDamage = 0f;
-    private float _baseAttackSpeed = 0f;
-    private float _baseRange = 0f;
+    // --- Instance-specific data ---
+    private int _instanceId = -1;
+    private string _damagePropertyKey;
+    private string _attackSpeedPropertyKey;
+    private string _rangePropertyKey;
 
-    // --- Final stats, exposed as Reactive Properties for BuffManager and UI ---
-    // These properties will be the final calculated values after all modifiers (buffs, etc.) are applied.
-    [ReactiveProperty("player.finalDamage")]
-    private float _finalDamage = 0f;
-    
-    [ReactiveProperty("player.finalAttackSpeed")]
-    private float _finalAttackSpeed = 0f;
-    
-    [ReactiveProperty("player.finalRange")]
-    private float _finalRange = 0f;
-    
-    // Override abstract properties from BaseAttackerComponent to use the FINAL stats.
-    // The attack logic will now use the buffed/debuffed values.
-    public override float Damage => _finalDamage;
-    public override float AttackSpeed => _finalAttackSpeed;
-    public override float Range => _finalRange;
+    // --- Local storage for this weapon's own base stats ---
+    private float _weaponBaseDamage = 0f;
+    private float _weaponBaseAttackSpeed = 0f;
+    private float _weaponBaseRange = 0f;
 
-    protected override void OnFluxAwake()
+    // --- Subscriptions to the PLAYER'S global stats ---
+    private List<IDisposable> _subscriptions = new List<IDisposable>();
+
+    // --- Core Property Overrides ---
+    public override float Damage => GetReactiveValue(_damagePropertyKey);
+    public override float AttackSpeed => GetReactiveValue(_attackSpeedPropertyKey);
+    public override float Range => GetReactiveValue(_rangePropertyKey);
+
+    public void Initialize(int instanceId)
     {
-        base.OnFluxAwake(); // Call base initialization
+        _instanceId = instanceId;
+        _damagePropertyKey = $"weapon.{_instanceId}.damage";
+        _attackSpeedPropertyKey = $"weapon.{_instanceId}.attackSpeed";
+        _rangePropertyKey = $"weapon.{_instanceId}.range";
+
+        // --- Subscribe to player's global stat changes ---
+        // We use 'this' as the owner to leverage the extension methods.
+        // The 'RecalculateFinalStats' method will now be called automatically whenever the player's base damage changes.
+        var damageSub = this.SubscribeToProperty<float>("player.baseDamage", _ => RecalculateFinalStats(), fireOnSubscribe: false);
+        var speedSub = this.SubscribeToProperty<float>("player.baseAttackSpeed", _ => RecalculateFinalStats(), fireOnSubscribe: false);
         
-        // Initialize with default/no weapon stats until one is equipped.
-        EquipWeapon(null); 
+        _subscriptions.Add(damageSub);
+        _subscriptions.Add(speedSub);
     }
 
-    /// <summary>
-    /// Equips a new weapon, updating the player's base attack stats and recalculating final stats.
-    /// This method is typically called by the WeaponInvoker.
-    /// </summary>
-    /// <param name="weapon">The WeaponData of the weapon to equip. Pass null to unequip.</param>
     public void EquipWeapon(WeaponData weapon)
     {
-        if (weapon == null)
+        if (_instanceId < 0)
         {
-            // Reset base stats and behavior if no weapon is equipped.
-            _baseDamage = 0f;
-            _baseAttackSpeed = 0f;
-            _baseRange = 0f;
-            targetSelector = null;
-            attackBehavior = null;
-            Debug.Log("PlayerWeaponAttackerComponent: Weapon unequipped. Base stats reset.");
+            Debug.LogError($"Component not initialized on '{gameObject.name}'.", this);
+            return;
+        }
+
+        if (weapon != null)
+        {
+            // Store this weapon's own base stats locally
+            _weaponBaseDamage = weapon.Damage;
+            _weaponBaseAttackSpeed = weapon.AttackSpeed;
+            _weaponBaseRange = weapon.Range;
+            targetSelector = weapon.TargetSelector;
+            attackBehavior = weapon.WeaponBehavior;
         }
         else
         {
-            // Update base stats and behavior based on the new weapon.
-            _baseDamage = weapon.Damage;
-            _baseAttackSpeed = weapon.AttackSpeed;
-            _baseRange = weapon.Range;
-            targetSelector = weapon.TargetSelector;
-            attackBehavior = weapon.WeaponBehavior;
-            Debug.Log($"PlayerWeaponAttackerComponent: Equipped weapon '{weapon.Name}'. Base Damage: {_baseDamage}, Speed: {_baseAttackSpeed}, Range: {_baseRange}.");
+            // Reset if unequipping
+            _weaponBaseDamage = 0f;
+            _weaponBaseAttackSpeed = 0f;
+            _weaponBaseRange = 0f;
         }
 
-        // After updating base stats, recalculate the final stats.
-        // This ensures that existing buffs are applied to the new weapon's stats.
+        // Trigger the first calculation
         RecalculateFinalStats();
-        
-        // Update the range collider's radius based on the final, potentially buffed range.
+
         if (rangeTrigger != null)
         {
             rangeTrigger.radius = Range;
         }
-
-        StopAttacking(); // Stop any ongoing attack while weapon stats are changing.
+        StopAttacking();
     }
-
+    
     /// <summary>
-    /// Recalculates the final stats by starting with the base stats and applying all active buffs.
-    /// This should be called whenever a weapon is equipped or a buff is applied/removed.
+    /// This is the core calculation logic. It combines the weapon's base stats
+    /// with the player's global base stats to produce the final output.
     /// </summary>
     private void RecalculateFinalStats()
     {
-        // Start with the base stats from the weapon.
-        // By using UpdateReactiveProperty, we ensure the UI and other systems are notified of the change.
-        this.UpdateReactiveProperty("player.finalDamage", _baseDamage);
-        this.UpdateReactiveProperty("player.finalAttackSpeed", _baseAttackSpeed);
-        this.UpdateReactiveProperty("player.finalRange", _baseRange);
+        // 1. Get the player's current global stats
+        float playerDamageBonus = this.GetReactivePropertyValue<float>("player.baseDamage");
+        float playerAttackSpeedBonus = this.GetReactivePropertyValue<float>("player.baseAttackSpeed");
+        // Add other bonuses for range, etc., if needed.
 
-        // TODO in a future step: We need a way to get all active buffs from the BuffManager
-        // and re-apply their modifiers here. For now, BuffManager will directly modify these
-        // reactive properties, and this method just resets them to base values.
-        // This is a simplification that works for now but should be improved for robustness.
+        // 2. Apply the formula (here, a simple addition)
+        float finalDamage = _weaponBaseDamage + playerDamageBonus;
+        float finalAttackSpeed = _weaponBaseAttackSpeed + playerAttackSpeedBonus;
+        float finalRange = _weaponBaseRange; // Assuming range isn't buffed by player stats for now
+
+        // 3. Create or update this weapon's unique reactive properties with the calculated final values.
+        FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty(_damagePropertyKey, finalDamage);
+        FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty(_attackSpeedPropertyKey, finalAttackSpeed);
+        FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty(_rangePropertyKey, finalRange);
+
+        Debug.Log($"Recalculated stats for weapon [{_instanceId}]: Final Damage = {finalDamage} (Weapon: {_weaponBaseDamage} + Player: {playerDamageBonus})");
     }
-    
+
+    public void Decommission()
+    {
+        if (_instanceId < 0) return;
+
+        // --- CRITICAL: Unsubscribe from all player stat events to prevent memory leaks ---
+        foreach (var sub in _subscriptions)
+        {
+            sub?.Dispose();
+        }
+        _subscriptions.Clear();
+
+        // Remove this weapon's properties from the manager
+        FluxFramework.Core.Flux.Manager.Properties.UnregisterProperty(_damagePropertyKey);
+        FluxFramework.Core.Flux.Manager.Properties.UnregisterProperty(_attackSpeedPropertyKey);
+        FluxFramework.Core.Flux.Manager.Properties.UnregisterProperty(_rangePropertyKey);
+
+        Debug.Log($"Decommissioned weapon [{_instanceId}].");
+        _instanceId = -1;
+    }
+
+    /// <summary>
+    /// Safely retrieves the current value of a reactive property from the manager.
+    /// </summary>
+    /// <param name="key">The unique key of the property to retrieve.</param>
+    /// <returns>The property's value, or 0f if it doesn't exist.</returns>
+    private float GetReactiveValue(string key)
+    {
+        if (string.IsNullOrEmpty(key)) return 0f;
+        var property = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>(key);
+        return property != null ? property.Value : 0f;
+    }
+
     #region IBuffTarget Implementation
 
     /// <summary>
-    /// Provides the property key for a given stat type, allowing BuffManager to find
-    /// and modify the correct ReactiveProperty.
+    /// Allows the BuffManager to find the correct reactive property key for this specific weapon instance.
     /// </summary>
-    /// <param name="statType">The type of stat to get the key for.</param>
-    /// <returns>The string key of the reactive property.</returns>
     public string GetStatPropertyKey(StatType statType)
     {
         switch (statType)
         {
-            // Note: These now point to the "final" stat properties.
-            case StatType.Damage: return "player.finalDamage";
-            case StatType.AttackSpeed: return "player.finalAttackSpeed";
-            case StatType.Range: return "player.finalRange";
-            
-            // Return empty string for stats not handled by this component.
-            // The BuffManager will then know to check other components like PlayerController.
-            default: return string.Empty;
+            case StatType.Damage: return _damagePropertyKey;
+            case StatType.AttackSpeed: return _attackSpeedPropertyKey;
+            case StatType.Range: return _rangePropertyKey;
+            default: return string.Empty; // This component doesn't handle other stat types.
         }
     }
 

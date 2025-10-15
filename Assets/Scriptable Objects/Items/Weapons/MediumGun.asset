@@ -20,6 +20,6 @@ MonoBehaviour:
   id: 606819182
   damage: 15
   attackSpeed: 3
-  range: 18
+  range: 3
   weaponBehavior: {fileID: 11400000, guid: 639cb1d2d5eed2a438f9c828b8cbd456, type: 2}
   targetSelector: {fileID: 11400000, guid: 45489afd7a05ae24598ccaad56e735c3, type: 2}

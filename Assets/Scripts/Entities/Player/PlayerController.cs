@@ -18,6 +18,15 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
     [ReactiveProperty("player.maxHealth")]
     private float maxHealth = 100f; // Managed by HealthComponent
 
+    [Header("Player Base Offensive Stats")]
+    [Tooltip("Player's innate base damage bonus, applied to all weapons.")]
+    [ReactiveProperty("player.baseDamage")]
+    public float baseDamage = 0f;
+
+    [Tooltip("Player's innate attack speed bonus (can be additive or multiplicative).")]
+    [ReactiveProperty("player.baseAttackSpeed")]
+    public float baseAttackSpeed = 0f;
+
     [SerializeField]
     [ReactiveProperty("player.movementSpeed")]
     private float movementSpeed = 5f;
@@ -28,7 +37,6 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
 
     private HealthComponent _healthComponent;
     private BuffManager _buffManager;
-    private PlayerWeaponAttackerComponent _playerAttackerComponent; // Reference to the new attacker component
 
     public string HealthPropertyKey => "player.health";
     public float MaxHealth => maxHealth; // Still provides max health for IHealthTarget
@@ -38,12 +46,6 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
     {
         _healthComponent = GetComponent<HealthComponent>();
         _buffManager = GetComponent<BuffManager>();
-        _playerAttackerComponent = GetComponent<PlayerWeaponAttackerComponent>(); // Get the new attacker component
-
-        if (_playerAttackerComponent == null)
-        {
-            Debug.LogError("PlayerController: PlayerWeaponAttackerComponent not found on this GameObject!");
-        }
     }
 
     public void OnHealthChanged(float oldValue, float newValue)
@@ -64,21 +66,30 @@ public class PlayerController : FluxMonoBehaviour, IPlayer
         _healthComponent?.TakeDamage(damage);
     }
 
+    /// <summary>
+    /// Provides the BuffManager with the correct property key for a given global player stat.
+    /// This is where buffs that affect the entire player should be directed.
+    /// </summary>
     public string GetStatPropertyKey(StatType statType)
     {
         switch (statType)
         {
+            // Player-specific, non-combat stats
             case StatType.Health: return "player.health";
             case StatType.MaxHealth: return "player.maxHealth";
             case StatType.MovementSpeed: return "player.movementSpeed";
             case StatType.Defense: return "player.armor";
 
-            // These stats are now handled by PlayerWeaponAttackerComponent.
-            // Return string.Empty to signal that this component does not handle them.
-            case StatType.Damage:
-            case StatType.AttackSpeed:
+            // Combat-related stats that affect the player directly
+            case StatType.Damage: return "player.baseDamage";
+            case StatType.AttackSpeed: return "player.baseAttackSpeed";
+            
+            // Note: Range is intentionally left out here, as we decided it's a weapon-specific stat.
+            // If you wanted a global player range buff, you would add "player.baseRange" here.
             case StatType.Range:
             default:
+                // Signal that this component does not handle other stat types.
+                // The BuffManager would then know to check other IBuffTarget components (like the weapons themselves).
                 return string.Empty;
         }
     }

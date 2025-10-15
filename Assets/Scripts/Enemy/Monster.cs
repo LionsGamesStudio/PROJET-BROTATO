@@ -66,7 +66,7 @@ public class Monster : MonoBehaviour ,IEnemy
 
     private void InitializeBH()
     {
-        behaviorTree = GetComponent<BHSlime>().CreateTree(sOMonster, agent, player);
+        behaviorTree = GetComponent<IBehaviorTree>().CreateTree(sOMonster, agent, player);
 
         if (sOMonster == null)
         {
@@ -78,6 +78,7 @@ public class Monster : MonoBehaviour ,IEnemy
     private void InitializeNMA()
     {
         agent.speed = sOMonster.MovementSpeed;
+        agent.stoppingDistance = sOMonster.RadiusRange; 
     }
 
     void Update() // BH Update

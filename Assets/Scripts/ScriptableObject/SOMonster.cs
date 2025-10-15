@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding.BehaviorTree;
+using UnityEditor.Animations;
 using UnityEditor.XR.OpenXR.Features;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,6 +43,8 @@ public class SOMonster : ScriptableObject
     [SerializeField]
     private GameObject monsterPrefab;
 
+
+
     public int Damage => damage;
     public int MoneyValue => moneyValue;
     public float AttackSpeed => attackSpeed;
@@ -50,4 +53,5 @@ public class SOMonster : ScriptableObject
     public float RadiusRange => radiusRange;
     public float Pv => pv;
     public GameObject MonsterPrefab => monsterPrefab;
+
 }

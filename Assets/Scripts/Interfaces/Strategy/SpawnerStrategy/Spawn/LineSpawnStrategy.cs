@@ -53,8 +53,7 @@ public class LineSpawnStrategy : ISpawnStrategy
         for (int i = 0; i < positions.Count; i++)
         {
 
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(positions[i], out hit, 2.0f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(positions[i], out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
             {
                 GameObject enemy = Object.Instantiate(objectMonster, positions[i], Quaternion.identity);
 

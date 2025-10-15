@@ -4,40 +4,42 @@ using UnityEngine;
 using UnityEngine.AI;
 using Events;
 
-public class BHSlime : MonoBehaviour
+public class BHSlime : MonoBehaviour, IBehaviorTree
 {
     BehaviorTree tree;
     private float lastAttackTime = -999f; 
+    private Animator animator; 
 
     public BehaviorTree CreateTree(SOMonster so, NavMeshAgent agent, Class_Perso player)
     {
+        animator = GetComponentInChildren<Animator>();
         
-    tree = new BehaviorTree("Slime");
+        tree = new BehaviorTree("Slime");
+        Selector root = new Selector("Root");
+        tree.AddChild(root);
 
-    Selector root = new Selector("Root");
-    tree.AddChild(root);
+        // Attaque si possible
+        Sequence attackSeq = new Sequence("Attack");
+        attackSeq.AddChild(new Leaf("In Range", new Condition(() => 
+            Vector3.Distance(transform.position, player.transform.position) < so.RadiusRange)));
+        attackSeq.AddChild(new Leaf("Not On Cooldown", new Condition(() => 
+            Time.time >= lastAttackTime + 1 / so.AttackSpeed)));
+        attackSeq.AddChild(new Leaf("Do Attack", new ActionStrategy(() =>
+        {
+            animator.SetTrigger("Attack");
+            player.TakeDamage(so.Damage);
+            lastAttackTime = Time.time;
+        })));
 
-    // Attaque si possible
-    Sequence attackSeq = new Sequence("Attack");
-    attackSeq.AddChild(new Leaf("In Range", new Condition(() => 
-        Vector3.Distance(transform.position, player.transform.position) < 0.5f)));
-    attackSeq.AddChild(new Leaf("Not On Cooldown", new Condition(() => 
-        Time.time >= lastAttackTime + 1 / so.AttackSpeed)));
-    attackSeq.AddChild(new Leaf("Do Attack", new ActionStrategy(() => 
-    {
-        player.TakeDamage(so.Damage);
-        lastAttackTime = Time.time;
-    })));
+        // Sinon, poursuit le joueur
+        Leaf chase = new Leaf("Chase", new ActionStrategy(() => 
+        {
+            agent.SetDestination(player.transform.position);
+        }));
 
-    // Sinon, poursuit le joueur
-    Leaf chase = new Leaf("Chase", new ActionStrategy(() => 
-    {
-        agent.SetDestination(player.transform.position);
-    }));
+        root.AddChild(attackSeq);
+        root.AddChild(chase);
 
-    root.AddChild(attackSeq);
-    root.AddChild(chase);
-
-    return tree;
-}
+        return tree;
+    }
 }

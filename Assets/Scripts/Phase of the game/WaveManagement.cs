@@ -24,8 +24,7 @@ public class WaveManagement : MonoBehaviour
     // --------------------------------------------
     
     private int numberOfWaves;
-
-    private bool inWave = false;
+    private int actualSequence = 0;
 
     public void Start()
     {
@@ -81,7 +80,6 @@ public class WaveManagement : MonoBehaviour
 
     private void GetWave(SOWaves waves)
     {
-        inWave = true;
         foreach (MonsterEntry entry in waves.Monsters)
         {
             StartCoroutine(SpawningSequence(entry.monster, entry.spawnDelay, entry.count, SetStrategy(entry)));
@@ -90,6 +88,7 @@ public class WaveManagement : MonoBehaviour
 
     IEnumerator SpawningSequence(GameObject monster, int delay, int count, ISpawnStrategy strategy)
     {
+        actualSequence++;
         for (int i = 0; i < count; i++)
         {
             Debug.Log("La séquence de spawn est lancé !");
@@ -108,11 +107,10 @@ public class WaveManagement : MonoBehaviour
             count -= temp.Count;  // We are deleting the number of new monster
 
             yield return new WaitForSeconds(delay); // Wait
-        
+
         }
-
+        actualSequence--;
         CheckWaveEnd();
-
     }
 
     private void OnEnemyDie(EnemyDieEvent evt)
@@ -127,19 +125,14 @@ public class WaveManagement : MonoBehaviour
         enemyInWave.RemoveAll(e => e == null || e == enemy); // Just in case
     }
 
-    
-
     private void CheckWaveEnd()
     {
-        if (enemyInWave.Count == 0 && inWave)
+        if (enemyInWave.Count == 0 && actualSequence == 0)
         {
             Debug.Log("Vague terminée !");
-            inWave = false;
             StartCoroutine(WaitBeforeNextWave());
         }
     }
-
-
 
     IEnumerator WaitBeforeNextWave()
     {

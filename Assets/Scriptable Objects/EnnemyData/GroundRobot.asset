@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: GroundRobot
   m_EditorClassIdentifier: 
   damage: 2
-  attackSpeed: 1.5
+  attackSpeed: 0.2424242
   pv: 50
   shield: 0
   moneyValue: 2
   movementSpeed: 0.5
-  radiusRange: 1
+  radiusRange: 3
   monsterPrefab: {fileID: 7270030088314911899, guid: 98ed877b5c695064c97ce78043c80140,
     type: 3}

@@ -15,16 +15,16 @@ MonoBehaviour:
   monsters:
   - monster: {fileID: 5276582747610907030, guid: 537af43e4b236334c892f624dea7c557,
       type: 3}
-    count: 10
-    spawnDelay: 10
+    count: 0
+    spawnDelay: 0
     spawningMode: 1
   - monster: {fileID: 3337175005803730685, guid: 3dc5dd8c867ca4542a3b0040fff23f94,
       type: 3}
-    count: 10
-    spawnDelay: 3
+    count: 0
+    spawnDelay: 0
     spawningMode: 0
   - monster: {fileID: 4878588476849873404, guid: 79e1dec72b18ecf4e90f026278796208,
       type: 3}
     count: 10
-    spawnDelay: 3
+    spawnDelay: 0
     spawningMode: 0

@@ -23,7 +23,7 @@ public class BHRobot : MonoBehaviour, IBehaviorTree
 
     // Attaque si possible
     Sequence attackSeq = new Sequence("Attack");
-    attackSeq.AddChild(new Leaf("In Range", new Condition(() => 
+    attackSeq.AddChild(new Leaf("In Range", new Condition(() =>
         Vector3.Distance(transform.position, player.transform.position) < so.RadiusRange)));
     attackSeq.AddChild(new Leaf("Not On Cooldown", new Condition(() => 
         Time.time >= lastAttackTime + 1 / so.AttackSpeed)));

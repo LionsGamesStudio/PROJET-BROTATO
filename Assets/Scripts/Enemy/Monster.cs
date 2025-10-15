@@ -78,7 +78,7 @@ public class Monster : MonoBehaviour ,IEnemy
     private void InitializeNMA()
     {
         agent.speed = sOMonster.MovementSpeed;
-        agent.stoppingDistance = sOMonster.RadiusRange; 
+        agent.stoppingDistance = sOMonster.RadiusRange;  // On pourrait adapter la vitesse d'attaque en fonction de l'animation soit au départ (1 attaque) soit pendant le behavior tree (plusieurs attaque !)
     }
 
     void Update() // BH Update

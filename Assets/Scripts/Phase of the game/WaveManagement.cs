@@ -101,6 +101,7 @@ public class WaveManagement : MonoBehaviour
             {
                 if (enemy != null) enemyInWave.Add(enemy);
                 else Debug.LogWarning("Un monstre n'a pas pu être instancié !");
+                enemy.transform.LookAt(player.transform); // Le monstre regarde le joueur lorsqu'il est instancié
             }
 
 

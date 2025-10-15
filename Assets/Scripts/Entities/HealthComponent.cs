@@ -7,13 +7,12 @@ public class HealthComponent : FluxMonoBehaviour
 {
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private string healthPropertyKey;
     
     private IHealthTarget _target;
     private IDisposable _healthSubscription;
 
     public float MaxHealth => maxHealth;
-    public string HealthPropertyKey => healthPropertyKey;
+    public string HealthPropertyKey => _target.HealthPropertyKey;
 
     protected override void OnFluxAwake()
     {
@@ -24,11 +23,13 @@ public class HealthComponent : FluxMonoBehaviour
             return;
         }
 
-        // Initialize health property
-        FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty(healthPropertyKey, maxHealth);
+        Debug.Log($"HealthComponent initialized for {gameObject.name} with HealthPropertyKey: {HealthPropertyKey}");
+
+        // Initialize the health property in the Flux property manager if it doesn't exist.
+        FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty<float>(HealthPropertyKey, maxHealth);
 
         // Subscribe to health changes
-        _healthSubscription = this.SubscribeToProperty<float>(healthPropertyKey, OnHealthChanged, fireOnSubscribe: true);
+        _healthSubscription = this.SubscribeToProperty<float>(HealthPropertyKey, OnHealthChanged, fireOnSubscribe: true);
     }
 
     protected override void OnFluxDestroy()
@@ -61,7 +62,7 @@ public class HealthComponent : FluxMonoBehaviour
     {
         if (damage <= 0f) return;
 
-        this.UpdateReactiveProperty<float>(healthPropertyKey, currentHealth =>
+        this.UpdateReactiveProperty<float>(HealthPropertyKey, currentHealth =>
             Mathf.Max(0f, currentHealth - damage));
     }
 
@@ -73,7 +74,7 @@ public class HealthComponent : FluxMonoBehaviour
     {
         if (amount <= 0f) return;
 
-        this.UpdateReactiveProperty<float>(healthPropertyKey, currentHealth =>
+        this.UpdateReactiveProperty<float>(HealthPropertyKey, currentHealth =>
             Mathf.Min(maxHealth, currentHealth + amount));
     }
 
@@ -83,6 +84,6 @@ public class HealthComponent : FluxMonoBehaviour
     /// <returns></returns>
     public float GetCurrentHealth()
     {
-        return this.GetReactivePropertyValue<float>(healthPropertyKey);
+        return this.GetReactivePropertyValue<float>(HealthPropertyKey);
     }
 }

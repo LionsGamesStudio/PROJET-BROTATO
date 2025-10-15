@@ -32,6 +32,8 @@ public class PlayerHealthUI : FluxUIComponent
     private float currentHealth;
     private float maxHealth;
 
+    private bool _initialized = false;
+
     protected override void OnFluxStart()
     {
         base.OnFluxStart();
@@ -54,12 +56,16 @@ public class PlayerHealthUI : FluxUIComponent
         }
 
         FluxFramework.Core.Flux.Manager.EventBus.Subscribe<EnemyAttackEvent>(OnEnemyAttackDamage);
+
+        _initialized = true;
     }
 
     void Update()
     {
-        currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("player.health");
-        maxHealth = FluxFramework.Core.Flux.Manager.Properties.GetProperty<float>("player.maxHealth");
+        if (!_initialized) return;
+
+        currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty<float>("player.health");
+        maxHealth = FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty<float>("player.maxHealth");
 
         float healthPercent = currentHealth / maxHealth;
         float effectIntensity = 1.0f - healthPercent;

@@ -33,7 +33,7 @@ public class DummyTarget : FluxMonoBehaviour, IHealthTarget
     /// <summary>
     /// Specifies that only Players can damage this dummy.
     /// </summary>
-    public AttackerType DamagerEntities => AttackerType.Player; 
+    public AttackerType DamagerEntities => AttackerType.Player;
 
     private HealthComponent _cacheHealthComponent;
 

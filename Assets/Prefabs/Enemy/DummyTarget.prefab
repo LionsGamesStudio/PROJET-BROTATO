@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthPropertyKey: dummy.health
+  maxHealthPropertyKey: 
 --- !u!1 &5474078256729159378
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class ItemData : ScriptableObject, IItem
     [SerializeField] private Sprite icon;
     [SerializeField] private ItemType type;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private float pickupRadius = 1.5f;
 
     [SerializeField, HideInInspector]
     private int id;
@@ -31,4 +32,5 @@ public class ItemData : ScriptableObject, IItem
     public Sprite Icon => icon;
     public ItemType Type => type;
     public GameObject Prefab => prefab;
+    public float PickupRadius => pickupRadius;
 }

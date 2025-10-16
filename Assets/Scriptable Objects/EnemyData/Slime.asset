@@ -19,7 +19,7 @@ MonoBehaviour:
   moneyValue: 1
   movementSpeed: 1
   radiusRange: 1.5
-  monsterPrefab: {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d,
+  monsterPrefab: {fileID: 5276582747610907030, guid: 537af43e4b236334c892f624dea7c557,
     type: 3}
   lootTable:
     lootItems:

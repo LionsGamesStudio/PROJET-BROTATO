@@ -3381,6 +3381,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!4 &311922238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3656751473144271621, guid: 8ab62f77e6df0494d9efdeabb7b5e33b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2275590374350286515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &319166480
 GameObject:
   m_ObjectHideFlags: 0
@@ -16680,6 +16686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sOWaveManagement: {fileID: 11400000, guid: 269eff4e499db354e989d520946a5b7c, type: 2}
+  playerTransform: {fileID: 311922238}
   currentWaveIndex: 0
   activeEnemies: []
 --- !u!1 &1747069751

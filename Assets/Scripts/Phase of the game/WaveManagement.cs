@@ -12,6 +12,7 @@ public class WaveManagement : FluxMonoBehaviour
 {
     [Header("Data to insert")]
     [SerializeField] private SOWaveManager sOWaveManagement;
+    [SerializeField] private Transform playerTransform;
 
     [Header("Live Wave Data")]
     [SerializeField] private int currentWaveIndex = 0;
@@ -20,7 +21,6 @@ public class WaveManagement : FluxMonoBehaviour
     // --- Private State ---
     private int totalWaves;
     private int activeSpawningSequences = 0;
-    private Transform playerTransform;
     
     // --- Control Flags & Subscriptions ---
     // Used to handle the subscription to the player's transform property to prevent memory leaks.
@@ -28,22 +28,12 @@ public class WaveManagement : FluxMonoBehaviour
     // A flag to ensure we only start the wave sequence once.
     private bool _wavesStarted = false;
 
-    protected override void OnFluxStart()
-    {
-        base.OnFluxStart();
-
-        // Instead of starting waves immediately, we subscribe to the player's transform property.
-        // The 'TryStartWaves' callback will be invoked either:
-        // 1. Immediately, if the property already exists.
-        // 2. Later, as soon as the property is created by another script (like PlayerController).
-        // This makes the script resilient to execution order issues.
-        _playerTransformSubscription = this.SubscribeToProperty<Transform>(
-            "player.transform", 
-            TryStartWaves, 
-            fireOnSubscribe: true // This is crucial for making it work if the player initializes first.
-        );
-    }
     
+    protected new void Start()
+    {
+        TryStartWaves(playerTransform);
+    }
+
     /// <summary>
     /// This is the main entry point for starting the wave logic. It's called once the player's transform is available.
     /// </summary>
@@ -58,7 +48,7 @@ public class WaveManagement : FluxMonoBehaviour
 
         // --- Dependencies are now met ---
         this.playerTransform = newPlayerTransform;
-        
+
         // Now, we check the other dependency (the SOWaveManager asset).
         if (sOWaveManagement == null || sOWaveManagement.SOWaves.Count == 0)
         {

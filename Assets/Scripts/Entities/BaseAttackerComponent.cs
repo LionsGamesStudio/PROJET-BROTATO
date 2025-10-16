@@ -34,10 +34,12 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     public TargetSelector TargetSelector => targetSelector;
     public AttackerType AttackerType => attackerType;
     public AttackBehavior AttackBehavior => attackBehavior;
+
+    private bool isInitialized = false;
     
-    protected override void OnFluxAwake()
+    protected override void OnFluxStart()
     {
-        base.OnFluxAwake();
+        base.OnFluxStart();
         entity = GetComponent<Entity>();
         if (entity == null)
         {
@@ -47,7 +49,7 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
         }
         rangeTrigger = GetComponent<SphereCollider>();
         rangeTrigger.isTrigger = true;
-        rangeTrigger.radius = Range; 
+        isInitialized = true;
     }
 
     /// <summary>
@@ -62,6 +64,7 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     // OnTriggerEnter and OnTriggerExit are the core of this component's responsibility.
     void OnTriggerEnter(Collider other)
     {
+        if (!isInitialized) return;
         var targetEntity = other.GetComponent<Entity>();
         if (targetEntity == null || targetEntity.ID == this.entity.ID) return;
 
@@ -78,6 +81,7 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
 
     void OnTriggerExit(Collider other)
     {
+        if (!isInitialized) return;
         IHealthTarget exitingTarget = other.GetComponent<IHealthTarget>();
         if (exitingTarget != null && detectedTargets.Contains(exitingTarget))
         {

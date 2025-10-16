@@ -14,7 +14,7 @@ public class WeaponInvoker : FluxMonoBehaviour
     private Dictionary<int, List<GameObject>> pooledWeapons = new Dictionary<int, List<GameObject>>();
     private Transform poolParent;
 
-    protected override void OnFluxStart()
+    protected override void OnFluxAwake()
     {
         // Create a parent object to hold pooled weapons neatly in the hierarchy.
         poolParent = new GameObject("WeaponPool").transform;

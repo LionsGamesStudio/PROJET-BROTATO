@@ -12,14 +12,24 @@ public class InventoryManager : FluxMonoBehaviour
     [SerializeField] private BuffManager buffManager;
 
     public InventoryData GetInventoryData() => inventoryData;
-    
-    protected override void OnFluxAwake()
+
+    protected override void OnFluxStart()
     {
         if (inventoryData == null)
         {
             Debug.LogError("InventoryManager needs an InventoryData asset assigned!");
             return;
         }
+
+        AddItem(inventoryData.GetDefaultStartingItem, 1);
+        UseItem(0);
+    }
+
+    protected override void OnFluxDestroy()
+    {
+        base.OnFluxDestroy();
+
+        ClearInventory();
     }
 
     [FluxAction("Add Item to Inventory", ButtonText = "Add Item")]
@@ -116,7 +126,7 @@ public class InventoryManager : FluxMonoBehaviour
                 break;
         }
     }
-    
+
     /// <summary>
     /// Checks if an item can be added to the inventory without actually adding it.
     /// </summary>
@@ -150,6 +160,19 @@ public class InventoryManager : FluxMonoBehaviour
 
         // If no stacking is possible and no empty slots are found, the item cannot be added.
         return false;
+    }
+    
+    public void ClearInventory()
+    {
+        for (int i = 0; i < inventoryData.slots.Count; i++)
+        {
+            inventoryData.slots[i] = new InventorySlot(null, 0, i);
+        }
+
+        for (int i = 0; i < inventoryData.equippedWeapons.Count; i++)
+        {
+            inventoryData.equippedWeapons[i] = null;
+        }
     }
     
     private void UseConsumable(ConsumableData consumable)

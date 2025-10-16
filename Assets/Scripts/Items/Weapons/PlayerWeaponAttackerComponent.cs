@@ -28,20 +28,10 @@ public class PlayerWeaponAttackerComponent : BaseAttackerComponent, IBuffTarget
     public override float AttackSpeed => GetReactiveValue(_attackSpeedPropertyKey);
     public override float Range => GetReactiveValue(_rangePropertyKey);
 
-    protected override void OnFluxAwake()
-    {
-        base.OnFluxAwake();
-
-        _attackController = GetComponentInParent<PlayerAttackController>();
-        if (_attackController == null)
-        {
-            Debug.LogError($"PlayerWeaponAttackerComponent on '{gameObject.name}' could not find a PlayerAttackController in its parents!", this);
-            enabled = false;
-        }
-    }
     
     public void Initialize(int instanceId)
     {
+        _attackController = GetComponentInParent<PlayerAttackController>();
         _instanceId = instanceId;
         _damagePropertyKey = $"weapon.{_instanceId}.damage";
         _attackSpeedPropertyKey = $"weapon.{_instanceId}.attackSpeed";

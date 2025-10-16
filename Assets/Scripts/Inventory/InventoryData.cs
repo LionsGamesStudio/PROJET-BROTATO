@@ -11,6 +11,7 @@ public class InventoryData : FluxDataContainer
     [Header("Inventory Settings")]
     [SerializeField] private int maxSlots = 20;
     [SerializeField] private int maxWeapons = 4;
+    [SerializeField] private ItemData defaultStartingItem;
     
     [ReactiveProperty("inventory.slots")]
     public ReactiveCollection<InventorySlot> slots;
@@ -34,6 +35,8 @@ public class InventoryData : FluxDataContainer
 
         return quantityInInventory <= count;
     }
+
+    public ItemData GetDefaultStartingItem => defaultStartingItem;
 
     [FluxButton("Reset Inventory")]
     protected override void OnDataContainerInitialized()

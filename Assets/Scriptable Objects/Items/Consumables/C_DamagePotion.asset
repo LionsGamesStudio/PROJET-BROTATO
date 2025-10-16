@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   icon: {fileID: 0}
   type: 1
-  prefab: {fileID: 0}
+  prefab: {fileID: 5856918817781473983, guid: 21f0a3a370a94ba4cb5e6e3fd2024bc7, type: 3}
   id: -1415049904
   healthRestore: 0
   buffsToApply:

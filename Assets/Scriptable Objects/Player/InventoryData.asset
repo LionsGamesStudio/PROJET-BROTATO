@@ -18,10 +18,12 @@ MonoBehaviour:
   description: 
   maxSlots: 20
   maxWeapons: 4
+  defaultStartingItem: {fileID: 11400000, guid: d0b5f67949ab1b041aa1f8f7f28af4c6,
+    type: 2}
   slots:
     _value:
-    - itemData: {fileID: 11400000, guid: d0b5f67949ab1b041aa1f8f7f28af4c6, type: 2}
-      quantity: 1
+    - itemData: {fileID: 0}
+      quantity: 0
       slotIndex: 0
     - itemData: {fileID: 0}
       quantity: 0
@@ -82,7 +84,7 @@ MonoBehaviour:
       slotIndex: 19
   equippedWeapons:
     _value:
-    - {fileID: 11400000, guid: d0b5f67949ab1b041aa1f8f7f28af4c6, type: 2}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}

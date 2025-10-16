@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 3827694878095886074}
   - component: {fileID: 7972020776299947714}
   m_Layer: 7
-  m_Name: -- XR Origin
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1480,8 +1480,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.79
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!54 &2356611961106381719
 Rigidbody:
   m_ObjectHideFlags: 0

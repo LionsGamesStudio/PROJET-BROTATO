@@ -23,8 +23,6 @@ public class HealthComponent : FluxMonoBehaviour
             return;
         }
 
-        Debug.Log($"HealthComponent initialized for {gameObject.name} with HealthPropertyKey: {HealthPropertyKey}");
-
         // Initialize the health property in the Flux property manager if it doesn't exist.
         FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty<float>(HealthPropertyKey, maxHealth);
 

@@ -15,7 +15,7 @@ public class SOWaves : ScriptableObject
     [Header("Data")]
     [SerializeField]
 
-    private List<MonsterEntry> monsters;
+    private List<MonsterEntry> monsters = new List<MonsterEntry>();
 
     public List<MonsterEntry> Monsters => monsters;
 

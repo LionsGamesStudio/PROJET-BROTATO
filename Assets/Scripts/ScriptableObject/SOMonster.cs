@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 // Il n'est pas nécessaire d'importer le namespace du BehaviorTree ici,
 // car nous ne faisons référence qu'aux classes de base AttackBehavior et TargetSelector.
@@ -36,6 +37,9 @@ public class SOMonster : ScriptableObject
     [SerializeField]
     private GameObject monsterPrefab;
 
+    [SerializeField]
+    private LootTable lootTable;
+
     [Space(10)]
     [Header("AI & Combat Logic")]
     [Tooltip("Defines HOW this monster attacks (e.g., direct damage, projectile, AoE).")]
@@ -55,6 +59,7 @@ public class SOMonster : ScriptableObject
     public float RadiusRange => radiusRange;
     public float Health => health;
     public GameObject MonsterPrefab => monsterPrefab;
+    public LootTable LootTable => lootTable;
 
     public AttackBehavior AttackBehavior => attackBehavior;
     public TargetSelector TargetSelector => targetSelector;

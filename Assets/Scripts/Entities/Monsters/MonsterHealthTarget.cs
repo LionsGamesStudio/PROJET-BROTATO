@@ -62,6 +62,17 @@ public class MonsterHealthTarget : FluxMonoBehaviour, IHealthTarget
         // TODO: Trigger an event for loot drop, XP, etc.
         // this.PublishEvent(new MonsterDiedEvent(monsterData.MoneyValue));
 
+        // Loot drop
+        if (monsterData.LootTable != null)
+        {
+            var loot = monsterData.LootTable.GetRandomLoot();
+            if (loot != null)
+            {
+                GameObject drop = Instantiate(loot.Item.Prefab, transform.position, Quaternion.identity);
+                drop.AddComponent<Item>().Initialize(loot.Item);
+            }
+        }
+
         // Destroy the object after a delay (to allow time for the animation to play)
         Destroy(gameObject, 3f); // Adjust the delay based on the length of your animation
     }

@@ -17,7 +17,7 @@
         "com.unity.ui.builder": "1.0.0",
         "com.unity.inputsystem": "1.7.0"
       },
-      "hash": "0111e07658f2d02262b130f68d7629ed8ec2f6bb"
+      "hash": "c0b78c60958e90c5ac93af6dfbad0c8097b73b26"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
@@ -254,6 +254,15 @@
         "com.unity.modules.xr": "1.0.0",
         "com.unity.modules.subsystems": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.7"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus": {
+      "version": "4.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.4.0"
       },
       "url": "https://packages.unity.com"
     },

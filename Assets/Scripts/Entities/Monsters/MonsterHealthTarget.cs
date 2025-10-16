@@ -1,3 +1,4 @@
+using Events;
 using FluxFramework.Core;
 using FluxFramework.Extensions;
 using UnityEngine;
@@ -60,7 +61,7 @@ public class MonsterHealthTarget : FluxMonoBehaviour, IHealthTarget
         }
 
         // TODO: Trigger an event for loot drop, XP, etc.
-        // this.PublishEvent(new MonsterDiedEvent(monsterData.MoneyValue));
+        this.PublishEvent(new EnemyDieEvent(gameObject));
 
         // Loot drop
         if (monsterData.LootTable != null)

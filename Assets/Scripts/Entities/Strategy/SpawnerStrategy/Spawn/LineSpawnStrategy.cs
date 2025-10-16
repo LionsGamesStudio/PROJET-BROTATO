@@ -10,10 +10,10 @@ public class LineSpawnStrategy : ISpawnStrategy
 
     List<Vector3> sideSpawnPoint = new List<Vector3>
     {
-        new Vector3(0, 0, 13f), // North
-        new Vector3(0, 0, -13f), // South
-        new Vector3(13f, 0, 0), // East
-        new Vector3(-13f, 0, 0), // West
+        new Vector3(0, 0, 12f), // North
+        new Vector3(0, 0, -12f), // South
+        new Vector3(12f, 0, 0), // East
+        new Vector3(-12f, 0, 0), // West
     };
     
     private Vector3 playerPos;

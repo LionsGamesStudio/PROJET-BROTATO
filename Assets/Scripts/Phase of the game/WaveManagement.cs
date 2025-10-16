@@ -87,7 +87,7 @@ public class WaveManagement : FluxMonoBehaviour
         if (currentWaveIndex >= totalWaves)
         {
             Debug.Log("All waves completed! Game Over!");
-            // TODO: Publish a game win event.
+            this.PublishEvent(new GameWinEvent());
             return;
         }
         
@@ -153,6 +153,7 @@ public class WaveManagement : FluxMonoBehaviour
     private void CheckWaveEnd()
     {
         // The wave is over only if no enemies are left AND all spawning coroutines have finished.
+        Debug.Log($"Checking wave end: {activeEnemies.Count} active enemies, {activeSpawningSequences} active spawning sequences.");
         if (activeEnemies.Count == 0 && activeSpawningSequences == 0)
         {
             Debug.Log($"Wave {currentWaveIndex} complete!");
@@ -167,6 +168,7 @@ public class WaveManagement : FluxMonoBehaviour
     IEnumerator WaitBeforeNextWave()
     {
         yield return new WaitForSeconds(5f); // Consider making this delay configurable in the SOWaveManager.
+        this.PublishEvent(new NextWaveEvent(currentWaveIndex));
         StartNextWave();
     }
 

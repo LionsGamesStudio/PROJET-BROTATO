@@ -1,3 +1,5 @@
+using Events;
+using FluxFramework.Attributes;
 using FluxFramework.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +19,13 @@ public class GameStateManager : FluxMonoBehaviour
 
     [Tooltip("The name of your main game scene in Build Settings.")]
     [SerializeField] private string gameSceneName = "GameScene";
+
+    [Header("UI References")]
+    [SerializeField] private WaveDisplay waveDisplay;
+
+    private int _currentWavesCompleted = 0;
+
+    public int CurrentWavesCompleted => _currentWavesCompleted;
 
     protected override void OnFluxAwake()
     {
@@ -55,5 +64,21 @@ public class GameStateManager : FluxMonoBehaviour
         // Do 2 time to force register of current scene properties
         SceneManager.LoadScene(mainMenuSceneName);
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    [FluxEventHandler]
+    private void OnGameWinEvent(GameWinEvent evt)
+    {
+        Debug.Log("Game won! Returning to main menu...");
+        ReturnToMainMenu();
+    }
+
+    [FluxEventHandler]
+    private void OnPlayerDeathEvent(PlayerDeathEvent evt)
+    {
+        Debug.Log("Player died! Returning to main menu...");
+        _currentWavesCompleted = evt.WavesCompleted;
+        waveDisplay.UpdateWaveText(_currentWavesCompleted);
+        ReturnToMainMenu();
     }
 }

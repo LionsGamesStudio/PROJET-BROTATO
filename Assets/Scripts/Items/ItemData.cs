@@ -22,7 +22,9 @@ public class ItemData : ScriptableObject, IItem
             if (id == 0)
             {
                 id = Guid.NewGuid().GetHashCode();
+#if UNITY_EDITOR
                 EditorUtility.SetDirty(this);
+#endif
             }
             return id;
         }

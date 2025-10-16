@@ -2,6 +2,7 @@ using FluxFramework.Core;
 using FluxFramework.Attributes;
 using FluxFramework.Extensions;
 using UnityEngine;
+using Events;
 
 [RequireComponent(typeof(HealthComponent))]
 [RequireComponent(typeof(BuffManager))]
@@ -31,6 +32,7 @@ public class PlayerController : FluxMonoBehaviour, IHealthTarget, IBuffTarget
 
     private HealthComponent _healthComponent;
     private Entity _entity;
+    private int _wavesCompleted = 0;
 
     #region IHealthTarget Implementation
 
@@ -51,10 +53,7 @@ public class PlayerController : FluxMonoBehaviour, IHealthTarget, IBuffTarget
     {
         // Publish an event upon the player's death.
         Debug.Log("Player has died.");
-        this.PublishEvent(new PlayerDeathEvent());
-
-        // TODO: Add death logic (defeat screen, etc.)
-        GameStateManager.Instance.ReturnToMainMenu();
+        this.PublishEvent(new PlayerDeathEvent(_wavesCompleted));
     }
 
     #endregion
@@ -117,6 +116,16 @@ public class PlayerController : FluxMonoBehaviour, IHealthTarget, IBuffTarget
             playerTransformProp.Value = null;
         }
         base.OnFluxDestroy();
+    }
+
+    [FluxEventHandler]
+    private void OnWaveCompletedEvent(NextWaveEvent evt)
+    {
+        // Heal the player by 20% of max health upon wave completion
+        float healAmount = maxHealth * 0.2f;
+        _healthComponent.Heal(healAmount);
+        _wavesCompleted++;
+        Debug.Log($"Wave completed! Player healed by {healAmount} health.");
     }
 
     /// <summary>

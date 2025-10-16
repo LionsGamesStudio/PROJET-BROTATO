@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Items/Consumables/ConsumableData.cs.meta
 guid: 61f816326d1181d45b87d7eab1086fd4
+========
+guid: 78a39f17dc0fab04a8cf47e51d3a7e27
+>>>>>>>> main:Assets/Scripts/Events/EnemyDieEvent.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

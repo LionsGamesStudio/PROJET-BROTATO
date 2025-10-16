@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/GameStateManager.cs.meta
 guid: 607a5d637a26f014bb91f208c3d27b6a
+========
+guid: 8a0ce4ded65a894449cc1e438f3280f1
+>>>>>>>> main:Assets/Scripts/Items/Consumables/Monster.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

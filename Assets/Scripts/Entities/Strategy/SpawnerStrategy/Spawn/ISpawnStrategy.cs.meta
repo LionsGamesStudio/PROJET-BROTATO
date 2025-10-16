@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Items/Events/ConsumableUsedEvent.cs.meta
+guid: 5b15a1d2b8c3a374da96f501d6001523
+========
+guid: df26a19ca93475249ab3eae0153e3640
+>>>>>>>> main:Assets/Scripts/Entities/Strategy/SpawnerStrategy/Spawn/ISpawnStrategy.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

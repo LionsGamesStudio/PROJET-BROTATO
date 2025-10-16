@@ -1,28 +1,29 @@
 using UnityEngine;
 
-/// <summary>
-/// Concrete attacker component for monsters, defining their inherent attack stats.
-/// </summary>
 public class MonsterAttackerComponent : BaseAttackerComponent
 {
-    [Header("Monster Attack Stats")]
-    [SerializeField] private float monsterDamage = 10f;
-    [SerializeField] private float monsterAttackSpeed = 1f;
-    [SerializeField] private float monsterRange = 2f;
-    [SerializeField] private AttackerType monsterAttackerType = AttackerType.Monster;
+    [Header("Monster Data")]
+    [SerializeField] private SOMonster monsterData;
 
-    // Implement abstract properties from BaseAttackerComponent
-    public override float Damage => monsterDamage;
-    public override float AttackSpeed => monsterAttackSpeed;
-    public override float Range => monsterRange;
+    public override float Damage => monsterData.Damage;
+    public override float AttackSpeed => monsterData.AttackSpeed;
+    public override float Range => monsterData.RadiusRange;
 
     protected override void OnFluxAwake()
     {
-        // Set specific attacker type for monsters.
-        attackerType = monsterAttackerType;
-        base.OnFluxAwake(); // Call base initialization
+        if (monsterData == null)
+        {
+            Debug.LogError("MonsterAttackerComponent is missing a SOMonster data asset!", this);
+            enabled = false;
+            return;
+        }
+
+        // Set the attacker type.
+        attackerType = AttackerType.Monster;
+        targetSelector = monsterData.TargetSelector;
+        attackBehavior = monsterData.AttackBehavior;
+        
+        // Call the base for common initialization.
+        base.OnFluxAwake(); 
     }
-    
-    // No need to override Attack method unless monster has very unique attack logic
-    // Default BaseAttackerComponent.Attack will work using the assigned AttackBehavior.
 }

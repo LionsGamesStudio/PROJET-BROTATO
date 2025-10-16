@@ -1,41 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
 using FluxFramework.Core;
 using UnityEngine;
 
 /// <summary>
-/// Base class for all attacking entities.
-/// It handles common logic like target detection, selection, and the attack cycle.
-/// Concrete attacker types (e.g., Monster, Player) will inherit from this class.
+/// Provides the physical attack capabilities for an entity.
+/// Its main roles are detecting targets and executing a specified AttackBehavior.
+/// It does NOT decide when or who to attack; that is the role of an AI Controller.
 /// </summary>
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Entity))]
 public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
 {
-    [Header("Attacker Configuration (Base)")]
-    [SerializeField] protected AttackerType attackerType = AttackerType.None; // Default to None, overridden by concrete classes
-    [SerializeField] protected TargetSelector targetSelector; // The strategy to select targets.
-    [SerializeField] protected AttackBehavior attackBehavior; // The behavior to execute when attacking.
+    [Header("Attacker Configuration")]
+    [SerializeField] protected AttackerType attackerType = AttackerType.None;
+    [SerializeField] protected AttackBehavior attackBehavior;
+    [SerializeField] protected TargetSelector targetSelector;
 
-    [Header("Targeting Settings")]
-    [SerializeField] protected LayerMask targetLayers;
-
-    // Reference to the Entity component on this GameObject.
     protected Entity entity;
-
-    // This SphereCollider will be used to detect potential targets within range.
     protected SphereCollider rangeTrigger; 
     
-    // List of IHealthTarget components currently within the attack range trigger.
     protected List<IHealthTarget> detectedTargets = new List<IHealthTarget>();
+    /// <summary>
+    /// A read-only list of potential targets currently within the trigger range.
+    /// The AI Brain will read from this list.
+    /// </summary>
+    public IReadOnlyList<IHealthTarget> DetectedTargets => detectedTargets;
 
-    // Coroutine reference to stop attacking if target leaves range or dies.
-    protected Coroutine attackCoroutine;
-
-    // Timer for attack cooldown.
-    protected float nextAttackTime;
-
-    // IAttacker Interface Properties - concrete classes will define Damage, AttackSpeed, Range
+    // IAttacker Interface Implementation
     public bool AttackEnable { get; set; } = true;
     public abstract float Damage { get; }
     public abstract float AttackSpeed { get; }
@@ -43,132 +34,54 @@ public abstract class BaseAttackerComponent : FluxMonoBehaviour, IAttacker
     public TargetSelector TargetSelector => targetSelector;
     public AttackerType AttackerType => attackerType;
     public AttackBehavior AttackBehavior => attackBehavior;
-
+    
     protected override void OnFluxAwake()
     {
+        base.OnFluxAwake();
         entity = GetComponent<Entity>();
         if (entity == null)
         {
-            Debug.LogError($"BaseAttackerComponent requires an Entity component on {gameObject.name}");
+            Debug.LogError($"BaseAttackerComponent requires an Entity component on {gameObject.name}", this);
+            enabled = false;
             return;
         }
-
-
-        // Get or add the SphereCollider for range detection.
         rangeTrigger = GetComponent<SphereCollider>();
-        // Set the collider's radius.
+        rangeTrigger.isTrigger = true;
         rangeTrigger.radius = Range; 
-
-        // TODO: Configure the collider's layer to optimize detection.
-    }
-
-    protected void Update()
-    {
-        // Do not attack if disabled, no selector, or no attack behavior.
-        if (!AttackEnable || TargetSelector == null || AttackBehavior == null)
-        {
-            return;
-        }
-
-        // Clean up detected targets: remove null references or inactive GameObjects.
-        detectedTargets.RemoveAll(target => target == null || (target as Component) == null || !(target as Component).gameObject.activeInHierarchy);
-
-        // If there are no targets, stop attacking.
-        if (detectedTargets.Count == 0)
-        {
-            StopAttacking();
-            return;
-        }
-
-        // Select the current target using the assigned TargetSelector and attacker's position.
-        IHealthTarget currentTarget = TargetSelector.SelectTarget(detectedTargets, transform.position);
-
-        // If a target is selected, and attack cooldown has passed, initiate an attack.
-        if (currentTarget != null && Time.time >= nextAttackTime)
-        {
-            // Start the attack coroutine if not already running for this attack cycle.
-            // Note: If you want to allow concurrent attacks (e.g., multiple projectiles),
-            // you might need to adjust this logic to allow multiple coroutines.
-            if (attackCoroutine == null)
-            {
-                attackCoroutine = StartCoroutine(Attack(currentTarget)); // Call the abstract Attack method
-            }
-            
-            // Set next attack time, regardless of whether a new coroutine was started,
-            // as this dictates the attack rate.
-            nextAttackTime = Time.time + (1f / AttackSpeed); 
-        }
     }
 
     /// <summary>
-    /// Concrete implementations of IAttacker will provide their specific attack logic here.
-    /// This method will be called by the update loop when an attack is due.
+    /// A public command that the AI Brain can call to execute an attack.
     /// </summary>
-    /// <param name="healthTarget">The target of the attack.</param>
-    public virtual IEnumerator Attack(IHealthTarget healthTarget)
+    public virtual void PerformAttack(IHealthTarget healthTarget)
     {
-        // Execute the weapon/attacker's specific attack behavior.
-        // The AttackBehavior will handle the actual damage application etc.
-        AttackBehavior.Execute(healthTarget, this, this.entity.ID); 
-        
-        // Yield for a short period. This allows the Unity main thread to continue.
-        yield return null; 
-        
-        // Reset attack coroutine reference after execution, allowing the next attack cycle to start.
-        attackCoroutine = null;
+        if (!AttackEnable || healthTarget == null || attackBehavior == null) return;
+        attackBehavior.Execute(healthTarget, this, this.entity.ID); 
     }
 
-    /// <summary>
-    /// Stops the current attack coroutine and resets attack state.
-    /// </summary>
-    protected void StopAttacking()
-    {
-        if (attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
-        }
-    }
-
-    /// <summary>
-    /// Called when another collider enters the trigger zone.
-    /// </summary>
-    /// <param name="other">The collider that entered the trigger.</param>
+    // OnTriggerEnter and OnTriggerExit are the core of this component's responsibility.
     void OnTriggerEnter(Collider other)
     {
-        // Get the Entity component from the object we collided with.
         var targetEntity = other.GetComponent<Entity>();
-        if (targetEntity == null) return; // Not a valid entity.
-
-        // Compare our ID with the target's ID.
-        if (targetEntity.ID == this.entity.ID) return;
+        if (targetEntity == null || targetEntity.ID == this.entity.ID) return;
 
         IHealthTarget newTarget = other.GetComponent<IHealthTarget>();
         if (newTarget != null)
         {
             bool canDamage = (AttackerType & newTarget.DamagerEntities) != 0;
-
             if (canDamage && !detectedTargets.Contains(newTarget))
             {
                 detectedTargets.Add(newTarget);
-                Debug.Log($"BaseAttackerComponent: Detected potential target: {other.name}");
             }
         }
     }
 
-    /// <summary>
-    /// Called when another collider exits the trigger zone.
-    /// </summary>
-    /// <param name="other">The collider that exited the trigger.</param>
     void OnTriggerExit(Collider other)
     {
         IHealthTarget exitingTarget = other.GetComponent<IHealthTarget>();
-
-        // If the exiting collider was a detected target, remove it from the list.
         if (exitingTarget != null && detectedTargets.Contains(exitingTarget))
         {
             detectedTargets.Remove(exitingTarget);
-            // Debug.Log($"BaseAttackerComponent: Target exited range: {other.name} from {gameObject.name}");
         }
     }
 }

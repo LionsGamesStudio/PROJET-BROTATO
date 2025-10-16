@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// Defines the contract for any entity capable of performing an attack.
+/// </summary>
 public interface IAttacker
 {
     /// <summary>
@@ -25,11 +24,6 @@ public interface IAttacker
     float Range { get; }
     
     /// <summary>
-    /// Gets the TargetSelector strategy used by this attacker.
-    /// </summary>
-    TargetSelector TargetSelector { get; }
-    
-    /// <summary>
     /// Gets the AttackerType of this entity, used for friendly/hostile detection.
     /// </summary>
     AttackerType AttackerType { get; }
@@ -40,15 +34,21 @@ public interface IAttacker
     AttackBehavior AttackBehavior { get; }
 
     /// <summary>
-    /// Initiates an attack towards a specific health target.
+    /// NEW: A direct command to perform an attack on a specific target.
+    /// This replaces the old coroutine-based method.
     /// </summary>
     /// <param name="healthTarget">The target to attack.</param>
-    IEnumerator Attack(IHealthTarget healthTarget);
+    void PerformAttack(IHealthTarget healthTarget);
 }
 
+/// <summary>
+/// A bitmask enum to define entity types for targeting and friendly-fire logic.
+/// The [Flags] attribute is a best practice for bitmask enums.
+/// </summary>
+[System.Flags]
 public enum AttackerType
 {
     None = 0,
-    Player = 1 << 0,
-    Monster = 1 << 1
+    Player = 1 << 0,  // Binary 0001
+    Monster = 1 << 1  // Binary 0010
 }

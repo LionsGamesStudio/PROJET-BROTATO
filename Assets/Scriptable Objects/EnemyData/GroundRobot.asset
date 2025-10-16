@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcb74b125ed87a48a53f65fd4372371, type: 3}
+  m_Name: GroundRobot
+  m_EditorClassIdentifier: 
+  damage: 2
+  attackSpeed: 0.2424242
+  health: 10
+  shield: 0
+  moneyValue: 2
+  movementSpeed: 0.5
+  radiusRange: 3
+  monsterPrefab: {fileID: 7270030088314911899, guid: 98ed877b5c695064c97ce78043c80140,
+    type: 3}
+  attackBehavior: {fileID: 11400000, guid: 639cb1d2d5eed2a438f9c828b8cbd456, type: 2}
+  targetSelector: {fileID: 11400000, guid: 45489afd7a05ae24598ccaad56e735c3, type: 2}

@@ -22,6 +22,16 @@ public class MonsterAttackerComponent : BaseAttackerComponent
         attackerType = AttackerType.Monster;
         targetSelector = monsterData.TargetSelector;
         attackBehavior = monsterData.AttackBehavior;
+
+        SphereCollider sphereCollider = GetComponent<SphereCollider>();
+        if (sphereCollider != null)
+        {
+            sphereCollider.radius = Range;
+        }
+        else
+        {
+            Debug.LogWarning("MonsterAttackerComponent: No SphereCollider found on the GameObject. Please add one for proper range detection.");
+        }
         
         // Call the base for common initialization.
         base.OnFluxAwake(); 

@@ -28,7 +28,7 @@ public class PlayerWeaponAttackerComponent : BaseAttackerComponent, IBuffTarget
     public override float AttackSpeed => GetReactiveValue(_attackSpeedPropertyKey);
     public override float Range => GetReactiveValue(_rangePropertyKey);
 
-    
+
     public void Initialize(int instanceId)
     {
         _attackController = GetComponentInParent<PlayerAttackController>();
@@ -39,9 +39,22 @@ public class PlayerWeaponAttackerComponent : BaseAttackerComponent, IBuffTarget
 
         var damageSub = this.SubscribeToProperty<float>("player.baseDamage", _ => RecalculateFinalStats(), fireOnSubscribe: false);
         var speedSub = this.SubscribeToProperty<float>("player.baseAttackSpeed", _ => RecalculateFinalStats(), fireOnSubscribe: false);
-        
+
         _subscriptions.Add(damageSub);
         _subscriptions.Add(speedSub);
+    }
+
+    public override void PerformAttack(IHealthTarget healthTarget)
+    {
+        base.PerformAttack(healthTarget);
+
+        // Rotate the weapon to face the target
+        if (healthTarget is Component targetComponent)
+        {
+            Vector3 directionToTarget = (targetComponent.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
+        }
     }
 
     public void EquipWeapon(WeaponData weapon)

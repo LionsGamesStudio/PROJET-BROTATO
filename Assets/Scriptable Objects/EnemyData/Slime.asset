@@ -18,7 +18,7 @@ MonoBehaviour:
   shield: 0
   moneyValue: 1
   movementSpeed: 1
-  radiusRange: 1.5
+  radiusRange: 3
   monsterPrefab: {fileID: 5276582747610907030, guid: 537af43e4b236334c892f624dea7c557,
     type: 3}
   lootTable:

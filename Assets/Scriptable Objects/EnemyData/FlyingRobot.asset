@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   attackSpeed: 1.5
-  health: 10
+  health: 15
   shield: 0
   moneyValue: 3
   movementSpeed: 0.5
-  radiusRange: 3
+  radiusRange: 4
   monsterPrefab: {fileID: 4878588476849873404, guid: 79e1dec72b18ecf4e90f026278796208,
     type: 3}
   lootTable:

@@ -1566,9 +1566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseDamage: 10
-  baseAttackSpeed: 2
-  movementSpeed: 5
+  baseDamage: 2
+  baseAttackSpeed: 0.2
+  movementSpeed: 2
   armor: 0
 --- !u!114 &5041473307793537863
 MonoBehaviour:

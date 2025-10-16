@@ -30,8 +30,22 @@ public class SimpleFireBehavior : AttackBehavior
         var targetHealthComponent = targetComponent.GetComponent<HealthComponent>();
         if (targetHealthComponent != null)
         {
+            float currentHealth = FluxFramework.Core.Flux.Manager.Properties.GetOrCreateProperty<float>(targetHealthComponent.HealthPropertyKey);
+
+            if(currentHealth <= 0)
+            {
+                return; // Target is already dead, no need to apply damage
+            }
+
             float damageToDeal = attacker.Damage;
-            targetHealthComponent.TakeDamage(damageToDeal);
+
+            if (currentHealth - damageToDeal < 0)
+            {
+                damageToDeal = currentHealth; // Prevent overhealing
+            }
+
+            
+            targetHealthComponent?.TakeDamage(damageToDeal);
 
             // The log now uses the attackerId passed as a parameter.
             Debug.Log($"Attacker ID:{attackerId} attacked {targetComponent.name} for {damageToDeal} damage.");

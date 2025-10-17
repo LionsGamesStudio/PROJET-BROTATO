@@ -9,11 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5865674866819682890}
-  - component: {fileID: 3178317067960828844}
-  - component: {fileID: 4815069632342237507}
   - component: {fileID: 5609655262888363273}
   - component: {fileID: 9114685205804616362}
   - component: {fileID: 3230954292174897680}
+  - component: {fileID: 4360435114941893441}
+  - component: {fileID: 3414367226838702803}
+  - component: {fileID: 4563605542389506535}
+  - component: {fileID: 5012050980381259149}
+  - component: {fileID: 4784917775762824443}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -33,38 +36,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6449317737304564738}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3178317067960828844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276582747610907030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0ce4ded65a894449cc1e438f3280f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sOMonster: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
-  agent: {fileID: 5609655262888363273}
-  player: {fileID: 0}
-  currentAttackEnable: 0
-  currentPv: 0
---- !u!114 &4815069632342237507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276582747610907030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eba4c4c76613644e88cdebe5314bcb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &5609655262888363273
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -102,7 +77,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -135,3 +110,145 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4360435114941893441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276582747610907030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2863ea856ea20b44ada561f13207702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &3414367226838702803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276582747610907030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cbf3aefef987d4d96e81ef3427c61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4563605542389506535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276582747610907030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364b304f2242b124fb0fe2166ba8e3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
+--- !u!114 &5012050980381259149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276582747610907030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23a95ebb24a8b849873aa0ce718155c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackerType: 2
+  attackBehavior: {fileID: 0}
+  targetSelector: {fileID: 0}
+  monsterData: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
+--- !u!114 &4784917775762824443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276582747610907030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217f9d85990003b4f9ddf3736dae525e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: 528a17ce6556caa4da4df2027370648b, type: 2}
+  aiLogic: {fileID: 11400000, guid: c5eb247c4b6e6294e875694db7701c8f, type: 2}
+--- !u!1001 &736191106299316006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5865674866819682890}
+    m_Modifications:
+    - target: {fileID: 5859892648907031874, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Slime - Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd80a073f03da274da1c708d49c7ad5d, type: 3}
+--- !u!4 &6449317737304564738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6032551526435644196, guid: fd80a073f03da274da1c708d49c7ad5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 736191106299316006}
+  m_PrefabAsset: {fileID: 0}

@@ -9,12 +9,15 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.textmeshpro": "3.0.6",
         "com.unity.xr.management": "4.2.0",
+        "com.unity.xr.interaction.toolkit": "2.5.2",
+        "com.unity.xr.openxr": "1.9.1",
         "com.unity.visualscripting": "1.9.7",
         "com.unity.mathematics": "1.2.6",
         "com.unity.ui": "1.0.0",
-        "com.unity.ui.builder": "1.0.0"
+        "com.unity.ui.builder": "1.0.0",
+        "com.unity.inputsystem": "1.7.0"
       },
-      "hash": "e805f59191a0be167045c0d6fe07e2e72e981239"
+      "hash": "c0b78c60958e90c5ac93af6dfbad0c8097b73b26"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
@@ -26,7 +29,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.19",
+      "version": "1.8.17",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -75,7 +78,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.11.2",
+      "version": "1.7.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -208,7 +211,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.core-utils": {
-      "version": "2.5.1",
+      "version": "2.3.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -233,7 +236,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
-      "version": "2.1.12",
+      "version": "2.1.10",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -251,6 +254,15 @@
         "com.unity.modules.xr": "1.0.0",
         "com.unity.modules.subsystems": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.7"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus": {
+      "version": "4.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.4.0"
       },
       "url": "https://packages.unity.com"
     },

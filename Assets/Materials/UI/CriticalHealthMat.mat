@@ -110,8 +110,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Heal_Intensity: 0
-    - _Inner_Height: 0.98
-    - _Inner_Width: 0.98
+    - _Inner_Height: 0.9
+    - _Inner_Width: 0.9
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Outer_Height: 0.99

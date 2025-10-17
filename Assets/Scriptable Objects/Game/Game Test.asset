@@ -14,3 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sOWaves:
   - {fileID: 11400000, guid: 56bab726bd4c8a440a42751060b4172e, type: 2}
+  - {fileID: 11400000, guid: 8ed627390a993154d87fbdd0e9b5aba2, type: 2}
+  - {fileID: 11400000, guid: 788f4e88f3e7bb24fb7a4b64b108f80e, type: 2}
+  - {fileID: 11400000, guid: e374e8b0da070c240aa09003e620e2a3, type: 2}
+  - {fileID: 11400000, guid: 088b6c82c784973428bff38ba7e4ec1c, type: 2}
+  - {fileID: 11400000, guid: a609989642ab4114ea116e858311ff1e, type: 2}
+  - {fileID: 11400000, guid: 630062072a9b2c747ba413cc290753e1, type: 2}
+  - {fileID: 11400000, guid: cb87d882e70820c42b15f7725d80f859, type: 2}
+  - {fileID: 11400000, guid: 8480807d6ebabd5469be2e1f7e3cc435, type: 2}

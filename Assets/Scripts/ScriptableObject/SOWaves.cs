@@ -15,7 +15,7 @@ public class SOWaves : ScriptableObject
     [Header("Data")]
     [SerializeField]
 
-    private List<MonsterEntry> monsters;
+    private List<MonsterEntry> monsters = new List<MonsterEntry>();
 
     public List<MonsterEntry> Monsters => monsters;
 
@@ -24,9 +24,8 @@ public class SOWaves : ScriptableObject
 [System.Serializable]
 public class MonsterEntry
 {
-    public GameObject monster;
+    public SOMonster monsterData; 
     public int count;
     public int spawnDelay;
-    public SpawningMode spawningMode = SpawningMode.Random; // Récupérer ensuite par le waveManager
-
+    public SpawningMode spawningMode = SpawningMode.Random;
 }

@@ -1,0 +1,4 @@
+interface IPlayer : IHealthTarget, IBuffTarget
+{
+
+}

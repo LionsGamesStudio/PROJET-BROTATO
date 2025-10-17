@@ -1,15 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using Pathfinding.BehaviorTree;
-using UnityEditor.Animations;
-using UnityEditor.XR.OpenXR.Features;
 using UnityEngine;
-using UnityEngine.AI;
+// Il n'est pas nécessaire d'importer le namespace du BehaviorTree ici,
+// car nous ne faisons référence qu'aux classes de base AttackBehavior et TargetSelector.
 
 [CreateAssetMenu(fileName = "NewMonster", menuName = "ScriptableObject/Monster")]
 public class SOMonster : ScriptableObject
 {
-    // Start is called before the first frame update
     [Header("Combat Stats")]
     [SerializeField]
     private int damage = 10;
@@ -18,7 +14,7 @@ public class SOMonster : ScriptableObject
     private float attackSpeed = 1f;
 
     [SerializeField]
-    private float pv = 10f;
+    private float health = 10f;
 
     [SerializeField]
     private int shield = 0;
@@ -33,16 +29,26 @@ public class SOMonster : ScriptableObject
     [SerializeField]
     private float movementSpeed = 1f;
 
-    // Pour le IEnemy
     [SerializeField]
     private float radiusRange = 1f;
 
     [Space(10)]
-    [Header("Initial State")]
-
+    [Header("Visuals")]
     [SerializeField]
     private GameObject monsterPrefab;
 
+    [SerializeField]
+    private LootTable lootTable;
+
+    [Space(10)]
+    [Header("AI & Combat Logic")]
+    [Tooltip("Defines HOW this monster attacks (e.g., direct damage, projectile, AoE).")]
+    [SerializeField]
+    private AttackBehavior attackBehavior;
+
+    [Tooltip("Defines WHICH TARGET this monster selects (e.g., closest, weakest).")]
+    [SerializeField]
+    private TargetSelector targetSelector;
 
 
     public int Damage => damage;
@@ -51,7 +57,10 @@ public class SOMonster : ScriptableObject
     public float MovementSpeed => movementSpeed;
     public int Shield => shield;
     public float RadiusRange => radiusRange;
-    public float Pv => pv;
+    public float Health => health;
     public GameObject MonsterPrefab => monsterPrefab;
+    public LootTable LootTable => lootTable;
 
+    public AttackBehavior AttackBehavior => attackBehavior;
+    public TargetSelector TargetSelector => targetSelector;
 }

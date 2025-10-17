@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8f4876b38b5149a7c4ce47bed739c, type: 3}
+  m_Name: MediumGun
+  m_EditorClassIdentifier: 
+  itemName: Medium Gun
+  description: A not so simple gun to test things
+  icon: {fileID: 0}
+  type: 0
+  prefab: {fileID: 5327874311068230002, guid: 18c15635f8804ad40a1d6394ad74f211, type: 3}
+  id: 606819182
+  damage: 15
+  attackSpeed: 3
+  range: 3
+  weaponBehavior: {fileID: 11400000, guid: 639cb1d2d5eed2a438f9c828b8cbd456, type: 2}
+  targetSelector: {fileID: 11400000, guid: 45489afd7a05ae24598ccaad56e735c3, type: 2}

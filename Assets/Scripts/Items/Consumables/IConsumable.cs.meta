@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Items/Consumables/IConsumable.cs.meta
+guid: 51f416ef15dc3e64cad9020868955ab5
+========
+guid: 1e1ccd4ddc1342b4a8c1f4febff2200a
+>>>>>>>> main:Assets/Scripts/Entities/IBehaviorTree.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

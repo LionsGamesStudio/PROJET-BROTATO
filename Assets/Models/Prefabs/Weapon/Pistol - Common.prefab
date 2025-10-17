@@ -4840,8 +4840,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3350752829903356695}
   - component: {fileID: 7528725649113682165}
-  - component: {fileID: 6230512601353694398}
-  - component: {fileID: 4495727523862308757}
+  - component: {fileID: 64619945901045010}
+  - component: {fileID: 1456697745831926567}
+  - component: {fileID: 3940079561848830520}
   m_Layer: 9
   m_Name: Pistol - Common
   m_TagString: Untagged
@@ -4887,7 +4888,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6230512601353694398
+--- !u!114 &64619945901045010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4896,18 +4897,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5327874311068230002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f2f5a1f6a46254baee0b5ecf02753f, type: 3}
+  m_Script: {fileID: 11500000, guid: 548d83b1587eab54085dca09677cb96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name_Weapon: Pistol
-  damage: 6
-  shoot_Rate: 3
-  radius_Range: 5
-  position: 1
-  munition_type: Medium
-  rarity: Common
-  canShoot: 0
---- !u!114 &4495727523862308757
+--- !u!114 &1456697745831926567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4916,11 +4909,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5327874311068230002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3af856f5710a8d4e84db4e4079f695e, type: 3}
+  m_Script: {fileID: 11500000, guid: d2cbf3aefef987d4d96e81ef3427c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 446947355799046925, guid: ec2e0773f8cce644dbee41e055d7bdc8,
-    type: 3}
+--- !u!114 &3940079561848830520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327874311068230002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8ebe002c56dc341b89fac7df18f217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackerType: 1
+  attackBehavior: {fileID: 0}
+  targetSelector: {fileID: 0}
 --- !u!1001 &2740665259891110449
 PrefabInstance:
   m_ObjectHideFlags: 0

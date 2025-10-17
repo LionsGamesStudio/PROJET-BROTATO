@@ -1,147 +1,183 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Events;
-using UnityEditor.Rendering;
 using UnityEngine;
+using FluxFramework.Core;
+using FluxFramework.Attributes;
+using FluxFramework.Extensions;
 
-[DisallowMultipleComponent] // Evite d'avoir plusieurs waves management
-public class WaveManagement : MonoBehaviour
+[DisallowMultipleComponent]
+public class WaveManagement : FluxMonoBehaviour
 {
     [Header("Data to insert")]
-    [SerializeField]
-    private SOWaveManager sOWaveManagement;
+    [SerializeField] private SOWaveManager sOWaveManagement;
+    [SerializeField] private Transform playerTransform;
 
-    [SerializeField]
-    private GameObject player;
-
-    [SerializeField]
-    private int countWaves = 0;
-
-    [SerializeField]
-
-    private List<GameObject> enemyInWave = new List<GameObject>();
-
-    // --------------------------------------------
+    [Header("Live Wave Data")]
+    [SerializeField] private int currentWaveIndex = 0;
+    [SerializeField] private List<GameObject> activeEnemies = new List<GameObject>();
     
-    private int numberOfWaves;
-    private int actualSequence = 0;
+    // --- Private State ---
+    private int totalWaves;
+    private int activeSpawningSequences = 0;
+    
+    // --- Control Flags & Subscriptions ---
+    // Used to handle the subscription to the player's transform property to prevent memory leaks.
+    private IDisposable _playerTransformSubscription;
+    // A flag to ensure we only start the wave sequence once.
+    private bool _wavesStarted = false;
 
-    public void Start()
+    
+    protected new void Start()
     {
-        InitializeComponent();
-        NextWave();
-        FluxFramework.Core.Flux.Manager.EventBus.Subscribe<EnemyDieEvent>(OnEnemyDie);
+        TryStartWaves(playerTransform);
     }
 
-    private void InitializeComponent()
+    /// <summary>
+    /// This is the main entry point for starting the wave logic. It's called once the player's transform is available.
+    /// </summary>
+    /// <param name="newPlayerTransform">The player's transform, provided by the subscription.</param>
+    private void TryStartWaves(Transform newPlayerTransform)
     {
-        if (player == null)
+        // Guard clauses: Do nothing if waves have already started or if the transform is somehow null.
+        if (_wavesStarted || newPlayerTransform == null)
         {
-            Debug.Log("Player is missing in the waveManager !");
+            return;
         }
 
-        // A faire
+        // --- Dependencies are now met ---
+        this.playerTransform = newPlayerTransform;
 
-        // Regarde si SOWaves existe + est correct 
-        // Regarder si MonstersEntry existe + est correct 
-        // Regarder si le prefab est monstre qui à une interface d'enemy
+        // Now, we check the other dependency (the SOWaveManager asset).
+        if (sOWaveManagement == null || sOWaveManagement.SOWaves.Count == 0)
+        {
+            Debug.LogError("SOWaveManager is not assigned or is empty! Waves cannot start.", this);
+            this.enabled = false; // It's still correct to disable the component if setup fails.
+            return;
+        }
 
-        numberOfWaves = sOWaveManagement.SOWaves.Count;
+        // --- All checks passed, we can safely start the game loop ---
+        _wavesStarted = true;
+        totalWaves = sOWaveManagement.SOWaves.Count;
+        _playerTransformSubscription?.Dispose();
+        _playerTransformSubscription = null; // Clear the reference after disposing.
+        Debug.Log("Player found and dependencies are set. Starting the first wave...");
+        StartNextWave();
     }
 
+    /// <summary>
+    /// Determines which spawn strategy to use based on the monster's configuration.
+    /// </summary>
     private ISpawnStrategy SetStrategy(MonsterEntry monsterEntry)
     {
-        ISpawnStrategy strategy = monsterEntry.spawningMode switch
+        return monsterEntry.spawningMode switch
         {
-            SpawningMode.Random => new RandomSpawnStrategy(player),
-            SpawningMode.Line => new LineSpawnStrategy(player),
-            _ => new RandomSpawnStrategy(player),
+            SpawningMode.Random => new RandomSpawnStrategy(playerTransform),
+            SpawningMode.Line => new LineSpawnStrategy(playerTransform),
+            _ => new RandomSpawnStrategy(playerTransform), // Default to random if undefined.
         };
-
-        return strategy;
     }
 
-    private void NextWave()
+    /// <summary>
+    /// Kicks off the next wave in the sequence.
+    /// </summary>
+    private void StartNextWave()
     {
-        countWaves++;
-
-        if (countWaves <= numberOfWaves)
+        if (currentWaveIndex >= totalWaves)
         {
-            GetWave(sOWaveManagement.SOWaves[countWaves - 1]);
+            Debug.Log("All waves completed! Game Over!");
+            this.PublishEvent(new GameWinEvent());
+            return;
         }
+        
+        currentWaveIndex++;
+        // this.PublishEvent(new WaveStartEvent(currentWaveIndex)); // Example of a useful event
+        Debug.Log($"Starting Wave {currentWaveIndex}");
 
-        else
+        SOWaves waveData = sOWaveManagement.SOWaves[currentWaveIndex - 1];
+        foreach (MonsterEntry entry in waveData.Monsters)
         {
-            Debug.Log("Fin du jeu !"); 
+            if (entry.monsterData != null && entry.monsterData.MonsterPrefab != null)
+            {
+                // This StartCoroutine call is now safe because it only happens after successful initialization.
+                StartCoroutine(SpawningSequence(entry.monsterData.MonsterPrefab, entry.spawnDelay, entry.count, SetStrategy(entry)));
+            }
+            else
+            {
+                Debug.LogWarning($"MonsterEntry in wave {currentWaveIndex} has missing data and will be skipped.");
+            }
         }
-
-
     }
 
-    private void GetWave(SOWaves waves)
+    /// <summary>
+    /// The coroutine that handles spawning a single group of monsters over time.
+    /// </summary>
+    IEnumerator SpawningSequence(GameObject monsterPrefab, int delay, int count, ISpawnStrategy strategy)
     {
-        foreach (MonsterEntry entry in waves.Monsters)
-        {
-            StartCoroutine(SpawningSequence(entry.monster, entry.spawnDelay, entry.count, SetStrategy(entry)));
-        }
-    }
-
-    IEnumerator SpawningSequence(GameObject monster, int delay, int count, ISpawnStrategy strategy)
-    {
-        actualSequence++;
+        activeSpawningSequences++;
         for (int i = 0; i < count; i++)
         {
-            Debug.Log("La séquence de spawn est lancé !");
+            List<Vector3> validPositions = strategy.GetValidPosition(1);
+            List<GameObject> spawned = strategy.SpawnXMonster(monsterPrefab, validPositions);
 
-            List<Vector3> validPositions = strategy.GetValidPosition(count); // Get all the position of the monster needed for the spawing strategy without taken in consideration monsters
-
-            List<GameObject> temp = strategy.SpawnXMonster(monster, validPositions); // Spawn the monster and count how many it cost for the player
-
-            foreach (GameObject enemy in temp)
+            foreach (GameObject enemy in spawned)
             {
-                if (enemy != null) enemyInWave.Add(enemy);
-                else Debug.LogWarning("Un monstre n'a pas pu être instancié !");
-                enemy.transform.LookAt(player.transform); // Le monstre regarde le joueur lorsqu'il est instancié
+                if (enemy != null)
+                {
+                    activeEnemies.Add(enemy);
+                    enemy.transform.LookAt(playerTransform);
+                }
             }
-
-
-            count -= temp.Count;  // We are deleting the number of new monster
-
-            yield return new WaitForSeconds(delay); // Wait
-
+            
+            yield return new WaitForSeconds(delay);
         }
-        actualSequence--;
+        activeSpawningSequences--;
         CheckWaveEnd();
     }
 
+    /// <summary>
+    /// Event handler that listens for an enemy's death.
+    /// </summary>
+    [FluxEventHandler]
     private void OnEnemyDie(EnemyDieEvent evt)
     {
-        RemoveEnemy(evt.enemy);
+        // Clean up the list to prevent issues with destroyed objects.
+        activeEnemies.RemoveAll(e => e == null || e == evt.enemy);
         CheckWaveEnd();
     }
 
-    private void RemoveEnemy(GameObject enemy)
-    {
-        // enemyInWave.Remove(enemy); Work
-        enemyInWave.RemoveAll(e => e == null || e == enemy); // Just in case
-    }
-
+    /// <summary>
+    /// Checks if the conditions for ending the current wave are met.
+    /// </summary>
     private void CheckWaveEnd()
     {
-        if (enemyInWave.Count == 0 && actualSequence == 0)
+        // The wave is over only if no enemies are left AND all spawning coroutines have finished.
+        Debug.Log($"Checking wave end: {activeEnemies.Count} active enemies, {activeSpawningSequences} active spawning sequences.");
+        if (activeEnemies.Count == 0 && activeSpawningSequences == 0)
         {
-            Debug.Log("Vague terminée !");
+            Debug.Log($"Wave {currentWaveIndex} complete!");
+            // this.PublishEvent(new WaveEndEvent(currentWaveIndex));
             StartCoroutine(WaitBeforeNextWave());
         }
     }
 
+    /// <summary>
+    /// A simple delay between waves.
+    /// </summary>
     IEnumerator WaitBeforeNextWave()
     {
-        yield return new WaitForSeconds(5f); // Wait before end of shop is to make after
-        NextWave();
+        yield return new WaitForSeconds(5f); // Consider making this delay configurable in the SOWaveManager.
+        this.PublishEvent(new NextWaveEvent(currentWaveIndex));
+        StartNextWave();
     }
 
-
-    //A faire sois un timer sois je tue tous les mobs pour finir la wave 
-
+    /// <summary>
+    /// Clean up the subscription when this object is destroyed to prevent memory leaks.
+    /// </summary>
+    protected override void OnFluxDestroy()
+    {
+        _playerTransformSubscription?.Dispose();
+        base.OnFluxDestroy();
+    }
 }

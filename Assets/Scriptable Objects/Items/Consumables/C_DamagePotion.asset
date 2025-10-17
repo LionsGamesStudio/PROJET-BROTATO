@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f816326d1181d45b87d7eab1086fd4, type: 3}
+  m_Name: C_DamagePotion
+  m_EditorClassIdentifier: 
+  itemName: Damage Up Potion
+  description: 
+  icon: {fileID: 0}
+  type: 1
+  prefab: {fileID: 5856918817781473983, guid: 21f0a3a370a94ba4cb5e6e3fd2024bc7, type: 3}
+  id: -1415049904
+  healthRestore: 0
+  buffsToApply:
+  - {fileID: 11400000, guid: 1ce5632d865a61547b03709934346598, type: 2}
